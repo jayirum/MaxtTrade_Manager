@@ -264,7 +264,7 @@ begin
   inherited;
   PartTableOpen(rgType, CodeFormat('IO_TP', 'AND CODE_DISP = ''Y'' ORDER BY CODE_VALUE'), '[전체]', '0');
   PartTableOpen(TComponent(gdMain.Columns[1]), CodeFormat('IO_TP', 'ORDER BY CODE_VALUE'));
-  PartTableOpen(TComponent(gdMain.Columns[2]), CodeFormat('ACNT_TP', 'ORDER BY CODE_VALUE'));
+  PartTableOpen(TComponent(gdMain.Columns[10]), CodeFormat('ACNT_TP', 'ORDER BY CODE_VALUE'));
 
   _sMainWhere := '';
 
@@ -425,12 +425,13 @@ begin
     if Active then Active := False;
 
     ProcedureName := 'PT_INOUT_PROC';
-    Parameters.ParamByName('I_USER_ID').Value  := dbMain.FieldByName('USER_ID').AsString;
-    Parameters.ParamByName('I_TM').Value       := dbMain.FieldByName('RQST_TM').AsString;
-    Parameters.ParamByName('I_RSLT_TP').Value  := sRsltTp;
-    Parameters.ParamByName('I_RSLT_AMT').Value := TextToFloat(edAmt.Text);
-    Parameters.ParamByName('I_MNG_ID').Value   := _Login_ID;
-    Parameters.ParamByName('I_RJCT_MSG').Value := sRebuffMsg;
+    Prepared := True;
+    Parameters.ParamByName('@I_USER_ID').Value  := dbMain.FieldByName('USER_ID').AsString;
+    Parameters.ParamByName('@I_TM').Value       := dbMain.FieldByName('RQST_TM').AsString;
+    Parameters.ParamByName('@I_RSLT_TP').Value  := sRsltTp;
+    Parameters.ParamByName('@I_RSLT_AMT').Value := TextToFloat(edAmt.Text);
+    Parameters.ParamByName('@I_MNG_ID').Value   := _Login_ID;
+    Parameters.ParamByName('@I_RJCT_MSG').Value := sRebuffMsg;
 
 {    PrepareSQL;
     ParamByName('I_USER_ID').AsString  := dbMain.FieldByName('USER_ID').AsString;
@@ -440,7 +441,6 @@ begin
     ParamByName('I_MNG_ID').AsString   := _Login_ID;
     ParamByName('I_RJCT_MSG').AsString := sRebuffMsg;}
 
-    Prepared := True;
     try
       ExecProc; // Output 파라미터가 없거나 Output 파라미터만 있는 경우 사용
     Except
@@ -452,7 +452,7 @@ begin
     end;
 
     //Result := Parameters.ParamByName('RETURN_VALUE').AsInteger;
-    Result := Parameters.ParamByName('RETURN_VALUE').Value;
+    Result := Parameters.ParamByName('@RETURN_VALUE').Value;
 
     if Result = 0 then begin
       sMsg := Format('[ %s ]원 %s이 %s되었습니다.', [FormatFloat(FORMAT_AMT, TextToFloat(edAmt.Text)), sIoNm, sRlstNm]);
@@ -481,13 +481,15 @@ begin
 end;
 
 procedure TfmInOut.MainTableOpen;
+var
+  sSQL : string;
 begin
   with dbMain do begin
     try
       Delay_Show();
 
       Close;
-      SQL.Text := Format(
+      sSQL := Format(
         'SELECT 0 AS CHECK_TF     ' +
         '      ,USER_ID           ' +
         '      ,RQST_TM           ' +
@@ -512,8 +514,9 @@ begin
         '  FROM INOUT A           ' +
         ' WHERE RSLT_TP = %s      ',
         [QuotedStr('0') ]);
-      if _sMainWhere <> '' then SQL.Add('AND ' + _sMainWhere);
-      SQL.Add(' ORDER BY RQST_TRADE_DT, RQST_TM ');
+      if _sMainWhere <> '' then sSQL := sSQL + ' AND ' + _sMainWhere;
+      sSQL := sSQL + ' ORDER BY RQST_TRADE_DT, RQST_TM ';
+      SQL.Text := sSQL;
 
       Open;
       gdMain.Columns[0].Checkboxes := RecordCount <> 0;

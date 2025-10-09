@@ -4,6 +4,7 @@ inherited fmInOut: TfmInOut
   ClientWidth = 1203
   OnShow = FormShow
   ExplicitWidth = 1219
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 12
   inherited pnTop: TRzPanel
@@ -231,7 +232,6 @@ inherited fmInOut: TfmInOut
         Footers = <>
         Title.Alignment = taCenter
         Title.Caption = #54924#50896#47749
-        Title.Color = 16250871
         Width = 100
       end
       item
@@ -338,7 +338,6 @@ inherited fmInOut: TfmInOut
     FlatColor = clGray
     FlatColorAdjustment = 0
     TabOrder = 4
-    ExplicitLeft = 438
     object RzPanel8: TRzPanel
       Left = 1
       Top = 29
@@ -352,7 +351,6 @@ inherited fmInOut: TfmInOut
       FlatColor = clGray
       FlatColorAdjustment = 0
       TabOrder = 0
-      ExplicitLeft = 6
       object btnOK: TbsSkinSpeedButton
         Tag = 300
         Left = 91
@@ -877,7 +875,7 @@ inherited fmInOut: TfmInOut
   end
   inherited imgBtn: TImageList
     Bitmap = {
-      494C01010F0054000C0110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010F005400140110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1413,31 +1411,21 @@ inherited fmInOut: TfmInOut
       000000000000}
   end
   inherited dbMain: TADOQuery
+    Connection = MastDB.ADOConn
+    CursorType = ctStatic
     AfterOpen = dbMainAfterOpen
     SQL.Strings = (
-      'SELECT'
-      #9' 0 AS CHECK_TF'
-      #9',USER_ID'
-      '        ,RQST_TM'
-      #9',IO_TP'
-      #9',ACNT_TP'
-      #9',ACNT_NO'
-      #9',USER_NM'
-      #9',RQST_AMT'
-      #9',RSLT_TP'
-      #9',RSLT_AMT'
-      #9',RSLT_MNG_ID'
-      #9',RQST_TRADE_DT'
-      #9',RQST_SYS_DT'
-      #9',RSLT_TRADE_DT'
-      #9',RSLT_SYS_DT'
-      #9',RSLT_TM'
-      #9',RJCT_MSG'
-      #9',USER_BANK'
-      #9',USER_BANK_ACNT'
-      #9',USER_BANK_ACNT_NM'
-      #9',MNG_YN        '
-      'FROM INOUT')
+      
+        'SELECT 0 AS CHECK_TF           ,USER_ID                 ,RQST_TM' +
+        '                 ,IO_TP                   ,ACNT_TP              ' +
+        '   ,ACNT_NO                 ,USER_NM                 ,RQST_AMT  ' +
+        '              ,RSLT_TP                 ,RSLT_AMT                ' +
+        ',RSLT_MNG_ID             ,RQST_TRADE_DT           ,RQST_SYS_DT  ' +
+        '           ,RSLT_TRADE_DT           ,RSLT_SYS_DT             ,RS' +
+        'LT_TM                 ,RJCT_MSG                ,USER_BANK       ' +
+        '        ,USER_BANK_ACNT          ,USER_BANK_ACNT_NM       ,MNG_Y' +
+        'N              FROM INOUT A            WHERE RSLT_TP = '#39'0'#39'      ' +
+        ' ORDER BY RQST_TRADE_DT, RQST_TM ')
     object dbMainCHECK_TF: TIntegerField
       FieldName = 'CHECK_TF'
       ProviderFlags = []

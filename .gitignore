@@ -1,0 +1,51 @@
+#빌드 결과물
+
+*.exe
+*.dll
+*.bpl
+*.dcp
+*.dcu
+*.dcpil
+*.so
+*.dylib
+*.ocx
+
+#캐시 및 임시파일
+
+*.identcache
+*.local
+*.stat
+*.tvsconfig
+*.dproj.local
+*.dproj.bak
+.~
+
+자동 생성 파일
+
+*.groupproj.local
+*.groupproj.bak
+*.dsk
+*.projdata
+*.res
+*.rsm
+*.drc
+
+#특정 IDE 폴더
+
+/__history/
+/__recovery/
+/__recovery_data/
+
+#출력 폴더 (Win32/Win64 빌드 산출물)
+
+Win32/Debug/
+Win32/Release/
+Win64/Debug/
+Win64/Release/
+
+#기타 로그/백업
+
+*.map
+*.log
+*.bak
+*.tmp

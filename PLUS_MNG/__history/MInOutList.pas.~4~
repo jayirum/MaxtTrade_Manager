@@ -1,0 +1,216 @@
+unit MInOutList;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RzLstBox, bsSkinCtrls, VCL_Helper, MBasic, DBGridEhGrouping,
+  ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, GridsEh, DBAxisGridsEh, DBGridEh,
+  RzDBEdit, kcRaizeCtrl, StdCtrls, RzCmboBx, RzDBCmbo, RzSplit, Mask, RzEdit,
+  bsMessages, DB, MemDS, DBAccess, Uni, ImgList, BusinessSkinForm, RzDBNav,
+  bsribbon, ExtCtrls, RzPanel, LbButton;
+
+type
+  TfmInOutList = class(TfmBasic)
+    gdMain: TDBGridEh;
+    RzPanel6: TRzPanel;
+    rgType: TbsSkinRadioGroup;
+    dbMainUSER_ID: TStringField;
+    dbMainRQST_TM: TStringField;
+    dbMainIO_TP: TStringField;
+    dbMainACNT_TP: TStringField;
+    dbMainACNT_NO: TStringField;
+    dbMainUSER_NM: TStringField;
+    dbMainRQST_AMT: TFloatField;
+    dbMainRSLT_TP: TStringField;
+    dbMainRSLT_AMT: TFloatField;
+    dbMainRSLT_MNG_ID: TStringField;
+    dbMainRQST_TRADE_DT: TStringField;
+    dbMainRQST_SYS_DT: TStringField;
+    dbMainRSLT_TRADE_DT: TStringField;
+    dbMainRSLT_SYS_DT: TStringField;
+    dbMainRSLT_TM: TStringField;
+    dbMainRJCT_MSG: TStringField;
+    dbMainUSER_BANK: TStringField;
+    dbMainUSER_BANK_ACNT: TStringField;
+    dbMainUSER_BANK_ACNT_NM: TStringField;
+    dbMainMNG_YN: TStringField;
+    pnInOut: TRzPanel;
+    dbMainTOTCNT: TIntegerField;
+    bsSkinLabel1: TbsSkinLabel;
+    edFind: TRzEdit;
+    dtDt: TkcRzDateTimeEdit;
+    rgAcntTp: TbsSkinRadioGroup;
+    chUserTp: TbsSkinCheckRadioBox;
+    dtEnd: TkcRzDateTimeEdit;
+    procedure FormShow(Sender: TObject);
+    procedure edFindKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure btnExcelClick(Sender: TObject);
+    procedure rgTypeClick(Sender: TObject);
+    procedure btnFilterClick(Sender: TObject);
+    procedure gdMainDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
+    procedure gdMainTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
+    procedure chUserTpClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure MainTableOpen; override;
+    procedure findWhere;
+  end;
+
+var
+  fmInOutList: TfmInOutList;
+
+implementation
+
+uses StdUtils, MMastDB, MDelay;
+
+{$R *.dfm}
+
+{ TfmSample }
+
+procedure TfmInOutList.btnExcelClick(Sender: TObject);
+begin
+  inherited;
+  Export_Excel(gdMain);
+end;
+
+procedure TfmInOutList.btnFilterClick(Sender: TObject);
+begin
+  inherited;
+  findWhere;
+end;
+
+procedure TfmInOutList.chUserTpClick(Sender: TObject);
+begin
+  inherited;
+  btnFilter.ButtonClick;
+end;
+
+procedure TfmInOutList.edFindKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+	if Key = 13 then btnFilter.ButtonClick;
+end;
+
+procedure TfmInOutList.findWhere;
+var
+  sNm, sAcntTp, sIoTp, sDt : String;
+begin
+  _sMainWhere := '';
+
+  if edFind.Text <> '' then sNm := Format(' AND USER_NM = %s', [QuotedStr(edFind.Text)]);
+  if rgAcntTp.ItemIndex <> 0 then  sAcntTp := Format(' AND ACNT_TP = %s', [QuotedStr(intTostr(rgAcntTp.ItemIndex))]);
+  if rgType.ItemIndex <> 0 then sIoTp := Format(' AND IO_TP = %s', [QuotedStr(rgType.Values[rgType.ItemIndex])]);
+
+  _sMainWhere := sNm + sAcntTp + sIoTp;
+
+  MainTableOpen;
+
+end;
+
+procedure TfmInOutList.FormShow(Sender: TObject);
+begin
+  inherited;
+  _sMainWhere := '';
+
+  dtDt.Date := TextToDate(__Trade_DT); //Now;
+  dtEnd.Date := TextToDate(__Trade_DT); //Now;
+
+  PartTableOpen(rgType, Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s ORDER BY CODE_VALUE', [QuotedStr('IO_TP')]), '[전체]', '0');
+  PartTableOpen(TComponent(gdMain.Columns[2]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('ACNT_TP')]));
+  PartTableOpen(TComponent(gdMain.Columns[3]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('IO_TP')]));
+  PartTableOpen(TComponent(gdMain.Columns[5]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('RSLT_TP')]));
+
+  rgType.ItemIndex := 0;
+end;
+
+procedure TfmInOutList.gdMainDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
+begin
+  inherited;
+  with TDBGridEh(Sender), TDBGridEh(Sender).DataSource.DataSet do
+  begin
+    if FieldByName('IO_TP').AsString = '1' then Canvas.Font.Color := clRed
+    else Canvas.Font.Color := clBlue;
+
+    if DataCol = 3 then DefaultDrawColumnCell(Rect, DataCol, Column, TGridDrawState(State));
+  end;
+end;
+
+procedure TfmInOutList.gdMainTitleBtnClick(Sender: TObject; ACol: Integer;
+  Column: TColumnEh);
+begin
+  inherited;
+  with dbMain do
+  begin
+    if IndexFieldNames = Column.FieldName then
+    begin
+      IndexFieldNames := Column.FieldName + ' Desc';
+      First;
+    end
+    else
+    begin
+      IndexFieldNames := Column.FieldName;
+      First;
+    end;
+  end;
+end;
+
+procedure TfmInOutList.MainTableOpen;
+var
+  sSql, sUserTp : String;
+begin
+  try
+    Delay_Show();
+
+    if chUserTp.Checked then sUserTp := ' AND B1.USER_GRADE = 2 '
+    else sUserTp := '';
+
+    sSql := Format( 'SELECT  USER_ID			      ,'+
+                    '        RQST_TM            ,'+
+                    '        IO_TP              ,'+
+                    '        ACNT_TP            ,'+
+                    '        ACNT_NO            ,'+
+                    '        USER_NM            ,'+
+                    '        RQST_AMT           ,'+
+                    '        RSLT_TP            ,'+
+                    '        RSLT_AMT           ,'+
+                    '        RSLT_MNG_ID        ,'+
+                    '        RQST_TRADE_DT      ,'+
+                    '        RQST_SYS_DT        ,'+
+                    '        RSLT_TRADE_DT      ,'+
+                    '        RSLT_SYS_DT        ,'+
+                    '        RSLT_TM            ,'+
+                    '        RJCT_MSG           ,'+
+                    '        USER_BANK          ,'+
+                    '        USER_BANK_ACNT     ,'+
+                    '        USER_BANK_ACNT_NM  ,'+
+                    '        MNG_YN             ,'+
+                    '        COUNT(1) OVER() AS TOTCNT   ' +
+                    'FROM (SELECT A1.* FROM INOUT A1, USER_MST B1 WHERE A1.USER_ID = B1.USER_ID %s ) A '+
+                    'WHERE RSLT_TRADE_DT BETWEEN %s AND %s ' +
+                   _sMainWhere,
+                     [sUserTp,
+                      QuotedStr(StrReplace(dtDt.Text, '-', '')),
+                      QuotedStr(StrReplace(dtEnd.Text, '-', ''))]);
+
+    Uni_Open(dbMain, sSql);
+
+    if dbMain.RecordCount > 0 then pnInOut.Caption := dbMain.FieldByName('TOTCNT').AsString + ' 건'
+    else pnInOut.Caption := '0 건';
+
+  finally
+    Delay_Hide;
+  end;
+end;
+
+procedure TfmInOutList.rgTypeClick(Sender: TObject);
+begin
+  findWhere;
+end;
+
+end.

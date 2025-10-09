@@ -1,0 +1,256 @@
+unit MNego;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RzLstBox, bsSkinCtrls, VCL_Helper, MBasic, DBGridEhGrouping,
+  ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, GridsEh, DBAxisGridsEh, DBGridEh,
+  RzDBEdit, kcRaizeCtrl, StdCtrls, RzCmboBx, RzDBCmbo, RzSplit, Mask, RzEdit,
+  bsMessages, DB, MemDS, DBAccess, Uni, ImgList, BusinessSkinForm, RzDBNav,
+  bsribbon, ExtCtrls, RzPanel, UniDAC_Helper;
+
+type
+  TfmNego = class(TfmBasic)
+    pnLeft: TRzSizePanel;
+    RzPanel5: TRzPanel;
+    RzPanel6: TRzPanel;
+    gdMain: TDBGridEh;
+    gdUser: TDBGridEh;
+    dsPart: TDataSource;
+    edFind: TRzEdit;
+    btnFind: TbsSkinSpeedButton;
+    dbMainACNTNO: TStringField;
+    dbMainUSERNM: TStringField;
+    dbMainUSERID: TStringField;
+    dbMainKOA: TFloatField;
+    dbMainKOCS: TFloatField;
+    dbMainKOCB: TFloatField;
+    dbMainKOPS: TFloatField;
+    dbMainKOPB: TFloatField;
+    dbMainEA: TFloatField;
+    dbMainCLA: TFloatField;
+    dbMainACNTTP: TStringField;
+    dsUser: TDataSource;
+    dbUser: TUniQuery;
+    dbUserUSERNM: TStringField;
+    dbUserUSERID: TStringField;
+    edUserID: TkcRzDBEdit;
+    dbMainKOA_CAL: TStringField;
+    dbMainKOCS_CAL: TStringField;
+    dbMainKOCB_CAL: TStringField;
+    dbMainKOPS_CAL: TStringField;
+    dbMainKOPB_CAL: TStringField;
+    dbMainEA_CAL: TStringField;
+    dbMainCLA_CAL: TStringField;
+    procedure FormShow(Sender: TObject);
+    procedure btnExcelClick(Sender: TObject);
+    procedure btnFilterClick(Sender: TObject);
+    procedure btnFindClick(Sender: TObject);
+    procedure edFindKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure gdMainDblClick(Sender: TObject);
+    procedure edUserIDChange(Sender: TObject);
+    procedure dbMainCalcFields(DataSet: TDataSet);
+    procedure gdUserTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
+    procedure gdUserDblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure MainTableOpen(sWhere : String='');
+    procedure UserTableOpen(sWhere : String='');
+    procedure MainWher(sData : String);
+  end;
+
+var
+  fmNego: TfmNego;
+
+implementation
+
+uses StdUtils, MMastDB, MDelay, MNegoCmsn;
+
+{$R *.dfm}
+
+{ TfmSample }
+
+procedure TfmNego.btnFindClick(Sender: TObject);
+var
+  sWhere : String;
+begin
+  inherited;
+//  sWhere := Format(' AND A.USER_NM LIKE %s', [QuotedStr('%' + edFind.Text + '%')]);
+  sWhere := ' AND ' + StrReplace(Get_INIFile(__Find_FileName, 'FINDSQL', 'USER_A'), '<X>', edFind.Text);
+
+  UserTableOpen(sWhere);
+
+end;
+
+procedure TfmNego.btnExcelClick(Sender: TObject);
+begin
+  inherited;
+  Export_Excel(gdMain);
+end;
+
+procedure TfmNego.gdMainDblClick(Sender: TObject);
+var
+  sRslt : BOOLEAN;
+begin
+  inherited;
+  sRslt := fmNegoCmsn_Run(dbMain.FieldByName('USERID').AsString,dbMain.FieldByName('USERNM').AsString,dbMain.FieldByName('ACNTNO').AsString,dbMain.FieldByName('ACNTTP').AsString);
+
+  if sRslt then MainWher(dbMain.FieldByName('USERID').AsString); 
+end;
+
+procedure TfmNego.gdUserDblClick(Sender: TObject);
+begin
+  inherited;
+  MainTableOpen;
+end;
+
+procedure TfmNego.gdUserTitleBtnClick(Sender: TObject; ACol: Integer;
+  Column: TColumnEh);
+begin
+  inherited;
+  with dbUser do
+  begin
+    if IndexFieldNames = Column.FieldName then IndexFieldNames := Column.FieldName + ' Desc'
+    else IndexFieldNames := Column.FieldName
+  end;
+end;
+
+procedure TfmNego.btnFilterClick(Sender: TObject);
+begin
+  inherited;
+  MainTableOpen;
+end;
+
+procedure TfmNego.dbMainCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  with DataSet do
+  begin
+
+    if FieldByName('KOA').AsString = '' then FieldByName('KOA_CAL').AsString := '미적용'
+    else FieldByName('KOA_CAL').AsString := FloatToStr(FieldByName('KOA').AsFloat);
+
+    if FieldByName('KOCS').AsString = '' then FieldByName('KOCS_CAL').AsString := '미적용'
+    else FieldByName('KOCS_CAL').AsString := FloatToStr(FieldByName('KOCS').AsFloat);
+
+    if FieldByName('KOCB').AsString = '' then FieldByName('KOCB_CAL').AsString := '미적용'
+    else FieldByName('KOCB_CAL').AsString := FloatToStr(FieldByName('KOCB').AsFloat);
+
+    if FieldByName('KOPS').AsString = '' then FieldByName('KOPS_CAL').AsString := '미적용'
+    else FieldByName('KOPS_CAL').AsString := FloatToStr(FieldByName('KOPS').AsFloat);
+
+    if FieldByName('KOPB').AsString = '' then FieldByName('KOPB_CAL').AsString := '미적용'
+    else FieldByName('KOPB_CAL').AsString := FloatToStr(FieldByName('KOPB').AsFloat);
+
+    if FieldByName('EA').AsString = '' then FieldByName('EA_CAL').AsString := '미적용'
+    else FieldByName('EA_CAL').AsString := FormatFloat(__FORMAT_AMT, FieldByName('EA').AsFloat);
+
+    if FieldByName('CLA').AsString = '' then FieldByName('CLA_CAL').AsString := '미적용'
+    else FieldByName('CLA_CAL').AsString := FormatFloat(__FORMAT_AMT, FieldByName('CLA').AsFloat);
+
+  end;
+end;
+
+procedure TfmNego.edFindKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  if Key = 13 then btnFind.ButtonClick;
+end;
+
+procedure TfmNego.edUserIDChange(Sender: TObject);
+begin
+  inherited;
+//  MainWher(dbUser.FieldByName('USERID').AsString);
+end;
+
+procedure TfmNego.FormShow(Sender: TObject);
+begin
+  inherited;
+
+//  MainTableOpen;
+//  UserTableOpen;
+
+//  PartTableOpen(TComponent(gdMain.Columns[1]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('ACNT_TP')]));
+
+  end;
+
+procedure TfmNego.MainTableOpen(sWhere : String='');
+var
+  sSql, sQuery : String;
+begin
+  sQuery := ' SELECT 																																																					  ' +
+            '       A.ACNT_NO AS ACNTNO,                                                                                        ' +
+            '       B.USER_NM AS USERNM,                                                                                        ' +
+            '       A.USER_ID AS USERID,                                                                                        ' +
+            '       (SELECT NEGO_AMTRT FROM NEGO_CMSN WHERE ACNT_NO = A.ACNT_NO AND ARTC_CD = %s) AS KOA,                    		' +
+            '       (SELECT NEGO_AMTRT FROM NEGO_CMSN WHERE ACNT_NO = A.ACNT_NO AND ARTC_CD = %s AND BS_TP = %s) AS KOCS,   		' +
+            '       (SELECT NEGO_AMTRT FROM NEGO_CMSN WHERE ACNT_NO = A.ACNT_NO AND ARTC_CD = %s AND BS_TP = %s) AS KOCB,   		' +
+            '       (SELECT NEGO_AMTRT FROM NEGO_CMSN WHERE ACNT_NO = A.ACNT_NO AND ARTC_CD = %s AND BS_TP = %s) AS KOPS,   		' +
+            '       (SELECT NEGO_AMTRT FROM NEGO_CMSN WHERE ACNT_NO = A.ACNT_NO AND ARTC_CD = %s AND BS_TP = %s) AS KOPB,   		' +
+            '       (SELECT NEGO_AMTRT FROM NEGO_CMSN WHERE ACNT_NO = A.ACNT_NO AND ARTC_CD = %s) AS EA,                      	' +
+            '       (SELECT NEGO_AMTRT FROM NEGO_CMSN WHERE ACNT_NO = A.ACNT_NO AND ARTC_CD = %s) AS CLA,                      	' +
+            '       B.ACNT_TP AS ACNTTP                                                                                         ' +
+            ' FROM NEGO_CMSN A,                                                                                                 ' +
+            '      ACNT_MST B                                                                                                   ' +
+            ' WHERE A.ACNT_NO = B.ACNT_NO                                                                                       ' +
+            ' AND A.USER_ID = %s '+
+            ' GROUP BY A.ACNT_NO,B.USER_NM,A.USER_ID,B.ACNT_TP                                                                  ' ;
+
+  sSql := Format(sQuery, [QuotedStr('101'),
+                          QuotedStr('201'),
+                          QuotedStr('S'),
+                          QuotedStr('201'),
+                          QuotedStr('B'),
+                          QuotedStr('301'),
+                          QuotedStr('S'),
+                          QuotedStr('301'),
+                          QuotedStr('B'),
+                          QuotedStr('6E'),
+                          QuotedStr('CL'),
+                          QuotedStr(dbUser.FieldByName('USERID').AsString)]);
+  try
+    Delay_Show();
+    Uni_Open(dbMain, sSql);
+    PartTableOpen(TComponent(gdMain.Columns[1]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('ACNT_TP')]));
+  finally
+    Delay_Hide;
+  end;
+
+end;
+
+procedure TfmNego.MainWher(sData : String);
+var
+  sSql : String;
+begin
+  inherited;
+  sSql := Format(' AND A.USER_ID = %s',[QuotedStr(sData)]);
+  MainTableOpen(sSql);
+
+end;
+
+procedure TfmNego.UserTableOpen(sWhere : String='');
+var
+  sSql : String;
+begin
+  sSql := ' SELECT A.USER_NM AS USERNM,  '+
+          '        A.USER_ID AS USERID   '+
+          ' FROM ACNT_MST A,             '+
+          '      NEGO_CMSN B             '+
+          ' WHERE A.ACNT_NO = B.ACNT_NO  '+
+          ' AND A.USER_ID = B.USER_ID    '+
+          sWhere +
+          ' GROUP BY A.USER_NM,A.USER_ID ';
+  try
+    Delay_Show();
+    Uni_Open(dbUser, sSql);
+  finally
+    Delay_Hide;
+  end;
+end;
+
+end.

@@ -1,0 +1,97 @@
+0000=정상
+//ServerDisConnectError
+9901=서버간 네트워크 상태가 불안합니다 ( AK )
+9902=서버간 네트워크 상태가 불안합니다 ( AF )
+9903=서버간 네트워크 상태가 불안합니다 ( MK )
+9904=서버간 네트워크 상태가 불안합니다 ( MF )
+9911=서버간 네트워크 상태가 불안합니다 ( B )
+9912=서버간 네트워크 상태가 불안합니다 ( N )
+9913=서버간 네트워크 상태가 불안합니다 ( O )
+9921=서버간 네트워크 상태가 불안합니다 ( F )
+9922=서버간 네트워크 상태가 불안합니다 ( R )
+9923=서버간 네트워크 상태가 불안합니다 ( L )
+9931=서버간 네트워크 상태가 불안합니다 ( D )
+
+9801=API 주문응답 오류
+9802=API 미결제 조회 오류
+
+
+//Biz
+4001=거래가능한 고객이 아닙니다.
+4002=장개시가 되지 않았습니다.
+4003=계좌비밀번호를 확인해주세요
+4004=원주문이 존재하지 않습니다.
+4005=주문가능한 종목이 아닙니다.
+4006=진입주문 불가한 상태입니다.
+4007=이미 청산주문이 진행중입니다.
+4008=주문가능 수량 초과입니다.
+4009=고객정보가 정상적이지 않습니다
+4010=아직 주문이 처리 되지 않았습니다.
+4011=잘못된 계좌 타입입니다.
+4012=주문번호가 존재하지 않습니다.
+4013=이미 정상 처리된 건입니다.
+4014=증권사 주문번호 오류입니다.(TA002)
+4015=StopLoss 대상 포지션이 없습니다.
+4201=OMS에서 주문을 찾지 못했습니다
+4203=주문가격이 0 이하 입니다.
+4204=옵션은 4.0미만,0.1이상 가능합니다.
+4205=청산주문만 가능합니다.
+4206=포지션이 있으면 추가 입금이 불가합니다.
+4207=시스템점검중으로 진입주문이 불가합니다.
+4208=시스템점검중으로 모든주문이 불가합니다.
+
+5001=이미 해당일자 환율이 있습니다. 수정을해주세요.
+
+8001=DB처리 중 예외 발생하였습니다.
+
+//Socket
+10004=[10004] Interrupted system call.
+10009=[10009] Bad file number.
+10013=[10013] Access denied.
+10014=[10014] Bad address.
+10022=[10022] Invalid argument.
+10024=[10024] Too many open files.
+10035=[10035] Operation would block.
+10036=[10036] Operation now in progress.
+10037=[10037] Operation already in progress.
+10038=[10038] Socket operation on non-socket.
+10039=[10039] Destination address required.
+10040=[10040] Message too long.
+10041=[10041] Protocol wrong type for socket.
+10042=[10042] Bad protocol option.
+10043=[10043] Protocol not supported.
+10044=[10044] Socket type not supported.
+10045=[10045] Operation not supported on socket.
+10046=[10046] Protocol family not supported.
+10047=[10047] Address family not supported by protocol family.
+10048=[10048] Address already in use.
+10049=[10049] Can't assign requested address.
+10050=[10050] Network is down.
+10051=[10051] Network is unreachable.
+10052=[10052] Net dropped connection or reset.
+10053=[10053] Software caused connection abort.
+10054=[10054] Connection reset by peer.
+10055=[10055] No buffer space available.
+10056=[10056] Socket is already connected.
+10057=[10057] Socket is not connected.
+10058=[10058] Can't send after socket shutdown.
+10059=[10059] Too many references, can't splice.
+10060=[10060] 연결 시간이 초과되었습니다.
+10061=[10061] 연결이 거부 되었습니다.
+10062=[10062] Too many levels of symbolic links.
+10063=[10063] File name too long.
+10064=[10064] Host is down.
+10065=[10065] No route to host.
+10066=[10066] Directory not empty 
+10067=[10067] Too many processes.
+10068=[10068] Too many users.
+10069=[10069] Disc Quota Exceeded.
+10070=[10070] Stale NFS file handle.
+10071=[10071] Too many levels of remote in path.
+10091=[10091] Network subsystem is unavailable.
+10092=[10092] WINSOCK DLL Version out of range.
+10093=[10093] Winsock not loaded yet.
+11001=[11001] Host not found.
+11002=[11002] Non-authoritative 'Host not found' (try again or check DNS setup).
+11003=[11003] Non-recoverable errors: FORMERR, REFUSED, NOTIMP.
+11004=[11004] Valid name, no data record (check DNS setup).

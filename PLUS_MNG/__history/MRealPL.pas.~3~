@@ -1,0 +1,210 @@
+unit MRealPL;
+
+interface
+
+uses
+  Windows, Classes, Forms, Controls, StdCtrls, ExtCtrls, SysUtils,
+  DB, DBAccess, MemDS, Math, Dialogs, ImgList, Graphics,
+//  Mask, Messages, Variants,
+// BusinessSkinForm_1042
+  BusinessSkinForm, bsRibbon, bsMessages, bsSkinCtrls, VCL_Helper,
+// Raize, kcRaize
+  RzPanel, RzEdit, RzDBEdit, RzCmboBx, RzDBCmbo, RzSplit, RzLstBox, RzDBNav,
+  kcRaizeCtrl,
+// EhLib
+  DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, GridsEh,
+  DBAxisGridsEh, DBGridEh,
+// UniDAC
+  Uni,
+// User Unit
+  MBasic;
+
+type
+  TfmRealPL = class(TfmBasic)
+    gdMain: TDBGridEh;
+    chUserTp: TbsSkinCheckRadioBox;
+    cbUserGrade: TkcRzComboBox;
+    procedure edFindKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure btnExcelClick(Sender: TObject);
+    procedure gdMainTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
+    procedure gdMainDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure MainTableOpen; override;
+  end;
+
+var
+  fmRealPL: TfmRealPL;
+
+implementation
+
+uses StdUtils, MMastDB, MDelay;
+
+{$R *.dfm}
+
+{ TfmSample }
+
+procedure TfmRealPL.btnExcelClick(Sender: TObject);
+begin
+  inherited;
+  Export_Excel(gdMain);
+end;
+
+procedure TfmRealPL.edFindKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+	if Key = 13 then btnFilter.ButtonClick;
+end;
+
+procedure TfmRealPL.FormShow(Sender: TObject);
+begin
+  inherited;
+  if __Supervisor then cbUserGrade.Visible := True;
+
+  PartTableOpen(cbUserGrade, Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s AND CODE_VALUE < 9 ORDER BY CODE_VALUE', [QuotedStr('USER_GRADE')]), '회원등급', '0');
+  cbUserGrade.ItemIndex := 0;
+end;
+
+procedure TfmRealPL.gdMainDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
+begin
+  with TDBGridEh(Sender), TDBGridEh(Sender).DataSource.DataSet do
+  begin
+    Canvas.Font.Color := clBlack;
+    if CompareValue(FieldByName('REALPL').AsFloat, 0) > 0 then Canvas.Font.Color := clRed
+    else if CompareValue(FieldByName('REALPL').AsFloat, 0) < 0 then Canvas.Font.Color := clBlue;
+
+    if DataCol = 6 then DefaultDrawColumnCell(Rect, DataCol, Column, TGridDrawState(State));
+
+    Canvas.Font.Color := clBlack;
+    if CompareValue(FieldByName('EVAPL').AsFloat, 0) > 0 then Canvas.Font.Color := clRed
+    else if CompareValue(FieldByName('EVAPL').AsFloat, 0) < 0 then Canvas.Font.Color := clBlue;
+
+    if DataCol = 7 then DefaultDrawColumnCell(Rect, DataCol, Column, TGridDrawState(State));
+  end;
+
+end;
+
+procedure TfmRealPL.gdMainTitleBtnClick(Sender: TObject; ACol: Integer;
+  Column: TColumnEh);
+begin
+  with dbMain do
+  begin
+    if IndexFieldNames = Column.FieldName then
+    begin
+      IndexFieldNames := Column.FieldName + ' Desc';
+      First;
+    end
+    else
+    begin
+      IndexFieldNames := Column.FieldName;
+      First;
+    end;
+  end;
+end;
+
+procedure TfmRealPL.MainTableOpen;
+var
+  sSql, sUserTp : String;
+begin
+
+  try
+    Delay_Show();
+
+//    if chUserTp.Checked then sUserTp := ' AND B1.USER_GRADE = 2 '
+//    else sUserTp := '';
+
+    if __Supervisor then
+    begin
+      if cbUserGrade.ItemIndex <> 0 then sUserTp := Format(' AND B1.USER_GRADE = %s ', [IntToStr(cbUserGrade.ItemIndex)])
+      else if chUserTp.Checked then sUserTp := Format(' AND B1.USER_GRADE IN (%s,%s) ', [QuotedStr('2'),QuotedStr('7')])
+      else sUserTp := '';
+    end
+    else
+    begin
+      if chUserTp.Checked then sUserTp := ' AND B1.USER_GRADE = 2 '
+      else sUserTp := ' AND B1.USER_GRADE <> 7 ';
+    end;
+
+    sSql := Format( 'SELECT ACNT_NO,                                                                         '+
+                    '       USER_NM,                                                                         '+
+                    '       USER_ID,                                                                         '+
+                    '       ACNT_TP,                                                                         '+
+                    '       MAX(ACNT_AMT) AS ACNT_AMT,                                                       '+    //잔액
+                    '       MAX(CMSN) AS CMSN,                                                               '+    //수수료
+                    '       SUM(NCLR_POS_QTY) AS QTY,                                                        '+    //수량
+                    '       SUM(EVAPL) AS EVAPL,                                                             '+    //평가손익
+                    '       MAX(REALPL) AS REALPL,                                                           '+    //실현손익
+                    '       (MAX(ACNT_AMT) + MAX(REALPL) + SUM(EVAPL)) AS EVA_AMT                            '+    //평가잔액
+                    'FROM                                                                                    '+
+                    '( SELECT ACNT_NO,                                                                       '+
+                    '       ACNT_TP,                                                                         '+
+                    '       USER_NM,                                                                         '+
+                    '       USER_ID,                                                                         '+
+                    '       ACNT_AMT,                                                                        '+
+                    '       CLR_PL,                                                                          '+
+                    '       CMSN,                                                                            '+
+                    '       NCLR_POS_QTY,                                                                    '+
+                    '       CASE WHEN BS_TP = %s THEN (AVG_PRC - CNTR_PRC) * NCLR_POS_QTY * TICK             '+
+                    '            WHEN BS_TP = %s THEN (CNTR_PRC - AVG_PRC) * NCLR_POS_QTY * TICK END EVAPL,  '+
+                    '       (ACNT_AMT + CLR_PL - CMSN) AS SUMPL,                                             '+
+                    '       (CLR_PL - CMSN) AS REALPL,                                                       '+
+                    '(SELECT TOP(1) DOT_CNT FROM ARTC_MST WHERE ARTC_CD = ARTC_CD) AS DOT_CNT                '+
+                    'FROM                                                                                    '+
+                    '(SELECT  A.ACNT_NO                                                                      '+
+                    '        ,A.ACNT_TP                                                                      '+
+                    '        ,D.USER_NM                                                                      '+
+                    '        ,D.USER_ID                                                                      '+
+                    '        ,A.STK_CD                                                                       '+
+                    '        ,A.BS_TP                                                                        '+
+                    '        ,SUM(D.ACNT_AMT) AS ACNT_AMT                                                    '+
+                    '        ,SUM(D.CLR_PL) AS CLR_PL                                                        '+
+                    '        ,SUM(D.CMSN) AS CMSN                                                            '+
+                    '        ,ISNULL(SUM(A.NCLR_POS_QTY), 0) AS NCLR_POS_QTY                                 '+
+                    '        ,ISNULL(SUM(C.CNTR_PRC),0) AS CNTR_PRC                                          '+
+                    '        ,ISNULL(SUM(A.AVG_PRC),0) AS AVG_PRC                                            '+
+                    '        ,CASE WHEN ((A.ARTC_CD = %s OR A.ARTC_CD = %s) AND (SUM(A.AVG_PRC) < 0))        '+
+                    '              THEN SUM(B.TICK_VALUE_LOW / B.TICK_SIZE_LOW)                              '+
+                    '              ELSE SUM(B.TICK_VALUE / B.TICK_SIZE) END TICK                             '+
+                    'FROM NCLR_POS A,                                                                        '+
+                    '     ARTC_MST B,                                                                        '+
+                    '     CURR_PRC C,                                                                        '+
+                    '     (SELECT A1.* FROM ACNT_MST A1, USER_MST B1 WHERE A1.USER_ID = B1.USER_ID %s ) D '+
+                    'WHERE A.ARTC_CD = B.ARTC_CD                                                             '+
+                    'AND (A.BS_TP = B.BS_TP OR B.BS_TP = %s)                                                 '+
+                    'AND A.STK_CD = C.STK_CD                                                                 '+
+                    'AND A.ACNT_NO = D.ACNT_NO                                                               '+
+                    ' GROUP BY A.ACNT_NO,                                                                    '+
+                    '         A.ACNT_TP,                                                                     '+
+                    '         D.USER_NM,                                                                     '+
+                    '         D.USER_ID,                                                                     '+
+                    '         A.STK_CD,                                                                      '+
+                    '         A.BS_TP,                                                                       '+
+                    '         A.ARTC_CD) TMP ) MAIN                                                          '+
+                    ' GROUP BY ACNT_NO,                                                                      '+
+                    '       USER_NM,                                                                         '+
+                    '       USER_ID,ACNT_TP                                                                  ',
+                    [QuotedStr('S'),
+                     QuotedStr('B'),
+                     QuotedStr('201'),
+                     QuotedStr('301'),
+                     sUserTp,
+                     QuotedStr('A')]);
+
+    Uni_Open(dbMain, sSql);
+
+    PartTableOpen(TComponent(gdMain.Columns[3]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('ACNT_TP')]));
+
+  finally
+    Delay_Hide;
+  end;
+
+end;
+
+end.

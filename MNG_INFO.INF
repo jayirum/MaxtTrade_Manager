@@ -1,0 +1,13 @@
+VERSION=20250821.01
+
+NAME=머니에셋 관리자
+URLFILENAME=mng/update_mng.zip
+EXE_FILENAME=PLUS_MNG.exe
+COPY_FILENAME=GT_UPDATE.EXE
+VER_HISTORY=VER_HIS.TXT
+SKININDEX=4
+
+NOTICE_SHOW=FALSE
+APP_RUN=FALSE
+//NOTICE_MSG=서버점검 예정시간 \n\n( 점검시간 : 15:30 ~ 16:30 )
+NOTICE_MSG=서버점검중입니다. 잠시후에 재접속하시길 바랍니다\n\n( 점검시간 : 15:30 ~ 16:30 )

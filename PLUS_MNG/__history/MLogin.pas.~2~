@@ -1,0 +1,278 @@
+unit MLogin;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, bsMessages, BusinessSkinForm, ExtCtrls, bsSkinCtrls, ComCtrls,
+  bsSkinTabs, StdCtrls, bsSkinExCtrls, Mask, RzEdit, kcRaizeCtrl, RzButton,
+  RzRadChk, jpeg, RzLabel, DB, DBClient, RzPanel, RzRadGrp, MemDS, DBAccess, Uni;
+
+type
+  TfmLogin = class(TForm)
+    bsBusinessSkinForm: TbsBusinessSkinForm;
+    bsSkinMessage: TbsSkinMessage;
+    bsSkinPanel2: TbsSkinPanel;
+    pnCorp: TbsSkinStatusPanel;
+    pnTel: TbsSkinStatusPanel;
+    Panel1: TPanel;
+    bsSkinDivider1: TbsSkinDivider;
+    edID: TkcRzEdit;
+    edPass: TkcRzEdit;
+    btnLogin: TbsSkinSpeedButton;
+    btnClose: TbsSkinSpeedButton;
+    chIDSave: TRzCheckBox;
+    imgLogo: TImage;
+    Image1: TImage;
+    Label1: TLabel;
+    dbSQL: TUniQuery;
+    procedure btnCloseClick(Sender: TObject);
+    procedure imgLogoMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure btnLoginClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure edPassKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure pnCorpDblClick(Sender: TObject);
+  private
+    { Private declarations }
+    function Get_Login(sID, sPass: String): Boolean;
+  public
+    { Public declarations }
+  end;
+
+var
+  fmLogin: TfmLogin;
+  function Login_Run: Boolean;
+
+implementation
+
+uses StdUtils, MMain, MMastDB;
+
+{$R *.dfm}
+
+{ TfmLogin }
+
+const
+	_iTotal = 5;
+
+var
+	_Result: Boolean=False;
+  _iCnt: Word=0;
+
+function Login_Run: Boolean;
+begin
+	Result := False;
+
+	fmLogin := TfmLogin.Create(Application);
+
+  with fmLogin do
+  begin
+    try
+      ShowModal;
+	 	finally
+    	Result := _Result;
+    	Free;
+    end;
+  end;
+end;
+
+function TfmLogin.Get_Login(sID, sPass: String): Boolean;
+var
+	sSQL,
+  sGrade, sTmp, sPc001, sNm: String;
+begin
+	Result := False;
+  __Supervisor := False;
+
+  sSQL := 'SELECT CURR_TRADE_DT, CORP_NM FROM CORP_MST';
+  Uni_Open(dbSQL, sSQL);
+
+  __Corp_NM := dbSQL.FieldByName('CORP_NM').AsString;
+  __Trade_DT := dbSQL.FieldByName('CURR_TRADE_DT').AsString;
+
+  sSQL := Format('SELECT USER_GRADE, USER_NM FROM USER_MST WHERE USER_ID = %s AND USER_PWD = %s',
+                  [QuotedStr(sID), QuotedStr(sPass)]);
+
+  Uni_Open(dbSQL, sSQL);
+
+  sGrade := dbSQL.FieldByName('USER_GRADE').AsString;
+  sNm    := dbSQL.FieldByName('USER_NM').AsString;
+
+  if sGrade = '' then
+  begin
+    inc(_iCnt);
+    bsSkinMessage.MessageDlg2(Format('로그인 비밀번호 %d회 오류 (%d회중 %d회 남았습니다)', [_iCnt, _iTotal, _iTotal-_iCnt]), '오류', mtError, [mbOK], 0);
+
+    edID.SetFocus;
+
+    if _iTotal = _iCnt then
+    begin
+      bsSkinMessage.MessageDlg2('[로그인 불가] 슈퍼바이져에게 연락바랍니다.', '오류', mtError, [mbOK], 0);
+      Application.Terminate;
+    end;
+
+    Exit;
+  end
+  else
+  begin
+	  __HTS_LOGINID := sID;
+    __Login_ID  := sID;
+    __Login_Pwd := sPass;
+
+    MastDB.Set_LoginTP(dbSQL, sID, __Local_IP, 'I');
+
+    if Not ((sGrade = '8') or (sGrade = '9')) then
+    begin
+      bsSkinMessage.MessageDlg2('[로그인 불가] 회원는 관리자 프로그램을 이용하실 수 없습니다.', '오류', mtError, [mbOK], 0);
+      Application.Terminate;
+
+      Exit;
+    end
+    else
+    begin
+      if sGrade = '8' then   // Manager
+      begin
+        sSQL := 'SELECT MNG_ACPT_USE_YN FROM CORP_MST';
+        Uni_Open(dbSQL, sSQL);
+
+        sTmp := dbSQL.FieldByName('MNG_ACPT_USE_YN').AsString;
+
+        if Not (sTmp = 'N') then
+        begin
+          sSQL := Format('SELECT COUNT(1) AS CNT FROM MNG_ACPT_IP WHERE MIP_IP = %s', [QuotedStr(__Local_IP)]);
+
+          Uni_Open(dbSQL, sSQL);
+          if dbSQL.FieldByName('CNT').AsInteger = 0 then
+          begin
+            bsSkinMessage.MessageDlg2(Format('[로그인 불가] 허용된 IP에서만 로그인이 가능합니다. (%s)', [__Local_IP]), '오류', mtError, [mbOK], 0);
+            Application.Terminate;
+
+            Exit;
+          end;
+        end;
+    	end;
+    end;
+  end;
+
+  __Supervisor := sGrade = '9';
+
+  fmMain.pnUserName.Caption := Format('Manager : %s (%s)', [sNm, sId]);
+
+//  sPc001 := MastDB.PC001_Send;              //NOTI서버 패킷보내기 주석풀것!
+//  MastDB.iwNotiClient.DataToSend := sPc001 + __EOL;
+
+  if chIDSave.Checked then Set_CFGFile('LOGIN', 'USERID', edID.Text, True);
+  Set_CFGFile('LOGIN', 'IDSAVE', BoolToStr(chIDSave.Checked));
+
+  Result := True;
+end;
+
+procedure TfmLogin.btnCloseClick(Sender: TObject);
+begin
+	_Result := False;
+	Close;
+end;
+
+procedure TfmLogin.btnLoginClick(Sender: TObject);
+begin
+  if (edID.Text = '') or (edPass.Text = '') then
+  begin
+  	bsSkinMessage.MessageDlg2('관리자ID와 비밀번호를 입력하세요.', '오류', mtError, [mbOK], 0);
+  	Exit;
+  end;
+
+	_Result := Get_Login(edID.Text, edPass.Text);
+  
+  if _Result then	Close;
+end;
+
+procedure TfmLogin.edPassKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+	if Key = 13 then btnLogin.ButtonClick;  
+end;
+
+procedure TfmLogin.FormShow(Sender: TObject);
+var
+	sFile, sID, sSql : String;
+begin
+  sSql := 'SELECT CORP_NM, CORP_TEL FROM CORP_MST';
+  Uni_Open(dbSQL, sSql);
+
+  pnTel.Caption := Format(' %s   Tel.%s', [dbSQL.FieldByName('CORP_NM').AsString, dbSQL.FieldByName('CORP_TEL').AsString]);
+
+	edID.SetFocus;
+
+	sFile := ExtractFilePath(ParamStr(0)) + 'IMG\GT_LOGO.BMP';
+
+  chIDSave.Checked := StrToBool(Get_CFGFile('LOGIN', 'IDSAVE', '0'));
+  if chIDSave.Checked then
+  begin
+  	edID.Text := Get_CFGFile('LOGIN', 'USERID', '', True);
+    edPass.SetFocus;
+  end;
+
+  if FileExists(sFile) then imgLogo.Picture.LoadFromFile(sFile);   
+end;
+
+procedure TfmLogin.imgLogoMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  ReleaseCapture;
+  SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+end;
+
+procedure TfmLogin.pnCorpDblClick(Sender: TObject);
+var
+  sNoti, sBiz, sText: String;
+begin
+  sText := UpperCase(InputBox('GT Solution', 'Password', ''));
+
+	if sText = 'GTRADE09' then
+  begin
+//    sNoti := InputBox('Noti Server', 'IP|PORT', Format('%s|%d', [__Noti_IP,__Noti_Port]));
+//
+//  	__Noti_IP   := Get_Delimiter(sNoti, 1);
+//  	__Noti_Port := StrToIntDef(Get_Delimiter(sNoti, 2), 20200);
+
+    BASE_SERVERIP := InputBox('Base Server', 'IP', BASE_SERVERIP);
+    __DefaultPort := StrToIntDef(InputBox('Base Server', 'PORT', IntToStr(__DefaultPort)), 20200);
+
+    Set_CFGFile('G_B_NOTI', 'IP', BASE_SERVERIP, True, __CFGServerIP);
+    Set_CFGFile('G_B_NOTI', 'PORT', IntToStr(__DefaultPort), True, __CFGServerIP);
+
+    __DisConnected := True;   //임시로직
+
+  	__DB_Server := '';
+    MastDB.Connect_SQLDB;
+  end;
+
+  if sText = 'GTRADEWEB' then
+  begin
+    UPDATE_DNS1 := InputBox('Update URL', 'Address1', UPDATE_DNS1);
+    UPDATE_DNS2 := InputBox('Update URL', 'Address2', UPDATE_DNS2);
+
+    Set_CFGFile('UPDATE_SERVER', 'ADDRESS1', UPDATE_DNS1, True, __CFGServerIP);
+    Set_CFGFile('UPDATE_SERVER', 'ADDRESS2', UPDATE_DNS2, True, __CFGServerIP);
+  end;
+
+  if sText = 'GT' then
+  begin
+    POLLING_TIME  := StrToIntDef(InputBox('화면처리', 'Ping', IntToStr(POLLING_TIME)), 60);
+
+    if POLLING_TIME < 30 then POLLING_TIME := 30;
+
+//    Set_CFGFile('MNG_OPTION', 'POLLING_TIME', IntToStr(POLLING_TIME), False, __CFGServerIP);      // Polling Time
+    Set_CFGFile('MNG_OPTION', 'POLLING_TIME', IntToStr(POLLING_TIME), False);      // Polling Time
+
+    with MastDB.tmPolling do
+    begin
+    	Enabled := False;
+    	Interval := POLLING_TIME * 1000;
+    	Enabled := True;
+    end;
+  end;
+
+end;
+
+end.

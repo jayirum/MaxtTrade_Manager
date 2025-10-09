@@ -1,0 +1,322 @@
+unit MMain;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, bsDialogs, bsMessages, ImgList, bsPngImageList, Menus, bsSkinMenus,
+  bsSkinData, bsSkinHint, BusinessSkinForm, bsribbon, ExtCtrls,
+  RzLstBox, bsSkinCtrls, VCL_Helper, DBGridEh, DB, MemDS, DBAccess, Uni, kcRaizeCtrl, UniDAC_Helper;
+
+type
+  TfmMain = class(TForm)
+    bsBusinessSkinForm: TbsBusinessSkinForm;
+    bsSkinData: TbsSkinData;
+    bsSkinHint: TbsSkinHint;
+    bsResourceStrData: TbsResourceStrData;
+    bsSkinPopupMenu: TbsSkinPopupMenu;
+    Windows: TMenuItem;
+    N4: TMenuItem;
+    Cascade1: TMenuItem;
+    ileVertical1: TMenuItem;
+    ileHorizontal1: TMenuItem;
+    N2: TMenuItem;
+    CloseAll2: TMenuItem;
+    bsPngImageList24: TbsPngImageList;
+    bsPngImageList16: TbsPngImageList;
+    bsSkinMessage: TbsSkinMessage;
+    pmRibbon: TbsSkinPopupMenu;
+    N6: TMenuItem;
+    Showlayeredborders1: TMenuItem;
+    N1: TMenuItem;
+    Selectskin2: TMenuItem;
+    N7: TMenuItem;
+    ShowMDITabsBar1: TMenuItem;
+    N3: TMenuItem;
+    bsSelectSkinsFromFoldersDialog: TbsSelectSkinsFromFoldersDialog;
+    bsSkinStatusBar1: TbsSkinStatusBar;
+    pnCorp: TbsSkinStatusPanel;
+    bsRibbon1: TbsRibbon;
+    bsRibbonPage1: TbsRibbonPage;
+    btnUser: TbsSkinSpeedButton;
+    btnNego: TbsSkinSpeedButton;
+    bsSkinMDITabsBar: TbsSkinMDITabsBar;
+    bsRibbonPage2: TbsRibbonPage;
+    bsRibbonPage3: TbsRibbonPage;
+    bsRibbonPage4: TbsRibbonPage;
+    bsRibbonDivider4: TbsRibbonDivider;
+    bsSelectSkinDialog: TbsSelectSkinDialog;
+    Shape1: TShape;
+    bsSkinSpeedButton3: TbsSkinSpeedButton;
+    btnPart: TbsSkinSpeedButton;
+    pnUserName: TbsSkinStatusPanel;
+    pnLocalIP: TbsSkinStatusPanel;
+    bsSkinStatusPanel4: TbsSkinStatusPanel;
+    btnAcnt: TbsSkinSpeedButton;
+    bsCompressedSkinList: TbsCompressedSkinList;
+    btnArtc: TbsSkinSpeedButton;
+    btnCorpMst: TbsSkinSpeedButton;
+    btnGujaMst: TbsSkinSpeedButton;
+    btnSchedule: TbsSkinSpeedButton;
+    bsRibbonDivider1: TbsRibbonDivider;
+    bsRibbonDivider2: TbsRibbonDivider;
+    btnStk: TbsSkinSpeedButton;
+    btnNoti: TbsSkinSpeedButton;
+    btnOrdDetail: TbsSkinSpeedButton;
+    btnNclr: TbsSkinSpeedButton;
+    bsRibbonDivider3: TbsRibbonDivider;
+    btnNoCntrOrd: TbsSkinSpeedButton;
+    btnExchRt: TbsSkinSpeedButton;
+    btnInOut: TbsSkinSpeedButton;
+    btnPLList: TbsSkinSpeedButton;
+    bsRibbonDivider5: TbsRibbonDivider;
+    procedure FormCreate(Sender: TObject);
+    procedure btnUserClick(Sender: TObject);
+    procedure bsRibbon1Buttons2Click(Sender: TObject);
+    procedure bsRibbon1Buttons1Click(Sender: TObject);
+    procedure bsSkinSpeedButton3Click(Sender: TObject);
+    procedure bsRibbon1Buttons0Click(Sender: TObject);
+    procedure btnPartClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure pnLocalIPDblClick(Sender: TObject);
+    procedure btnAcntClick(Sender: TObject);
+    procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+    procedure btnArtcClick(Sender: TObject);
+    procedure btnCorpMstClick(Sender: TObject);
+    procedure btnGujaMstClick(Sender: TObject);
+    procedure btnScheduleClick(Sender: TObject);
+    procedure btnStkClick(Sender: TObject);
+    procedure btnNotiClick(Sender: TObject);
+    procedure btnNegoClick(Sender: TObject);
+    procedure btnOrdDetailClick(Sender: TObject);
+    procedure btnNclrClick(Sender: TObject);
+    procedure btnNoCntrOrdClick(Sender: TObject);
+    procedure btnExchRtClick(Sender: TObject);
+    procedure btnInOutClick(Sender: TObject);
+    procedure btnPLListClick(Sender: TObject);
+  private
+    { Private declarations }
+  protected
+  procedure WndProc(var Message: TMessage); override;
+  public
+    { Public declarations }
+  end;
+
+const
+	BASE_SERVERIP = '222.234.2.164';
+
+var
+  fmMain: TfmMain;
+
+implementation
+
+uses StdUtils, MUser, MMastDB, MBasic, MAccount, MLogin, MPart, MNego, MInOut,
+	MArtc, MCorp, MScL, MStk, MNoti, MOrdDetail, MNclr, MNoCntrOrd, MExchRt,
+  MInOutList, GTNoti, PacketStruct, MPLList, GTUpdate;
+
+{$R *.dfm}
+
+procedure TfmMain.bsRibbon1Buttons0Click(Sender: TObject);
+begin
+  if bsSelectSkinDialog.Execute( bsSkinData.SkinIndex)
+  then
+    bsSkinData.SkinIndex := bsSelectSkinDialog.SelectedSkinIndex;
+end;
+
+procedure TfmMain.bsRibbon1Buttons1Click(Sender: TObject);
+begin
+	bsBusinessSkinForm.Cascade;
+end;
+
+procedure TfmMain.bsRibbon1Buttons2Click(Sender: TObject);
+begin
+ 	bsBusinessSkinForm.CloseAll;
+end;
+
+procedure TfmMain.btnAcntClick(Sender: TObject);
+begin
+  Form_Create(TfmInOut, fmInout, 3);
+end;
+
+procedure TfmMain.btnNoCntrOrdClick(Sender: TObject);
+begin
+  Form_Create(TfmNoCntrOrd, fmNoCntrOrd, 3);
+end;
+
+procedure TfmMain.btnNotiClick(Sender: TObject);
+begin
+  Form_Create(TfmNoti, fmNoti, 3);
+end;
+
+procedure TfmMain.btnOrdDetailClick(Sender: TObject);
+begin
+  Form_Create(TfmOrdDetail, fmOrdDetail, 3);
+end;
+
+procedure TfmMain.bsSkinSpeedButton3Click(Sender: TObject);
+begin
+  if bsSelectSkinsFromFoldersDialog.Execute(ExtractFilePath(ParamStr(0))+'Skins', bsSelectSkinsFromFoldersDialog.SkinName, 'skn')
+  then
+    bsSkinData.LoadFromCompressedFile(bsSelectSkinsFromFoldersDialog.FileName);
+end;
+
+procedure TfmMain.btnPartClick(Sender: TObject);
+begin
+  Form_Create(TfmPart, fmPart, 0);
+end;
+
+procedure TfmMain.btnPLListClick(Sender: TObject);
+begin
+  Form_Create(TfmPLList, fmPLList, 3);
+end;
+
+procedure TfmMain.btnScheduleClick(Sender: TObject);
+begin
+  Form_Create(TfmScL, fmUser, 0);
+end;
+
+procedure TfmMain.btnStkClick(Sender: TObject);
+begin
+  Form_Create(TfmStk, fmStk, 3);
+end;
+
+procedure TfmMain.btnUserClick(Sender: TObject);
+begin
+  Form_Create(TfmUser, fmUser, 3);
+end;
+
+procedure TfmMain.btnNclrClick(Sender: TObject);
+begin
+  Form_Create(TfmNclr, fmNclr, 3);
+end;
+
+procedure TfmMain.btnNegoClick(Sender: TObject);
+begin
+  Form_Create(TfmNego, fmNego, 3);
+end;
+
+procedure TfmMain.btnArtcClick(Sender: TObject);
+begin
+  Form_Create(TfmArtc, fmArtc, 3);
+end;
+
+procedure TfmMain.btnCorpMstClick(Sender: TObject);
+begin
+  Form_Create(TfmCorp, fmCorp, 0);
+end;
+
+procedure TfmMain.btnExchRtClick(Sender: TObject);
+begin
+  Form_Create(TfmExchRt, fmExchRt, 0);
+end;
+
+procedure TfmMain.btnGujaMstClick(Sender: TObject);
+begin
+  Form_Create(TfmCorp, fmCorp, 0);
+end;
+
+procedure TfmMain.btnInOutClick(Sender: TObject);
+begin
+  Form_Create(TfmInOutList, fmInOutList, 3);
+end;
+
+procedure TfmMain.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
+begin
+	MastDB.Set_LoginTP(MastDB.dbSQL, __Login_ID, __Local_IP, 'O');
+  Application.ProcessMessages;
+end;
+
+procedure TfmMain.FormCreate(Sender: TObject);
+var
+	bLogin: Boolean;
+
+  sAppRun: String;
+  bUpdateRun: Boolean;
+  sList: TStringList;
+begin
+  Application.ShowMainForm := False;
+
+  // App Update ----------------------------------------------------------------
+  if Not bUpdateRun then
+  begin
+    if AutoUpdate_Run(BASE_SERVERIP, 'mng_info.inf', '') then Exit;
+  end
+  else
+  begin
+  	if (sAppRun = 'UPDATE_RUN') then
+    begin
+      if FileExists(ExtractFilePath(ParamStr(0)) + 'VER_HIS.TXT') then
+      begin
+        sList := TStringList.Create;
+        try
+          sList.LoadFromFile(ExtractFilePath(ParamStr(0)) + 'VER_HIS.TXT');
+          bsSkinMessage.MessageDlg2(sList.Text, '업데이트', mtInformation, [mbOK], 0);
+        finally
+          FreeAndNil(sList);
+        end;
+      end;
+    end;
+  end;
+  //----------------------------------------------------------------------------
+
+
+  MastDB := TMastDB.Create(Nil);
+
+  bLogin := Login_Run;
+
+  if Not bLogin then
+  begin
+  	Application.Terminate;
+    Exit;
+  end;
+
+  Application.ShowMainForm := bLogin;
+end;
+
+procedure TfmMain.FormShow(Sender: TObject);
+begin
+	pnLocalIP.Caption := GetLocalIP;
+end;
+
+procedure TfmMain.pnLocalIPDblClick(Sender: TObject);
+begin
+  bsSkinMessage.MessageDlg('DataBase: ' + MastDB.UniConnection.Server, mtInformation, [mbYes], 0)
+end;
+
+procedure TfmMain.WndProc(var Message: TMessage);
+var
+  NC001 : TNC001;
+  sPacket, sData, sTm, sMsg: String;
+begin
+  inherited;
+  if Message.Msg = WM_USER_NOTI_DATA then                                       // Real Packet
+	begin
+    sPacket := PChar(Message.LParam);
+    sData   := PChar(Message.WParam);
+
+    if sPacket = 'NC001' then
+    begin
+      StrToRecord(sData, NC001, SizeOf(NC001));
+      sTm := ArrToStr(NC001.GT_HEADER.TM);
+//      Noti_Show(sTm, '입출금요청', ArrToStr(NC001.NOTI_MSG), 'fmInOut');
+      Noti_Show(sTm, '입출금요청', ArrToStr(NC001.NOTI_MSG), 'fmInOut', 5);
+    end;
+  end
+  else if Message.Msg = WM_USER_NOTI_RESULT then
+  begin
+    if PChar(Message.WParam) = 'fmInOut' then
+    begin
+      if Not Assigned(fmInOut) then Form_Create(TfmInOut , fmInOut, 3)
+      else
+      begin
+        with fmInOut do
+        begin
+          TbsSkinSpeedButton(FindComponent('btnFilter')).ButtonClick;
+        end;
+      end;
+
+    end;
+  end;
+end;
+
+end.

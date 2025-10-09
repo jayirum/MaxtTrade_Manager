@@ -1,0 +1,313 @@
+unit MAcntMake;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, bsMessages, BusinessSkinForm, bsSkinCtrls, ExtCtrls, RzPanel, DB,
+  MemDS, DBAccess, Uni, VCL_Helper;
+
+type
+  TfmAcntMake = class(TForm)
+    bsSkinMessage: TbsSkinMessage;
+    bsBusinessSkinForm: TbsBusinessSkinForm;
+    dbTemp: TUniQuery;
+    rgAcntTp: TbsSkinRadioGroup;
+    btnFilter: TbsSkinButton;
+    btnClose: TbsSkinButton;
+    procedure btnCloseClick(Sender: TObject);
+    procedure btnFilterClick(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    function AcntMakeProc(sData: String): Boolean;
+    function AcntMake(sType : String): String;
+
+    // 통합
+    function AcntMakeProcMerge(): Boolean;
+    function AcntMakeMerge(): String;
+  end;
+
+var
+  fmAcntMake: TfmAcntMake;
+  function fmAcntMake_Run(sUserID : String; sUserNM : String):BOOLEAN;
+
+implementation
+
+uses MMastDB, stdUtils;
+
+{$R *.dfm}
+
+var
+  _Result: BOOLEAN = TRUE;
+  _UserID: String;
+  _UserNM: String;
+
+function fmAcntMake_Run(sUserID: String; sUserNM : String):BOOLEAN;
+begin
+  fmAcntMake := TfmAcntMake.Create(Application);
+
+  with fmAcntMake do
+  try
+    _UserID := sUserID;
+    _UserNM := sUserNM;
+    ShowModal;
+  finally
+    RESULT := _Result;
+    Free;
+  end;
+end;
+
+procedure TfmAcntMake.btnCloseClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TfmAcntMake.btnFilterClick(Sender: TObject);
+var
+  sRslt : Boolean;
+begin
+
+	{통합
+  if rgAcntTp.ItemIndex = -1 then
+  begin
+    bsSkinMessage.MessageDlg2('TYPE을 선택하세요!', '오류', mtError, [mbOK], 0);
+    Exit;
+  end;
+  }
+
+  sRslt := AcntMakeProcMerge();	//통합 AcntMakeProc(intTostr(rgAcntTp.ItemIndex));
+
+  _Result := sRslt;
+
+  if sRslt then  Close;
+
+end;
+
+procedure TfmAcntMake.FormShow(Sender: TObject);
+var
+  sSql : String;
+begin
+  {통합
+  sSql := 'SELECT ACNT_TP_DEFAULT FROM CORP_MST';
+  Uni_Open(dbTemp, sSql);
+
+  PartComp_Open(rgAcntTp, Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s AND CODE_DISP = %s',
+                                 [QuotedStr('ACNT_TP'), QuotedStr('Y')]), '전체생성', '0' );
+
+  rgAcntTp.ItemIndex := StrToInt(dbTemp.FieldByName('ACNT_TP_DEFAULT').AsString);
+  }
+  btnFilterClick(sender);
+end;
+
+
+
+function TfmAcntMake.AcntMakeProcMerge(): Boolean;
+var
+  sSql, sRslt : String;
+  bSucc: Boolean;
+begin
+  Result := True;
+  bSucc := True;
+
+
+  sSql := Format('SELECT COUNT(*) AS CNT FROM ACNT_MST WHERE USER_ID = %s', [QuotedStr(_UserID)]);
+  Uni_Open(MastDB.dbSQL, sSql);
+
+  if MastDB.dbSQL.FieldByName('CNT').AsInteger > 0 then
+  begin
+    bsSkinMessage.MessageDlg2('USERID 가 이미 존재합니다!', '오류', mtError, [mbOK], 0);
+    Result := False;
+    Exit;
+  end;
+
+  sRslt := AcntMakeMerge();
+  if sRslt <> '' then
+  begin
+      if sRslt = '9999' then Result := False
+      else bsSkinMessage.MessageDlg2('계좌생성 실패!', '오류', mtError, [mbOK], 0);
+      bSucc := False;
+  end;
+
+  if bSucc then bsSkinMessage.MessageDlg2('계좌생성 완료!', '확인', mtInformation, [mbOK], 0);
+
+end;
+
+
+
+function TfmAcntMake.AcntMakeMerge(): String;
+var
+  sSp, sSql, sWhere   : String;
+  iSeq  : integer;
+begin
+    sSql := Format('SELECT COUNT(*) AS CNT          ' +
+                   'FROM ACNT_MST										' +
+                   'WHERE USER_ID = %s              '
+                   ,[QuotedStr(_UserID)]);
+    Uni_Open(MastDB.dbExec, sSql);
+
+    if MastDB.dbExec.FieldByName('CNT').AsInteger > 0 then
+    begin
+      bsSkinMessage.MessageDlg2('계좌가 이미 있습니다!', '오류', mtError, [mbOK], 0);
+      Result := '9999';
+      Exit;
+    end;
+
+    sSp := 'EXEC PP_ACNT_SEQNO' ;
+
+    Uni_Open(MastDB.dbExec, sSp);
+
+    with MastDB.dbExec do
+    begin
+      iSeq := FieldByName('RESULT_CODE').AsInteger;
+    end;
+
+    sSql := Format( ' INSERT INTO ACNT_MST   ' +
+                    '	(ACNT_NO    	        ,' +
+                    '	 ACNT_TP              ,' +
+                    '	 USER_ID              ,' +
+                    '  USER_NM              ,' +
+                    '	 ACNT_PWD             ,' +
+                    '	 API_TP               ,' +
+                    '	 ACNT_STATE           ,' +
+                    '  MINAMT_GUJA          ,' +    //최소금액 CORP_MST에 기본값 존재
+                    '  NEGO_DUP_YN          )' +    //중복접속가능여부 CORP_MST에 기본값 존재
+                    '  VALUES                ' +
+                    ' (%s,%s,%s,%s,%s,%s,%s,(SELECT GUJA_MIN_AMT_1 FROM CORP_MST), (SELECT DUP_YN FROM CORP_MST)) '
+                    ,
+                    [QuotedStr(Copy(NowDate, 3, 4) + '0' + numTostr(iSeq, 6)),	// ACNT_NO
+                     QuotedStr('0'),                                            // ACNT_TP
+                     QuotedStr(_UserID),                                        // USERID
+                     QuotedStr(_UserNM),                                        // USER_NM
+                     QuotedStr('1111'),                                         // ACNT_PWD
+                     '(SELECT API_TP_DEFAULT FROM CORP_MST)',                   // API_TP
+                     QuotedStr('1')                                             // ACNT_STATE
+                     ]
+                     );
+    Result := Uni_Open(MastDB.dbExec, sSql);
+
+end;
+
+
+
+function TfmAcntMake.AcntMakeProc(sData: String): Boolean;
+var
+  sSql, sRslt : String;
+  bSucc: Boolean;
+begin
+  Result := True;
+  bSucc := True;
+  //계좌추가
+  if sData = '-1' then Exit;
+
+  if sData = '0' then
+  begin
+    sSql := Format('SELECT COUNT(*) AS CNT FROM ACNT_MST WHERE USER_ID = %s', [QuotedStr(_UserID)]);
+    Uni_Open(MastDB.dbSQL, sSql);
+
+    if MastDB.dbSQL.FieldByName('CNT').AsInteger > 0 then
+    begin
+      bsSkinMessage.MessageDlg2('전체선택 할수 없습니다!', '오류', mtError, [mbOK], 0);
+      Result := False;
+      Exit;
+    end;
+
+    sSql := Format('SELECT CODE_VALUE FROM CODE_MST WHERE CODE_ID = %s AND CODE_DISP = %s', [quotedStr('ACNT_TP'),QuotedStr('Y')]);
+    Uni_Open(MastDB.dbSQL, sSql);
+
+    with MastDB.dbSQL do
+    begin
+      First;
+      while Not Eof  do
+      begin
+        sRslt := AcntMake(FieldByName('CODE_VALUE').AsString);
+        if sRslt <> '' then
+        begin
+            if sRslt = '9999' then Result := False
+            else bsSkinMessage.MessageDlg2('계좌생성 실패!', '오류', mtError, [mbOK], 0);
+            bSucc := False;
+            Break;
+        end;
+        Next;
+      end;
+      if bSucc then bsSkinMessage.MessageDlg2('계좌생성 완료!', '확인', mtInformation, [mbOK], 0);
+    end;
+  end
+  else
+  begin
+    sRslt := AcntMake(sData);
+    if sRslt = '' then bsSkinMessage.MessageDlg2('계좌생성 완료!', '확인', mtInformation, [mbOK], 0)
+    else
+    begin
+      if sRslt = '9999' then Result := False
+      else bsSkinMessage.MessageDlg2('계좌생성 실패!', '오류', mtError, [mbOK], 0);
+    end;
+  end;
+
+//  sSql :=  Format('SELECT * FROM ACNT_MST WHERE USER_ID = %s', [QuotedStr(_UserID)]);
+//  Uni_Open(dbTemp, sSql);
+
+end;
+
+function TfmAcntMake.AcntMake(sType : String): String;
+var
+  sSp, sSql, sWhere   : String;
+  iSeq  : integer;
+begin
+    sSql := Format('SELECT COUNT(*) AS CNT,          ' +
+                   '       B.CODE_VALUE_NM AS CD_NM  ' +
+                   'FROM ACNT_MST A, CODE_MST B      ' +
+                   'WHERE A.ACNT_TP = B.CODE_VALUE   ' +
+                   'AND A.USER_ID = %s               ' +
+                   'AND A.ACNT_TP = %s               ' +
+                   'AND B.CODE_ID = %s               ' +
+                   'GROUP BY B.CODE_VALUE_NM         ',
+                   [QuotedStr(_UserID), QuotedStr(sType), QuotedStr('ACNT_TP')]);
+    Uni_Open(MastDB.dbExec, sSql);
+
+    if MastDB.dbExec.FieldByName('CNT').AsInteger > 0 then
+    begin
+      bsSkinMessage.MessageDlg2('['+ MastDB.dbExec.FieldByName('CD_NM').AsString +']' + ' 계좌가 이미 있습니다!', '오류', mtError, [mbOK], 0);
+      Result := '9999';
+      Exit;
+    end;
+
+    sSp := 'EXEC PP_ACNT_SEQNO' ;
+
+    Uni_Open(MastDB.dbExec, sSp);
+
+    with MastDB.dbExec do
+    begin
+      iSeq := FieldByName('RESULT_CODE').AsInteger;
+    end;
+
+    if sType = '1' then sWhere := '(SELECT GUJA_MIN_AMT_1 FROM CORP_MST)'
+    else if sType = '2' then sWhere := '(SELECT GUJA_MIN_AMT_2 FROM CORP_MST)';
+
+    sSql := Format( ' INSERT INTO ACNT_MST   ' +
+                    '	(ACNT_NO    	        ,' +
+                    '	 ACNT_TP              ,' +
+                    '	 USER_ID              ,' +
+                    '  USER_NM              ,' +
+                    '	 ACNT_PWD             ,' +
+                    '	 API_TP               ,' +
+                    '	 ACNT_STATE           ,' +
+                    '  MINAMT_GUJA          ,' +    //최소금액 CORP_MST에 기본값 존재
+                    '  NEGO_DUP_YN          )' +    //중복접속가능여부 CORP_MST에 기본값 존재
+                    '  VALUES                ' +
+                    ' (%s,%s,%s,%s,%s,%s,%s,%s,(SELECT DUP_YN FROM CORP_MST)) ',
+                    [QuotedStr(Copy(NowDate, 3, 4) + sType + numTostr(iSeq, 6)),
+                     QuotedStr(sType),
+                     QuotedStr(_UserID),
+                     QuotedStr(_UserNM),
+                     QuotedStr('1111'),
+                     '(SELECT API_TP_DEFAULT FROM CORP_MST)',
+                     QuotedStr('1'),
+                     sWhere]);
+    Result := Uni_Open(MastDB.dbExec, sSql);
+
+end;
+
+end.

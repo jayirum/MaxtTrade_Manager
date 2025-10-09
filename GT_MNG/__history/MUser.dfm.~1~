@@ -1,0 +1,4220 @@
+inherited fmUser: TfmUser
+  Tag = 20010
+  Caption = #54924#50896#44288#47532
+  OnShow = FormShow
+  ExplicitWidth = 953
+  ExplicitHeight = 591
+  PixelsPerInch = 96
+  TextHeight = 12
+  inherited pnTop: TRzPanel
+    inherited btnExcel: TbsSkinSpeedButton
+      OnClick = btnExcelClick
+    end
+    inherited nvMain: TRzDBNavigator
+      Hints.Strings = ()
+    end
+  end
+  object pnFilter: TbsSkinPanel [2]
+    Left = 0
+    Top = 31
+    Width = 937
+    Height = 29
+    HintImageIndex = 0
+    TabOrder = 2
+    SkinDataName = 'panel'
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = 13
+    DefaultFont.Name = 'Tahoma'
+    DefaultFont.Style = []
+    DefaultWidth = 0
+    DefaultHeight = 0
+    UseSkinFont = True
+    EmptyDrawing = False
+    RibbonStyle = False
+    ImagePosition = bsipDefault
+    TransparentMode = False
+    CaptionImageIndex = -1
+    RealHeight = -1
+    AutoEnabledControls = True
+    CheckedMode = False
+    Checked = False
+    DefaultAlignment = taLeftJustify
+    DefaultCaptionHeight = 22
+    BorderStyle = bvFrame
+    CaptionMode = False
+    RollUpMode = False
+    RollUpState = False
+    NumGlyphs = 1
+    Spacing = 2
+    Align = alTop
+    DesignSize = (
+      937
+      29)
+    object btnDetail: TbsSkinSpeedButton
+      Tag = 500
+      Left = 433
+      Top = 4
+      Width = 75
+      Height = 20
+      Cursor = crHandPoint
+      HintImageIndex = 0
+      SkinData = fmMain.bsSkinData
+      SkinDataName = 'resizetoolbutton'
+      DefaultFont.Charset = DEFAULT_CHARSET
+      DefaultFont.Color = clWindowText
+      DefaultFont.Height = 14
+      DefaultFont.Name = 'Arial'
+      DefaultFont.Style = []
+      DefaultWidth = 0
+      DefaultHeight = 0
+      UseSkinFont = True
+      CheckedMode = False
+      ImageList = imgBtn
+      UseSkinSize = True
+      UseSkinFontColor = True
+      WidthWithCaption = 0
+      WidthWithoutCaption = 0
+      ImageIndex = 11
+      RepeatMode = False
+      RepeatInterval = 100
+      Transparent = False
+      Flat = False
+      AllowAllUp = False
+      Down = False
+      GroupIndex = 0
+      Caption = #49345#49464#51312#54924
+      ShowCaption = True
+      NumGlyphs = 1
+      Spacing = 1
+      OnClick = btnDetailClick
+    end
+    object btnCntReset: TbsSkinSpeedButton
+      Tag = 300
+      Left = 856
+      Top = 4
+      Width = 78
+      Height = 20
+      Cursor = crHandPoint
+      HintImageIndex = 0
+      Anchors = [akTop, akRight]
+      SkinData = fmMain.bsSkinData
+      SkinDataName = 'resizetoolbutton'
+      DefaultFont.Charset = DEFAULT_CHARSET
+      DefaultFont.Color = clWindowText
+      DefaultFont.Height = 14
+      DefaultFont.Name = 'Arial'
+      DefaultFont.Style = []
+      DefaultWidth = 0
+      DefaultHeight = 0
+      UseSkinFont = True
+      CheckedMode = False
+      ImageList = imgBtn
+      UseSkinSize = True
+      UseSkinFontColor = True
+      WidthWithCaption = 0
+      WidthWithoutCaption = 0
+      ImageIndex = 12
+      RepeatMode = False
+      RepeatInterval = 100
+      Transparent = False
+      Flat = False
+      AllowAllUp = False
+      Down = False
+      GroupIndex = 0
+      Caption = #49352#47196#44256#52840
+      ShowCaption = True
+      NumGlyphs = 1
+      Spacing = 1
+      OnClick = btnCntResetClick
+    end
+    object bsSkinLabel1: TbsSkinLabel
+      Left = 122
+      Top = 4
+      Width = 75
+      Height = 20
+      HintImageIndex = 0
+      TabOrder = 0
+      SkinData = fmMain.bsSkinData
+      SkinDataName = 'label'
+      DefaultFont.Charset = DEFAULT_CHARSET
+      DefaultFont.Color = clWindowText
+      DefaultFont.Height = 13
+      DefaultFont.Name = 'Tahoma'
+      DefaultFont.Style = []
+      DefaultWidth = 0
+      DefaultHeight = 0
+      UseSkinFont = True
+      Transparent = False
+      ShadowEffect = False
+      ShadowColor = clBlack
+      ShadowOffset = 0
+      ShadowSize = 3
+      ReflectionEffect = False
+      ReflectionOffset = -5
+      EllipsType = bsetNoneEllips
+      UseSkinSize = False
+      UseSkinFontColor = True
+      BorderStyle = bvFrame
+      Alignment = taCenter
+      Caption = #44160#49353
+      AutoSize = False
+    end
+    object edFind: TRzEdit
+      Left = 205
+      Top = 4
+      Width = 227
+      Height = 20
+      FrameController = MastDB.RzFrameController
+      ImeName = 'Microsoft IME 2010'
+      TabOrder = 1
+      OnKeyDown = edFindKeyDown
+    end
+    object lbConnUser: TbsSkinLabel
+      Left = 633
+      Top = 1
+      Width = 219
+      Height = 27
+      HintImageIndex = 0
+      Anchors = [akTop, akRight]
+      TabOrder = 2
+      SkinData = fmMain.bsSkinData
+      SkinDataName = 'label'
+      DefaultFont.Charset = DEFAULT_CHARSET
+      DefaultFont.Color = clWindowText
+      DefaultFont.Height = 13
+      DefaultFont.Name = 'Tahoma'
+      DefaultFont.Style = []
+      DefaultWidth = 0
+      DefaultHeight = 0
+      UseSkinFont = True
+      Transparent = False
+      ShadowEffect = False
+      ShadowColor = clBlack
+      ShadowOffset = 0
+      ShadowSize = 3
+      ReflectionEffect = False
+      ReflectionOffset = -5
+      EllipsType = bsetNoneEllips
+      UseSkinSize = False
+      UseSkinFontColor = True
+      BorderStyle = bvFrame
+      Alignment = taCenter
+      AutoSize = False
+    end
+  end
+  object pnLeft: TRzSizePanel [3]
+    Left = 0
+    Top = 60
+    Width = 131
+    Height = 471
+    Color = 15987699
+    HotSpotVisible = True
+    SizeBarWidth = 7
+    TabOrder = 3
+    object RzPanel5: TRzPanel
+      Left = 0
+      Top = 166
+      Width = 123
+      Height = 28
+      Align = alTop
+      BorderOuter = fsFlat
+      BorderHighlight = clWhite
+      BorderShadow = 12303291
+      Color = 15790320
+      FlatColor = clGray
+      FlatColorAdjustment = 0
+      FrameController = MastDB.PanelRzFrameController
+      TabOrder = 0
+      object RzPanel1: TRzPanel
+        Left = 5
+        Top = 4
+        Width = 113
+        Height = 21
+        BorderOuter = fsFlat
+        Caption = #48516#47448#49440#53469
+        Color = clWhite
+        FlatColor = clGray
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #44404#47548#52404
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+    object RzPanel6: TRzPanel
+      Left = 0
+      Top = 0
+      Width = 123
+      Height = 166
+      Align = alTop
+      BorderOuter = fsFlat
+      BorderHighlight = clWhite
+      BorderShadow = 12303291
+      Color = 15790320
+      FlatColor = clGray
+      FlatColorAdjustment = 0
+      FrameController = MastDB.PanelRzFrameController
+      TabOrder = 1
+      object rgType: TbsSkinRadioGroup
+        Left = 5
+        Top = 5
+        Width = 113
+        Height = 155
+        Cursor = crHandPoint
+        HintImageIndex = 0
+        TabOrder = 0
+        SkinDataName = 'groupbox'
+        DefaultFont.Charset = DEFAULT_CHARSET
+        DefaultFont.Color = clWindowText
+        DefaultFont.Height = 13
+        DefaultFont.Name = 'Tahoma'
+        DefaultFont.Style = []
+        DefaultWidth = 0
+        DefaultHeight = 0
+        UseSkinFont = True
+        EmptyDrawing = False
+        RibbonStyle = False
+        ImagePosition = bsipDefault
+        TransparentMode = False
+        CaptionImageIndex = -1
+        RealHeight = -1
+        AutoEnabledControls = True
+        CheckedMode = False
+        Checked = False
+        DefaultAlignment = taCenter
+        DefaultCaptionHeight = 22
+        BorderStyle = bvFrame
+        CaptionMode = True
+        RollUpMode = False
+        RollUpState = False
+        NumGlyphs = 1
+        Spacing = 2
+        Caption = #54924#50896#46321#44553
+        OnClick = rgTypeClick
+        UseSkinSize = True
+        ButtonSkinDataName = 'radiobox'
+        ButtonDefaultFont.Charset = DEFAULT_CHARSET
+        ButtonDefaultFont.Color = clWindowText
+        ButtonDefaultFont.Height = 13
+        ButtonDefaultFont.Name = 'Tahoma'
+        ButtonDefaultFont.Style = []
+      end
+    end
+    object lbxPart: TRzListBox
+      Left = 0
+      Top = 194
+      Width = 123
+      Height = 277
+      Align = alClient
+      FrameController = MastDB.RzFrameController
+      ImeName = 'Microsoft IME 2010'
+      ItemHeight = 12
+      TabOrder = 2
+      OnClick = lbxPartClick
+    end
+  end
+  object gdMain: TDBGridEh [4]
+    Left = 131
+    Top = 60
+    Width = 307
+    Height = 471
+    TabStop = False
+    Align = alClient
+    ColumnDefValues.Layout = tlCenter
+    Ctl3D = False
+    DataSource = dsMain
+    DynProps = <>
+    FixedColor = 15790320
+    Flat = True
+    ImeName = 'Microsoft IME 2010'
+    IndicatorOptions = [gioShowRecNoEh]
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
+    ParentCtl3D = False
+    RowDetailPanel.Color = clBtnFace
+    RowHeight = 21
+    TabOrder = 4
+    TitleParams.Color = clBtnFace
+    TitleParams.RowHeight = 21
+    TitleParams.FillStyle = cfstGradientEh
+    Columns = <
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'USER_ID'
+        Footers = <>
+        Title.Alignment = taCenter
+        Title.Caption = #54924#50896'ID'
+        Title.Color = 16250871
+        Width = 130
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'USER_NM'
+        Footers = <>
+        Title.Alignment = taCenter
+        Title.Caption = #54924#50896#47749
+        Title.Color = 16250871
+        Width = 100
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'USER_NICK_NM'
+        Footers = <>
+        Title.Alignment = taCenter
+        Title.Caption = #45769#45348#51076
+        Title.Color = 16250871
+        Width = 130
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'USER_GRADE'
+        Footers = <>
+        KeyList.Strings = (
+          '1'
+          '2'
+          '3'
+          '4')
+        PickList.Strings = (
+          #51456#54924#50896
+          #51221#54924#50896
+          #53580#49828#53552
+          #54028#53944#45320)
+        Title.Alignment = taCenter
+        Title.Caption = #54924#50896#46321#44553
+        Title.Color = 16250871
+        Width = 100
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'PART_CD'
+        Footers = <>
+        Title.Alignment = taCenter
+        Title.Caption = #54924#50896#48516#47448
+        Title.Color = 16250871
+        Width = 100
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'BIRTH_DT'
+        Footers = <>
+        Title.Alignment = taCenter
+        Title.Caption = #49892#47749#48264#54840
+        Title.Color = 16250871
+        Width = 100
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'PARTNER_NICK_NM'
+        Footers = <>
+        Title.Alignment = taCenter
+        Title.Caption = #54028#53944#45320#45769#45348#51076
+        Title.Color = 16250871
+        Width = 150
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'USER_TEL'
+        Footers = <>
+        Title.Alignment = taCenter
+        Title.Caption = #51204#54868#48264#54840
+        Title.Color = 16250871
+        Width = 100
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'USER_EMAIL'
+        Footers = <>
+        Title.Alignment = taCenter
+        Title.Caption = #51060#47700#51068
+        Title.Color = 16250871
+        Width = 120
+      end
+      item
+        Alignment = taCenter
+        DynProps = <>
+        EditButtons = <>
+        FieldName = 'SERVER_IP'
+        Footers = <>
+        Title.Alignment = taCenter
+        Title.Caption = #51217#49549#49436#48260
+        Title.Color = 16250871
+        Width = 110
+      end>
+    object RowDetailData: TRowDetailPanelControlEh
+    end
+  end
+  object pgMain: TbsSkinPageControl [5]
+    Left = 438
+    Top = 60
+    Width = 499
+    Height = 471
+    ActivePage = bsSkinTabSheet1
+    Align = alRight
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBtnText
+    Font.Height = 13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Images = imgBtn
+    ParentFont = False
+    TabHeight = 25
+    TabOrder = 5
+    OnChange = pgMainChange
+    MouseWheelSupport = False
+    TabExtededDraw = False
+    ButtonTabSkinDataName = 'resizetoolbutton'
+    TabsOffset = 0
+    TabSpacing = 1
+    TextInHorizontal = False
+    TabsInCenter = False
+    FreeOnClose = False
+    ShowCloseButtons = False
+    TabsBGTransparent = False
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clBtnText
+    DefaultFont.Height = 13
+    DefaultFont.Name = 'Tahoma'
+    DefaultFont.Style = []
+    UseSkinFont = True
+    DefaultItemHeight = 20
+    SkinData = fmMain.bsSkinData
+    SkinDataName = 'tab'
+    object bsSkinTabSheet1: TbsSkinTabSheet
+      Caption = #54924#50896#44288#47532
+      ImageIndex = 13
+      object RzPanel4: TRzPanel
+        Left = 2
+        Top = 0
+        Width = 495
+        Height = 444
+        Align = alRight
+        BorderOuter = fsFlat
+        BorderHighlight = clWhite
+        BorderShadow = 12303291
+        Color = 15790320
+        FlatColor = clGray
+        FlatColorAdjustment = 0
+        FrameController = MastDB.PanelRzFrameController
+        TabOrder = 0
+        object userPass: TbsSkinSpeedButton
+          Tag = 300
+          Left = 415
+          Top = 135
+          Width = 73
+          Height = 20
+          Cursor = crHandPoint
+          HintImageIndex = 0
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'resizetoolbutton'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 14
+          DefaultFont.Name = 'Arial'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          CheckedMode = False
+          ImageList = imgBtn
+          UseSkinSize = True
+          UseSkinFontColor = True
+          WidthWithCaption = 0
+          WidthWithoutCaption = 0
+          ImageIndex = 12
+          RepeatMode = False
+          RepeatInterval = 100
+          Transparent = False
+          Flat = False
+          AllowAllUp = False
+          Down = False
+          GroupIndex = 0
+          Caption = #52488#44592#54868
+          ShowCaption = True
+          NumGlyphs = 1
+          Spacing = 1
+          OnClick = userPassClick
+        end
+        object lbAlert: TLabel
+          Left = 254
+          Top = 31
+          Width = 232
+          Height = 20
+          AutoSize = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clRed
+          Font.Height = 13
+          Font.Name = 'Tahoma'
+          Font.Style = []
+          ParentFont = False
+          Visible = False
+        end
+        object pnUser: TRzPanel
+          Left = 6
+          Top = 4
+          Width = 482
+          Height = 21
+          BorderOuter = fsFlat
+          Caption = #54924#50896#47749' ['#54861#44600#46041']'
+          Color = clWhite
+          FlatColor = 8404992
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = #44404#47548#52404
+          Font.Style = []
+          ParentFont = False
+          TabOrder = 0
+        end
+        object bsSkinLabel2: TbsSkinLabel
+          Left = 6
+          Top = 31
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 1
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #54924#50896'ID'
+          AutoSize = False
+        end
+        object bsSkinLabel3: TbsSkinLabel
+          Left = 254
+          Top = 57
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 2
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #54924#50896#47749
+          AutoSize = False
+        end
+        object bsSkinLabel4: TbsSkinLabel
+          Left = 6
+          Top = 83
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 3
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #54924#50896#46321#44553
+          AutoSize = False
+        end
+        object bsSkinLabel5: TbsSkinLabel
+          Left = 254
+          Top = 83
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 4
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #54924#50896#48516#47448
+          AutoSize = False
+        end
+        object bsSkinLabel6: TbsSkinLabel
+          Left = 6
+          Top = 109
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 5
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #49892#47749#48264#54840
+          AutoSize = False
+        end
+        object bsSkinLabel7: TbsSkinLabel
+          Left = 254
+          Top = 109
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 6
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #46321#47197#51068
+          AutoSize = False
+        end
+        object bsSkinLabel8: TbsSkinLabel
+          Left = 6
+          Top = 135
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 7
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #51217#49549#49436#48260
+          AutoSize = False
+        end
+        object bsSkinLabel9: TbsSkinLabel
+          Left = 254
+          Top = 135
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 8
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #48708#48128#48264#54840
+          AutoSize = False
+        end
+        object bsSkinLabel11: TbsSkinLabel
+          Left = 6
+          Top = 161
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 9
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #54028#53944#45320#45769#45348#51076
+          AutoSize = False
+        end
+        object bsSkinLabel12: TbsSkinLabel
+          Left = 6
+          Top = 187
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 10
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #51204#54868#48264#54840
+          AutoSize = False
+        end
+        object bsSkinLabel13: TbsSkinLabel
+          Left = 6
+          Top = 213
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 11
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #51452#49548#51648
+          AutoSize = False
+        end
+        object bsSkinLabel15: TbsSkinLabel
+          Left = 254
+          Top = 187
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 12
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #54648#46300#54256
+          AutoSize = False
+        end
+        object bsSkinLabel16: TbsSkinLabel
+          Left = 254
+          Top = 161
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 13
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = True
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = 'EMAIL'
+          AutoSize = False
+        end
+        object bsSkinLabel17: TbsSkinLabel
+          Left = 254
+          Top = 239
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 14
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #44256#44061#51008#54665
+          AutoSize = False
+        end
+        object bsSkinLabel18: TbsSkinLabel
+          Left = 6
+          Top = 239
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 15
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = True
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #51008#54665#44228#51340#48264#54840
+          AutoSize = False
+        end
+        object bsSkinLabel19: TbsSkinLabel
+          Left = 6
+          Top = 265
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 16
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = True
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #44228#51340#51452
+          AutoSize = False
+        end
+        object SuperViser: TRzPanel
+          Tag = 999
+          Left = 6
+          Top = 368
+          Width = 482
+          Height = 65
+          BorderOuter = fsFlat
+          TabOrder = 17
+          object bsSkinLabel22: TbsSkinLabel
+            Left = 6
+            Top = 31
+            Width = 80
+            Height = 20
+            HintImageIndex = 0
+            TabOrder = 0
+            SkinData = fmMain.bsSkinData
+            SkinDataName = 'label'
+            DefaultFont.Charset = DEFAULT_CHARSET
+            DefaultFont.Color = clWindowText
+            DefaultFont.Height = 13
+            DefaultFont.Name = 'Tahoma'
+            DefaultFont.Style = []
+            DefaultWidth = 0
+            DefaultHeight = 0
+            UseSkinFont = True
+            Transparent = False
+            ShadowEffect = False
+            ShadowColor = clBlack
+            ShadowOffset = 0
+            ShadowSize = 3
+            ReflectionEffect = False
+            ReflectionOffset = -5
+            EllipsType = bsetNoneEllips
+            UseSkinSize = False
+            UseSkinFontColor = True
+            BorderStyle = bvFrame
+            Alignment = taCenter
+            Caption = #52572#51333#49688#51221#51088
+            AutoSize = False
+          end
+          object edMngid: TkcRzDBEdit
+            Left = 90
+            Top = 31
+            Width = 146
+            Height = 21
+            DataSource = dsMain
+            DataField = 'UPDATE_MNG_ID'
+            FrameController = MastDB.RzFrameController
+            ImeName = 'Microsoft Office IME 2007'
+            TabOrder = 1
+            EnterToTab = True
+          end
+          object RzPanel3: TRzPanel
+            Left = 3
+            Top = 3
+            Width = 476
+            Height = 20
+            BorderOuter = fsFlat
+            Caption = #45824#54364#44288#47532#51088
+            Color = clWhite
+            FlatColor = 8404992
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = #44404#47548#52404
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 3
+          end
+          object bsSkinLabel23: TbsSkinLabel
+            Left = 242
+            Top = 31
+            Width = 80
+            Height = 20
+            HintImageIndex = 0
+            TabOrder = 4
+            SkinData = fmMain.bsSkinData
+            SkinDataName = 'label'
+            DefaultFont.Charset = DEFAULT_CHARSET
+            DefaultFont.Color = clWindowText
+            DefaultFont.Height = 13
+            DefaultFont.Name = 'Tahoma'
+            DefaultFont.Style = []
+            DefaultWidth = 0
+            DefaultHeight = 0
+            UseSkinFont = True
+            Transparent = False
+            ShadowEffect = False
+            ShadowColor = clBlack
+            ShadowOffset = 0
+            ShadowSize = 3
+            ReflectionEffect = False
+            ReflectionOffset = -5
+            EllipsType = bsetNoneEllips
+            UseSkinSize = False
+            UseSkinFontColor = True
+            BorderStyle = bvFrame
+            Alignment = taCenter
+            Caption = #48708#48128#48264#54840
+            AutoSize = False
+          end
+          object edPassM: TkcRzDBEdit
+            Left = 325
+            Top = 31
+            Width = 150
+            Height = 21
+            DataSource = dsMain
+            DataField = 'USER_PWD'
+            FrameController = MastDB.RzFrameController
+            ImeName = 'Microsoft IME 2010'
+            TabOrder = 2
+            EnterToTab = True
+          end
+        end
+        object bsSkinLabel20: TbsSkinLabel
+          Left = 6
+          Top = 57
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 18
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #54924#50896#54596#47749
+          AutoSize = False
+        end
+        object edUserID: TkcRzDBEdit
+          Left = 90
+          Top = 31
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_ID'
+          ReadOnly = True
+          Ctl3D = True
+          FrameController = MastDB.RzFrameController
+          ImeMode = imSAlpha
+          ImeName = 'Microsoft IME 2010'
+          ParentCtl3D = False
+          TabOrder = 19
+          OnChange = edUserIDChange
+          OnExit = edUserIDExit
+          EnterToTab = True
+        end
+        object edUserNickName: TkcRzDBEdit
+          Left = 90
+          Top = 57
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_NICK_NM'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          TabOrder = 20
+          OnExit = edUserNickNameExit
+          EnterToTab = True
+        end
+        object edUser_Nm: TkcRzDBEdit
+          Left = 338
+          Top = 57
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_NM'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          TabOrder = 21
+          EnterToTab = True
+        end
+        object cbUser_Grade: TkcRzDBComboBox
+          Left = 90
+          Top = 83
+          Width = 150
+          Height = 21
+          DataField = 'USER_GRADE'
+          DataSource = dsMain
+          Style = csDropDownList
+          Ctl3D = False
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          ItemHeight = 13
+          ParentCtl3D = False
+          TabOrder = 22
+          EnterToTab = True
+        end
+        object cbUserPart: TkcRzDBComboBox
+          Left = 338
+          Top = 83
+          Width = 150
+          Height = 21
+          DataField = 'PART_CD'
+          DataSource = dsMain
+          Style = csDropDownList
+          Ctl3D = False
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          ItemHeight = 13
+          ParentCtl3D = False
+          TabOrder = 23
+          Items.Strings = (
+            #51456#54924#50896
+            #51221#54924#50896
+            #53580#49828#53552
+            #54028#53944#45320)
+          Values.Strings = (
+            '0'
+            '1'
+            '2'
+            '3'
+            '4')
+          EnterToTab = True
+        end
+        object edRegNo: TkcRzDBEdit
+          Left = 90
+          Top = 109
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'BIRTH_DT'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          TabOrder = 24
+          EnterToTab = True
+        end
+        object edRegDt: TRzDBDateTimePicker
+          Left = 338
+          Top = 109
+          Width = 150
+          Height = 20
+          Date = 41631.678217743060000000
+          Time = 41631.678217743060000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = #44404#47548#52404
+          Font.Style = []
+          ImeName = 'Microsoft IME 2010'
+          ParentFont = False
+          TabOrder = 25
+          FrameController = MastDB.RzFrameController
+          DataField = 'REG_DT'
+          DataSource = dsMain
+        end
+        object cbServerIP: TkcRzDBComboBox
+          Left = 90
+          Top = 135
+          Width = 150
+          Height = 21
+          DataField = 'SERVER_IP'
+          DataSource = dsMain
+          Style = csDropDownList
+          Ctl3D = False
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          ItemHeight = 13
+          ParentCtl3D = False
+          TabOrder = 26
+          EnterToTab = True
+        end
+        object edPass: TkcRzDBEdit
+          Left = 338
+          Top = 135
+          Width = 74
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_PWD'
+          ReadOnly = True
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          PasswordChar = #7
+          TabOrder = 27
+          EnterToTab = True
+        end
+        object cbPartnerNick: TkcRzDBComboBox
+          Left = 90
+          Top = 161
+          Width = 150
+          Height = 21
+          DataField = 'PARTNER_NICK_NM'
+          DataSource = dsMain
+          Style = csDropDownList
+          Ctl3D = False
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          ItemHeight = 13
+          ParentCtl3D = False
+          TabOrder = 28
+          EnterToTab = True
+        end
+        object edEmail: TkcRzDBEdit
+          Left = 338
+          Top = 161
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_EMAIL'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft Office IME 2007'
+          TabOrder = 29
+          EnterToTab = True
+        end
+        object edTelNo: TkcRzDBEdit
+          Left = 90
+          Top = 187
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_TEL'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft Office IME 2007'
+          TabOrder = 30
+          EnterToTab = True
+        end
+        object edHpNo: TkcRzDBEdit
+          Left = 338
+          Top = 187
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_HP'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft Office IME 2007'
+          TabOrder = 31
+          EnterToTab = True
+        end
+        object edAddr1: TkcRzDBEdit
+          Left = 90
+          Top = 213
+          Width = 396
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_ADDR'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft Office IME 2007'
+          TabOrder = 32
+          EnterToTab = True
+        end
+        object edUserAcnt: TkcRzDBEdit
+          Left = 90
+          Top = 239
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_BANK_ACNT'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft Office IME 2007'
+          TabOrder = 33
+          EnterToTab = True
+        end
+        object edUserBank: TkcRzDBEdit
+          Left = 338
+          Top = 239
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_BANK'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft Office IME 2007'
+          TabOrder = 34
+          EnterToTab = True
+        end
+        object edAcntNm: TkcRzDBEdit
+          Left = 90
+          Top = 265
+          Width = 150
+          Height = 21
+          DataSource = dsMain
+          DataField = 'USER_BANK_ACNT_NM'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft Office IME 2007'
+          TabOrder = 35
+          EnterToTab = True
+        end
+      end
+    end
+    object bsSkinTabSheet2: TbsSkinTabSheet
+      Caption = #44228#51340#44288#47532
+      ImageIndex = 15
+      object gdAcnt: TDBGridEh
+        Left = 0
+        Top = 21
+        Width = 497
+        Height = 132
+        TabStop = False
+        Align = alTop
+        ColumnDefValues.Layout = tlCenter
+        Ctl3D = False
+        DataSource = dsAcnt
+        DynProps = <>
+        FixedColor = 15790320
+        Flat = True
+        ImeName = 'Microsoft IME 2010'
+        IndicatorOptions = [gioShowRecNoEh]
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
+        ParentCtl3D = False
+        RowDetailPanel.Color = clBtnFace
+        RowHeight = 21
+        TabOrder = 0
+        TitleParams.Color = clBtnFace
+        TitleParams.Font.Charset = DEFAULT_CHARSET
+        TitleParams.Font.Color = clBtnText
+        TitleParams.Font.Height = -11
+        TitleParams.Font.Name = 'Tahoma'
+        TitleParams.Font.Style = []
+        TitleParams.ParentFont = False
+        TitleParams.RowHeight = 21
+        TitleParams.FillStyle = cfstGradientEh
+        Columns = <
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'ACNT_NO'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #44228#51340#48264#54840
+            Title.Color = 16250871
+            Width = 80
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'ACNT_TP'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #44228#51340#53440#51077
+            Title.Color = 16250871
+            Width = 70
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'USER_ID'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #54924#50896'ID'
+            Title.Color = 16250871
+            Width = 70
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'PLAMT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #51092#50529
+            Title.Color = 16250871
+            Width = 80
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'CMSN'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #45817#51068#49688#49688#47308#54633
+            Title.Color = 16250871
+            Width = 80
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'FIRST_DT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #52395#44144#47000#51068
+            Title.Color = 16250871
+            Width = 80
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'GUJA_CNT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #54788#51116#44396#51340#49688
+            Title.Color = 16250871
+            Width = 70
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'LOGIN_DT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #52572#51333#47196#44536#51064#51068#51088
+            Title.Color = 16250871
+            Width = 90
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'LOGIN_IP'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #52572#51333#47196#44536#51064'IP'
+            Title.Color = 16250871
+            Width = 80
+          end>
+        object RowDetailData: TRowDetailPanelControlEh
+        end
+      end
+      object RzPanel8: TRzPanel
+        Left = 0
+        Top = 153
+        Width = 497
+        Height = 291
+        Align = alClient
+        BorderOuter = fsFlat
+        BorderHighlight = clWhite
+        BorderShadow = 12303291
+        Color = 15790320
+        FlatColor = clGray
+        FlatColorAdjustment = 0
+        FrameController = MastDB.PanelRzFrameController
+        TabOrder = 1
+        object acntPass: TbsSkinSpeedButton
+          Tag = 300
+          Left = 432
+          Top = 2
+          Width = 60
+          Height = 21
+          Cursor = crHandPoint
+          HintImageIndex = 0
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'resizetoolbutton'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 14
+          DefaultFont.Name = 'Arial'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          CheckedMode = False
+          ImageList = imgBtn
+          UseSkinSize = True
+          UseSkinFontColor = True
+          WidthWithCaption = 0
+          WidthWithoutCaption = 0
+          ImageIndex = 12
+          RepeatMode = False
+          RepeatInterval = 100
+          Transparent = False
+          Flat = False
+          AllowAllUp = False
+          Down = False
+          GroupIndex = 0
+          Caption = #52488#44592#54868
+          ShowCaption = True
+          NumGlyphs = 1
+          Spacing = 1
+          OnClick = acntPassClick
+        end
+        object bsSkinLabel42: TbsSkinLabel
+          Left = 5
+          Top = 106
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 11
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #44228#51340#47700#47784
+          AutoSize = False
+        end
+        object bsSkinLabel39: TbsSkinLabel
+          Left = 258
+          Top = 54
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 12
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #51473#48373#51217#49549#50668#48512
+          AutoSize = False
+        end
+        object cbAcntStat2: TkcRzDBComboBox
+          Left = 91
+          Top = 54
+          Width = 151
+          Height = 21
+          DataField = 'ACNT_STATE'
+          DataSource = dsAcnt
+          Style = csDropDownList
+          Ctl3D = False
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          ItemHeight = 13
+          ParentCtl3D = False
+          TabOrder = 4
+          EnterToTab = True
+        end
+        object bsSkinLabel38: TbsSkinLabel
+          Left = 5
+          Top = 54
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 13
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #44228#51340#49345#53468
+          AutoSize = False
+        end
+        object cbApiIp: TkcRzDBComboBox
+          Left = 344
+          Top = 28
+          Width = 150
+          Height = 21
+          DataField = 'API_TP'
+          DataSource = dsAcnt
+          Style = csDropDownList
+          Ctl3D = False
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          ItemHeight = 13
+          ParentCtl3D = False
+          TabOrder = 3
+          EnterToTab = True
+        end
+        object bsSkinLabel37: TbsSkinLabel
+          Left = 258
+          Top = 28
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 14
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #49892'/'#44032#49345' '#52404#44208
+          AutoSize = False
+        end
+        object edAcntPwd: TkcRzDBEdit
+          Left = 344
+          Top = 2
+          Width = 89
+          Height = 21
+          DataSource = dsAcnt
+          DataField = 'ACNT_PWD'
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          PasswordChar = #7
+          TabOrder = 1
+          EnterToTab = True
+        end
+        object bsSkinLabel27: TbsSkinLabel
+          Left = 258
+          Top = 2
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 15
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #44228#51340#48708#48264
+          AutoSize = False
+        end
+        object edAcntNo: TkcRzDBEdit
+          Left = 91
+          Top = 28
+          Width = 151
+          Height = 21
+          DataSource = dsAcnt
+          DataField = 'ACNT_NO'
+          ReadOnly = True
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          TabOrder = 2
+          OnChange = edAcntNoChange
+          EnterToTab = True
+        end
+        object bsSkinLabel25: TbsSkinLabel
+          Left = 5
+          Top = 28
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 16
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #44228#51340#48264#54840
+          AutoSize = False
+        end
+        object cbDupYn: TkcRzDBComboBox
+          Left = 344
+          Top = 54
+          Width = 150
+          Height = 21
+          DataField = 'NEGO_DUP_YN'
+          DataSource = dsAcnt
+          Style = csDropDownList
+          Ctl3D = False
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          ItemHeight = 13
+          ParentCtl3D = False
+          TabOrder = 5
+          Items.Strings = (
+            'Y'
+            'N')
+          EnterToTab = True
+        end
+        object cbAcntTp: TkcRzDBComboBox
+          Left = 91
+          Top = 2
+          Width = 151
+          Height = 21
+          DataField = 'ACNT_TP'
+          DataSource = dsAcnt
+          ReadOnly = True
+          Style = csDropDownList
+          Ctl3D = False
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft IME 2010'
+          ItemHeight = 13
+          ParentCtl3D = False
+          TabOrder = 0
+          Items.Strings = (
+            '1:'#44397#45236#54028#49373
+            '2:'#54644#50808#54028#49373
+            '3:'#44397#45236#54788#47932)
+          Values.Strings = (
+            '1'
+            '2'
+            '3')
+          EnterToTab = True
+        end
+        object bsSkinLabel45: TbsSkinLabel
+          Left = 5
+          Top = 2
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 17
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #44228#51340#53440#51077
+          AutoSize = False
+        end
+        object bsSkinLabel14: TbsSkinLabel
+          Left = 5
+          Top = 80
+          Width = 80
+          Height = 20
+          HintImageIndex = 0
+          TabOrder = 18
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = #52572#45824#44396#51340#49688
+          AutoSize = False
+        end
+        object moAcntBigo: TRzDBMemo
+          Left = 91
+          Top = 106
+          Width = 403
+          Height = 67
+          DataField = 'ACNT_BIGO'
+          DataSource = dsAcnt
+          ImeName = 'Microsoft Office IME 2007'
+          TabOrder = 8
+          FrameController = MastDB.RzFrameController
+        end
+        object btnAcntMake: TbsSkinButton
+          Left = 29
+          Top = 195
+          Width = 89
+          Height = 25
+          HintImageIndex = 0
+          TabOrder = 9
+          SkinDataName = 'button'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          CheckedMode = False
+          ImageList = imgBtn
+          ImageIndex = 15
+          AlwaysShowLayeredFrame = False
+          UseSkinSize = True
+          UseSkinFontColor = True
+          RepeatMode = False
+          RepeatInterval = 100
+          AllowAllUp = False
+          TabStop = True
+          CanFocused = True
+          Down = False
+          GroupIndex = 0
+          Caption = #44228#51340#49373#49457
+          NumGlyphs = 1
+          Spacing = 1
+          OnClick = btnAcntMakeClick
+        end
+        object bsSkinButton1: TbsSkinButton
+          Left = 133
+          Top = 195
+          Width = 97
+          Height = 25
+          HintImageIndex = 0
+          TabOrder = 10
+          SkinDataName = 'button'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          CheckedMode = False
+          ImageList = imgBtn
+          ImageIndex = 16
+          AlwaysShowLayeredFrame = False
+          UseSkinSize = True
+          UseSkinFontColor = True
+          RepeatMode = False
+          RepeatInterval = 100
+          AllowAllUp = False
+          TabStop = True
+          CanFocused = True
+          Down = False
+          GroupIndex = 0
+          Caption = #54801#51032#49688#49688#47308
+          NumGlyphs = 1
+          Spacing = 1
+          OnClick = bsSkinButton1Click
+        end
+        object edGujaMaxCnt: TkcRzEdit
+          Left = 91
+          Top = 80
+          Width = 151
+          Height = 21
+          Alignment = taRightJustify
+          FrameController = MastDB.RzFrameController
+          ImeName = 'Microsoft Office IME 2007'
+          TabOrder = 6
+          EnterToTab = True
+        end
+        object ckGujaYn: TRzCheckBox
+          Left = 258
+          Top = 81
+          Width = 103
+          Height = 15
+          Caption = #44060#51064#48324#44396#51340#51201#50857
+          DisabledColor = 15790320
+          FillColor = clWhite
+          FocusColor = 15790335
+          FrameColor = clGray
+          FrameController = MastDB.RzFrameController
+          HotTrack = True
+          HotTrackColor = 7838964
+          HotTrackStyle = htsFrame
+          ReadOnlyColor = 14811135
+          State = cbUnchecked
+          TabOrder = 7
+          WordWrap = True
+          OnClick = ckGujaYnClick
+        end
+      end
+      object pnAcnt: TRzPanel
+        Left = 0
+        Top = 0
+        Width = 497
+        Height = 21
+        Align = alTop
+        BorderOuter = fsFlat
+        Caption = #44228#51340#48264#54840'[]'
+        Color = clWhite
+        FlatColor = 8404992
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #44404#47548#52404
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+      end
+    end
+    object bsSkinTabSheet3: TbsSkinTabSheet
+      Caption = #54924#50896#49345#45812
+      ImageIndex = 17
+      object bsSkinLabel10: TbsSkinLabel
+        Left = 3
+        Top = 199
+        Width = 80
+        Height = 20
+        HintImageIndex = 0
+        TabOrder = 0
+        SkinData = fmMain.bsSkinData
+        SkinDataName = 'label'
+        DefaultFont.Charset = DEFAULT_CHARSET
+        DefaultFont.Color = clWindowText
+        DefaultFont.Height = 13
+        DefaultFont.Name = 'Tahoma'
+        DefaultFont.Style = []
+        DefaultWidth = 0
+        DefaultHeight = 0
+        UseSkinFont = True
+        Transparent = False
+        ShadowEffect = False
+        ShadowColor = clBlack
+        ShadowOffset = 0
+        ShadowSize = 3
+        ReflectionEffect = False
+        ReflectionOffset = -5
+        EllipsType = bsetNoneEllips
+        UseSkinSize = False
+        UseSkinFontColor = True
+        BorderStyle = bvFrame
+        Alignment = taCenter
+        Caption = #44396#48516#47749
+        AutoSize = False
+      end
+      object pnUmNm: TRzPanel
+        Left = 0
+        Top = 0
+        Width = 497
+        Height = 21
+        Align = alTop
+        BorderOuter = fsFlat
+        Caption = #54924#50896#47749' ['#54861#44600#46041']'
+        Color = clWhite
+        FlatColor = 8404992
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #44404#47548#52404
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+      end
+      object gdUserMemo: TDBGridEh
+        Left = 0
+        Top = 21
+        Width = 497
+        Height = 172
+        TabStop = False
+        Align = alTop
+        AutoFitColWidths = True
+        ColumnDefValues.Layout = tlCenter
+        Ctl3D = False
+        DataSource = dsMemo
+        DynProps = <>
+        FixedColor = 15790320
+        Flat = True
+        ImeName = 'Microsoft IME 2010'
+        IndicatorOptions = [gioShowRecNoEh]
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+        OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
+        ParentCtl3D = False
+        RowDetailPanel.Color = clBtnFace
+        RowHeight = 21
+        TabOrder = 2
+        TitleParams.Color = clBtnFace
+        TitleParams.Font.Charset = DEFAULT_CHARSET
+        TitleParams.Font.Color = clBtnText
+        TitleParams.Font.Height = -11
+        TitleParams.Font.Name = 'Tahoma'
+        TitleParams.Font.Style = []
+        TitleParams.ParentFont = False
+        TitleParams.RowHeight = 21
+        TitleParams.FillStyle = cfstGradientEh
+        Columns = <
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'UM_DT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #51077#47141#51068
+            Title.Color = 16250871
+            Width = 80
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'PART_NM'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #44396#48516#47749
+            Title.Color = 16250871
+            Width = 130
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'UM_TITLE'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #51228#47785
+            Title.Color = 16250871
+            Width = 250
+          end>
+        object RowDetailData: TRowDetailPanelControlEh
+        end
+      end
+      object cbPartNm: TkcRzDBComboBox
+        Left = 89
+        Top = 199
+        Width = 150
+        Height = 21
+        DataField = 'PART_NM'
+        DataSource = dsMemo
+        Style = csDropDownList
+        Ctl3D = False
+        FrameController = MastDB.RzFrameController
+        ImeName = 'Microsoft IME 2010'
+        ItemHeight = 13
+        ParentCtl3D = False
+        TabOrder = 3
+        EnterToTab = True
+      end
+      object bsSkinLabel21: TbsSkinLabel
+        Left = 3
+        Top = 226
+        Width = 80
+        Height = 20
+        HintImageIndex = 0
+        TabOrder = 4
+        SkinData = fmMain.bsSkinData
+        SkinDataName = 'label'
+        DefaultFont.Charset = DEFAULT_CHARSET
+        DefaultFont.Color = clWindowText
+        DefaultFont.Height = 13
+        DefaultFont.Name = 'Tahoma'
+        DefaultFont.Style = []
+        DefaultWidth = 0
+        DefaultHeight = 0
+        UseSkinFont = True
+        Transparent = False
+        ShadowEffect = False
+        ShadowColor = clBlack
+        ShadowOffset = 0
+        ShadowSize = 3
+        ReflectionEffect = False
+        ReflectionOffset = -5
+        EllipsType = bsetNoneEllips
+        UseSkinSize = False
+        UseSkinFontColor = True
+        BorderStyle = bvFrame
+        Alignment = taCenter
+        Caption = #51228#47785
+        AutoSize = False
+      end
+      object edUmTitle: TkcRzDBEdit
+        Left = 89
+        Top = 226
+        Width = 150
+        Height = 21
+        DataSource = dsMemo
+        DataField = 'UM_TITLE'
+        FrameController = MastDB.RzFrameController
+        ImeName = 'Microsoft IME 2010'
+        TabOrder = 5
+        OnExit = edUserNickNameExit
+        EnterToTab = True
+      end
+      object bsSkinLabel24: TbsSkinLabel
+        Left = 3
+        Top = 252
+        Width = 80
+        Height = 20
+        HintImageIndex = 0
+        TabOrder = 6
+        SkinData = fmMain.bsSkinData
+        SkinDataName = 'label'
+        DefaultFont.Charset = DEFAULT_CHARSET
+        DefaultFont.Color = clWindowText
+        DefaultFont.Height = 13
+        DefaultFont.Name = 'Tahoma'
+        DefaultFont.Style = []
+        DefaultWidth = 0
+        DefaultHeight = 0
+        UseSkinFont = True
+        Transparent = False
+        ShadowEffect = False
+        ShadowColor = clBlack
+        ShadowOffset = 0
+        ShadowSize = 3
+        ReflectionEffect = False
+        ReflectionOffset = -5
+        EllipsType = bsetNoneEllips
+        UseSkinSize = False
+        UseSkinFontColor = True
+        BorderStyle = bvFrame
+        Alignment = taCenter
+        Caption = #45236#50857
+        AutoSize = False
+      end
+      object moUmBigo: TRzDBMemo
+        Left = 89
+        Top = 252
+        Width = 403
+        Height = 189
+        DataField = 'UM_BIGO'
+        DataSource = dsMemo
+        ImeName = 'Microsoft Office IME 2007'
+        ScrollBars = ssBoth
+        TabOrder = 7
+        FrameController = MastDB.RzFrameController
+      end
+    end
+    object bsSkinTabSheet4: TbsSkinTabSheet
+      Caption = #44288#47532#51088' '#51077#52636#44552
+      ImageIndex = 18
+      object gdInout: TDBGridEh
+        Left = 0
+        Top = 21
+        Width = 497
+        Height = 132
+        TabStop = False
+        Align = alTop
+        AutoFitColWidths = True
+        ColumnDefValues.Layout = tlCenter
+        Ctl3D = False
+        DataSource = dsAcnt
+        DynProps = <>
+        FixedColor = 15790320
+        Flat = True
+        ImeName = 'Microsoft IME 2010'
+        IndicatorOptions = [gioShowRecNoEh]
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
+        ParentCtl3D = False
+        RowDetailPanel.Color = clBtnFace
+        RowHeight = 21
+        TabOrder = 0
+        TitleParams.Color = clBtnFace
+        TitleParams.Font.Charset = DEFAULT_CHARSET
+        TitleParams.Font.Color = clBtnText
+        TitleParams.Font.Height = -11
+        TitleParams.Font.Name = 'Tahoma'
+        TitleParams.Font.Style = []
+        TitleParams.ParentFont = False
+        TitleParams.RowHeight = 21
+        TitleParams.FillStyle = cfstGradientEh
+        Columns = <
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'ACNT_NO'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #44228#51340#48264#54840
+            Title.Color = 16250871
+            Width = 100
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'ACNT_TP'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #44228#51340#53440#51077
+            Title.Color = 16250871
+            Width = 100
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'PLAMT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #51092#50529
+            Title.Color = 16250871
+            Width = 100
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'USER_ID'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #54924#50896'ID'
+            Title.Color = 16250871
+            Width = 90
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'FIRST_DT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #52395#44144#47000#51068
+            Title.Color = 16250871
+            Visible = False
+            Width = 100
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'GUJA_CNT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #54788#51116#44396#51340#49688
+            Title.Color = 16250871
+            Visible = False
+            Width = 80
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'LOGIN_DT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #52572#51333#47196#44536#51064#51068#51088
+            Title.Color = 16250871
+            Visible = False
+            Width = 100
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'LOGIN_IP'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #52572#51333#47196#44536#51064'IP'
+            Title.Color = 16250871
+            Visible = False
+            Width = 100
+          end>
+        object RowDetailData: TRowDetailPanelControlEh
+        end
+      end
+      object RzPanel2: TRzPanel
+        Left = 0
+        Top = 153
+        Width = 497
+        Height = 291
+        Align = alClient
+        BorderOuter = fsFlat
+        BorderHighlight = clWhite
+        BorderShadow = 12303291
+        Color = 15790320
+        FlatColor = clGray
+        FlatColorAdjustment = 0
+        FrameController = MastDB.PanelRzFrameController
+        TabOrder = 1
+        object RzGroupBox1: TRzGroupBox
+          Left = 5
+          Top = 6
+          Width = 487
+          Height = 131
+          Caption = #51077#44552
+          FrameController = MastDB.RzFrameController
+          TabOrder = 0
+          object bsSkinLabel26: TbsSkinLabel
+            Left = 8
+            Top = 25
+            Width = 80
+            Height = 20
+            HintImageIndex = 0
+            TabOrder = 2
+            SkinData = fmMain.bsSkinData
+            SkinDataName = 'label'
+            DefaultFont.Charset = DEFAULT_CHARSET
+            DefaultFont.Color = clWindowText
+            DefaultFont.Height = 13
+            DefaultFont.Name = 'Tahoma'
+            DefaultFont.Style = []
+            DefaultWidth = 0
+            DefaultHeight = 0
+            UseSkinFont = True
+            Transparent = False
+            ShadowEffect = False
+            ShadowColor = clBlack
+            ShadowOffset = 0
+            ShadowSize = 3
+            ReflectionEffect = False
+            ReflectionOffset = -5
+            EllipsType = bsetNoneEllips
+            UseSkinSize = False
+            UseSkinFontColor = True
+            BorderStyle = bvFrame
+            Alignment = taCenter
+            Caption = #49892#51092#50529
+            AutoSize = False
+          end
+          object edInAmt: TRzEdit
+            Tag = 500
+            Left = 94
+            Top = 66
+            Width = 150
+            Height = 21
+            Text = '0'
+            Alignment = taRightJustify
+            FrameController = MastDB.RzFrameController
+            ImeName = 'Microsoft IME 2010'
+            TabOrder = 0
+            OnEnter = edInAmtEnter
+            OnExit = edInAmtExit
+            OnKeyDown = edInAmtKeyDown
+          end
+          object bsSkinLabel28: TbsSkinLabel
+            Left = 8
+            Top = 68
+            Width = 80
+            Height = 20
+            HintImageIndex = 0
+            TabOrder = 4
+            SkinData = fmMain.bsSkinData
+            SkinDataName = 'label'
+            DefaultFont.Charset = DEFAULT_CHARSET
+            DefaultFont.Color = clWindowText
+            DefaultFont.Height = 13
+            DefaultFont.Name = 'Tahoma'
+            DefaultFont.Style = []
+            DefaultWidth = 0
+            DefaultHeight = 0
+            UseSkinFont = True
+            Transparent = False
+            ShadowEffect = False
+            ShadowColor = clBlack
+            ShadowOffset = 0
+            ShadowSize = 3
+            ReflectionEffect = False
+            ReflectionOffset = -5
+            EllipsType = bsetNoneEllips
+            UseSkinSize = False
+            UseSkinFontColor = True
+            BorderStyle = bvFrame
+            Alignment = taCenter
+            Caption = #51077#44552#44552#50529
+            AutoSize = False
+          end
+          object btnIn: TbsSkinButton
+            Left = 365
+            Top = 98
+            Width = 89
+            Height = 25
+            HintImageIndex = 0
+            TabOrder = 1
+            SkinDataName = 'button'
+            DefaultFont.Charset = DEFAULT_CHARSET
+            DefaultFont.Color = clWindowText
+            DefaultFont.Height = 13
+            DefaultFont.Name = 'Tahoma'
+            DefaultFont.Style = []
+            DefaultWidth = 0
+            DefaultHeight = 0
+            UseSkinFont = True
+            Transparent = False
+            CheckedMode = False
+            ImageList = imgBtn
+            ImageIndex = 20
+            AlwaysShowLayeredFrame = False
+            UseSkinSize = True
+            UseSkinFontColor = True
+            RepeatMode = False
+            RepeatInterval = 100
+            AllowAllUp = False
+            TabStop = True
+            CanFocused = True
+            Down = False
+            GroupIndex = 0
+            Caption = #51077#44552#52376#47532
+            NumGlyphs = 1
+            Spacing = 1
+            OnClick = btnInClick
+          end
+          object edInAcntAmt: TRzEdit
+            Tag = 500
+            Left = 92
+            Top = 25
+            Width = 150
+            Height = 21
+            Alignment = taRightJustify
+            FrameController = MastDB.RzFrameController
+            ImeName = 'Microsoft IME 2010'
+            ReadOnly = True
+            TabOrder = 3
+          end
+        end
+        object RzGroupBox2: TRzGroupBox
+          Left = 5
+          Top = 143
+          Width = 487
+          Height = 149
+          Caption = #52636#44552
+          FrameController = MastDB.RzFrameController
+          TabOrder = 1
+          object btnOut: TbsSkinButton
+            Left = 365
+            Top = 116
+            Width = 89
+            Height = 25
+            HintImageIndex = 0
+            TabOrder = 1
+            SkinDataName = 'button'
+            DefaultFont.Charset = DEFAULT_CHARSET
+            DefaultFont.Color = clWindowText
+            DefaultFont.Height = 13
+            DefaultFont.Name = 'Tahoma'
+            DefaultFont.Style = []
+            DefaultWidth = 0
+            DefaultHeight = 0
+            UseSkinFont = True
+            Transparent = False
+            CheckedMode = False
+            ImageList = imgBtn
+            ImageIndex = 19
+            AlwaysShowLayeredFrame = False
+            UseSkinSize = True
+            UseSkinFontColor = True
+            RepeatMode = False
+            RepeatInterval = 100
+            AllowAllUp = False
+            TabStop = True
+            CanFocused = True
+            Down = False
+            GroupIndex = 0
+            Caption = #52636#44552#52376#47532
+            NumGlyphs = 1
+            Spacing = 1
+            OnClick = btnOutClick
+          end
+          object bsSkinLabel29: TbsSkinLabel
+            Left = 8
+            Top = 25
+            Width = 80
+            Height = 20
+            HintImageIndex = 0
+            TabOrder = 3
+            SkinData = fmMain.bsSkinData
+            SkinDataName = 'label'
+            DefaultFont.Charset = DEFAULT_CHARSET
+            DefaultFont.Color = clWindowText
+            DefaultFont.Height = 13
+            DefaultFont.Name = 'Tahoma'
+            DefaultFont.Style = []
+            DefaultWidth = 0
+            DefaultHeight = 0
+            UseSkinFont = True
+            Transparent = False
+            ShadowEffect = False
+            ShadowColor = clBlack
+            ShadowOffset = 0
+            ShadowSize = 3
+            ReflectionEffect = False
+            ReflectionOffset = -5
+            EllipsType = bsetNoneEllips
+            UseSkinSize = False
+            UseSkinFontColor = True
+            BorderStyle = bvFrame
+            Alignment = taCenter
+            Caption = #49892#51092#50529
+            AutoSize = False
+          end
+          object bsSkinLabel30: TbsSkinLabel
+            Left = 8
+            Top = 68
+            Width = 80
+            Height = 20
+            HintImageIndex = 0
+            TabOrder = 4
+            SkinData = fmMain.bsSkinData
+            SkinDataName = 'label'
+            DefaultFont.Charset = DEFAULT_CHARSET
+            DefaultFont.Color = clWindowText
+            DefaultFont.Height = 13
+            DefaultFont.Name = 'Tahoma'
+            DefaultFont.Style = []
+            DefaultWidth = 0
+            DefaultHeight = 0
+            UseSkinFont = True
+            Transparent = False
+            ShadowEffect = False
+            ShadowColor = clBlack
+            ShadowOffset = 0
+            ShadowSize = 3
+            ReflectionEffect = False
+            ReflectionOffset = -5
+            EllipsType = bsetNoneEllips
+            UseSkinSize = False
+            UseSkinFontColor = True
+            BorderStyle = bvFrame
+            Alignment = taCenter
+            Caption = #52636#44552#44552#50529
+            AutoSize = False
+          end
+          object edOutAmt: TRzEdit
+            Tag = 500
+            Left = 92
+            Top = 68
+            Width = 150
+            Height = 21
+            Text = '0'
+            Alignment = taRightJustify
+            FrameController = MastDB.RzFrameController
+            ImeName = 'Microsoft IME 2010'
+            TabOrder = 0
+            OnEnter = edInAmtEnter
+            OnExit = edInAmtExit
+          end
+          object edOutAcntAmt: TRzEdit
+            Tag = 500
+            Left = 92
+            Top = 25
+            Width = 150
+            Height = 21
+            Alignment = taRightJustify
+            FrameController = MastDB.RzFrameController
+            ImeName = 'Microsoft IME 2010'
+            ReadOnly = True
+            TabOrder = 2
+          end
+        end
+      end
+      object pnInout: TRzPanel
+        Left = 0
+        Top = 0
+        Width = 497
+        Height = 21
+        Align = alTop
+        BorderOuter = fsFlat
+        Caption = #44228#51340#48264#54840'[]'
+        Color = clWhite
+        FlatColor = 8404992
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #44404#47548#52404
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 2
+      end
+    end
+    object bsSkinTabSheet5: TbsSkinTabSheet
+      Caption = #47196#44536#51064#45236#50669
+      ImageIndex = 21
+      object gdLogin: TDBGridEh
+        Left = 0
+        Top = 21
+        Width = 497
+        Height = 423
+        TabStop = False
+        Align = alClient
+        ColumnDefValues.Layout = tlCenter
+        Ctl3D = False
+        DataSource = dsLogin
+        DynProps = <>
+        FixedColor = 15790320
+        Flat = True
+        ImeName = 'Microsoft IME 2010'
+        IndicatorOptions = [gioShowRecNoEh]
+        Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+        OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
+        ParentCtl3D = False
+        RowDetailPanel.Color = clBtnFace
+        RowHeight = 21
+        TabOrder = 0
+        TitleParams.Color = clBtnFace
+        TitleParams.Font.Charset = DEFAULT_CHARSET
+        TitleParams.Font.Color = clBtnText
+        TitleParams.Font.Height = -11
+        TitleParams.Font.Name = 'Tahoma'
+        TitleParams.Font.Style = []
+        TitleParams.ParentFont = False
+        TitleParams.RowHeight = 21
+        TitleParams.FillStyle = cfstGradientEh
+        Columns = <
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'LOGIN_DT'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #51217#49549#51068#51088
+            Title.Color = 16250871
+            Width = 70
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'LOGIN_TM'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #51217#49549#49884#44036
+            Title.Color = 16250871
+            Width = 75
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'LOGIN_IP'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #51217#49549'IP'
+            Title.Color = 16250871
+            Width = 88
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'ACNT_TP'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #44228#51340#44396#48516
+            Title.Color = 16250871
+            Width = 70
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'LOGIN_TP'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #51217#49549#44396#48516
+            Title.Color = 16250871
+            Width = 70
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'LOGIN_MAC'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = 'MAC'#51452#49548
+            Title.Color = 16250871
+            Width = 85
+          end
+          item
+            Alignment = taCenter
+            DynProps = <>
+            EditButtons = <>
+            FieldName = 'APP_TP'
+            Footers = <>
+            Title.Alignment = taCenter
+            Title.Caption = #54532#47196#44536#47016#44396#48516
+            Title.Color = 16250871
+            Width = 100
+          end>
+        object RowDetailData: TRowDetailPanelControlEh
+          object RzPanel7: TRzPanel
+            Left = 0
+            Top = 0
+            Width = 0
+            Height = 21
+            Align = alTop
+            BorderOuter = fsFlat
+            Caption = #44228#51340#48264#54840'[]'
+            Color = clWhite
+            FlatColor = 8404992
+            Font.Charset = DEFAULT_CHARSET
+            Font.Color = clWindowText
+            Font.Height = -12
+            Font.Name = #44404#47548#52404
+            Font.Style = []
+            ParentFont = False
+            TabOrder = 0
+          end
+        end
+      end
+      object pnLogin: TRzPanel
+        Left = 0
+        Top = 0
+        Width = 497
+        Height = 21
+        Align = alTop
+        BorderOuter = fsFlat
+        Color = clWhite
+        FlatColor = 8404992
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #44404#47548#52404
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 1
+        DesignSize = (
+          496
+          20)
+        object lbLogin: TbsSkinLabel
+          Left = 350
+          Top = 1
+          Width = 126
+          Height = 19
+          HintImageIndex = 0
+          Anchors = [akTop, akRight]
+          TabOrder = 0
+          SkinData = fmMain.bsSkinData
+          SkinDataName = 'label'
+          DefaultFont.Charset = DEFAULT_CHARSET
+          DefaultFont.Color = clWindowText
+          DefaultFont.Height = 13
+          DefaultFont.Name = 'Tahoma'
+          DefaultFont.Style = []
+          DefaultWidth = 0
+          DefaultHeight = 0
+          UseSkinFont = True
+          Transparent = False
+          ShadowEffect = False
+          ShadowColor = clBlack
+          ShadowOffset = 0
+          ShadowSize = 3
+          ReflectionEffect = False
+          ReflectionOffset = -5
+          EllipsType = bsetNoneEllips
+          UseSkinSize = False
+          UseSkinFontColor = True
+          BorderStyle = bvFrame
+          Alignment = taCenter
+          Caption = '0'#44148
+          AutoSize = False
+        end
+      end
+    end
+  end
+  inherited imgBtn: TImageList
+    Bitmap = {
+      494C010116003401880110001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      0000000000003600000028000000400000006000000001002000000000000060
+      0000000000000000000000000000000000000000000000000000000000000E7B
+      1600107B1800117F1900107D17000C78110004710900016A0300000000000000
+      00000000000000000000000000000000000000000000B38A8100B38A8100B38A
+      8100B38A8100B38A8100B38A8100B38A8100B38A8100B38A8100B38A8100B38A
+      8100B38A8100231E99001522B900000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000001784220033B24E003ABF
+      5A0035BD560029B44C0020A83E001593270014841F00077B1100007105000068
+      00000000000000000000000000000000000000000000B38A8100FFECCD00FFE3
+      C100FFDFB900FFDBAE00D5A27E00EEB58600FFD09900FFD69F00FFD59C00FFD5
+      9A004E419F001A35CF003E6EFD000D25CC000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000001A8A260051E57D004BE57A0041CE
+      6C0040B75D00479943005280390072946900737359005A684300316C27000D6B
+      0C000168010000000000000000000000000000000000B38A8100FFEBD300FFE4
+      C700FFE0BE00BC9D8C00615F7300728DA3009F8B8000D5A47B00F4C89600A785
+      9900283FCC003C6DFF00154DFF00001CD3000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000209B33006AE9910083B58D009E92
+      4A00AE4F2700AA490100AE4F2700DFC2CD00845C5A00A16E7A00AC7281005D5C
+      4000006C000000000000000000000000000000000000B38A8100FFF0DC00A06A
+      5F00A06A5F008E9497006FA7BC0075D1F00083EBF6005168A10023199000263C
+      CB003966FA001837DC000017D200000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000209B330055975700EFCFE700E999
+      4A00AE4F2700AE4F2700BB6B3E00DCCFD800845C5A009D788100B88596006B5B
+      48000000000000000000000000000000000000000000B38A8100FFF4E500FFED
+      D900FFE5CB00A39F9A0072ACBD0082ABAD0093FAFB00254EC7001C33CF003A6A
+      FE002148DF00473E790000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000066654A00EBDBE500DBC1
+      AB00CEA99300CAA89900CAACA200D8C1B500845C5A009A747700A98A96007E5A
+      58000000000000000000000000000000000000000000B38A8100FFF9ED00A06A
+      5F00A06A5F00A98C8600556C8A006995AC0078989F004D5A97002B44D9000F39
+      F9001E64EB0044A6F50065464D00000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000086595A00E5CFAF00C7AB
+      9400D7B68600DBB17100C6945300E19F2F00845C5A00AF5B1F009D583200845C
+      5A000000000000000000000000000000000000000000B38A8100FFFFFD00FFFB
+      F400FFFCEE00DBB5AA008D797E0075A2B3007EC5CD007FC4C9004F85C6003343
+      A200436AB0003993EB0055587C00000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000845C5A00FAEDB800D1B0
+      8000EFCA7D00E6B96500CA944500EEAF3B00845C5A00D16B0B00BE520000845C
+      5A000000000000000000000000000000000000000000B38A8100DAEAD90075A8
+      6E007DA97300B6CAA100E2D8B900E7C4AD00C8A598009B9596007199AF005198
+      CA003F77B900476DA8005B4B6200000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000835B5A00E6DAC800D4BF
+      AD00DCC5AA00D5BA9C00C8A78B00D8B38A00845C5A009B715400A4714D00845C
+      5A000000000000000000000000000000000000000000C0AC9900529A5500A4CA
+      A600BBDABD00B0CFB1009ABE970087AF7800A7BC8600D8C89F00EFC3A600C8A4
+      92008F89950055648F005E363E00000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000845B5A00EDDCB600D0B0
+      8900E1BE8400DAB06E00C6935300E7A13800845C5A001A64AE001A64AE001A64
+      AE001A64AE001A64AE00000000000000000000000000828859007DB18000A4E0
+      A4000F9C0F0057BD5800A1DBA200CBE5CD00AACDAC007AAB77007AA45E00FDE4
+      BC00FFD2AC00A06A5F0000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000845C5B00F3EBCB00D7BE
+      9D00E8CC9800E1BB7D00CA9C5F00EFAC4300845C5A001A64AE0067D1FF005CC1
+      F9002A79BC001A64AE00000000000000000000000000B0A584005B9F5E00CBEA
+      CB0069C36900119F1100009400000B9D0B0053BA5300B3E4B5006FAC75007FA4
+      5F00FFD9BE00A06A5F0000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000845C5C00F0ECED00F2EE
+      F000F0EBEE00EFE9E900E9DFDF00F9E6DC007694B9001A64AE0066CFFF0052BA
+      FF001A64AE0000000000000000000000000000000000E2B59900A0C8A3006CA6
+      6D00B1CEB100C9E3C900A2D9A20060C160000E9C0E0047B64500A9C7AB005B90
+      4C00F1D1BF00A06A5F0000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000845C5A00845C5A00845C
+      5A00845C5A00845C5A00845C5A00845C5A00556C95001A64AE001A64AE00359B
+      F80037A0FF001A64AE00000000000000000000000000E2B59900FFFFFF00E4EF
+      E400B6D2B60097BF97008FB88F009FC39F00B9DABA00BFB5A000DE9D5900DE9D
+      5900DE9D5900DE9D590000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000001A64
+      AE003498FA002882DB001A64AE000000000000000000E2B59900FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00ECF3EC00B9D5BA0081B2820097937100DE9D5900FABB
+      6100DD9948000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00001A64AE001A64AE00000000000000000000000000E2B59900FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00DE9D5900DE9D
+      5900000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000E2B59900E2B59900E2B5
+      9900E2B59900E2B59900E2B59900E2B59900E2B59900E2B59900DE9D59000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000055E
+      0900055C080006630A0006620A00055C0700014E0100014E0100014E01000000
+      000000000000000000000000000000000000A4787400A4787400A4787400A478
+      7400A4787400A47874009C6D53009C6D53009C6D53009C6D53009C6D5300A478
+      7400A4787400A4787400A4787400A47874000000000000000000A4787400A67A
+      7500A67A7500A67A7500A67A7500A67A7500A67A7500A67A7500A67A7500A67A
+      7500A67A75009A6D6700000000000000000000000000000000000B7C1500097A
+      140008711000056A0C0004670B0004670C0004670C0004670C0004670C000467
+      0C0004670C0004570900000000000000000000000000065B0A0019922D0023AB
+      3E0021AB3C001B9F330013952A000C861B0006730F0003680A00005B03000050
+      0000004B0000000000000000000000000000A4787400FFFFFF00FFFFFF00FFFC
+      F700F7DFC700DEC29F00D6BB9800D8BC9900DBBF9D00E4CAAC00F1D9C100FEE7
+      D000FFFFFF00FFFFFF00FFFFFF00A47874000000000000000000A77B7500FAE7
+      C400FAE5BE00FAE2B900FAE1B400F9DFAE00F9DDAA00F9DAA600F8D9A200F8D8
+      9F00F8D79C009A6D6700000000000000000000000000129A28001AB03A0015AF
+      320011AB27000DA81F0008A6180008A5160008A5160008A6170008A6170008A5
+      170008AB1800078D1200045708000000000009680E0032CC570038E667002ACA
+      540023B5490024993600297525003B70340052674100653B3B00205318000553
+      0600004F0000004B00000000000000000000AB7E7700FFFFFF00A67B7600A67B
+      7600004C6600ADBEB500F0D1B400F2D4B500F4D3B200FAD4B000FCD3AA00EFBF
+      9600BF8C7700D7A38200D59F8000A47874000000000000000000AB7E7700FBEA
+      CC00FBE8C700FBE6C000FAE3BB00FAE1B500A67B7600A67B7600A67B7600A67B
+      7600F8D8A0009A6D67000000000000000000000000001BAD3C0025C554001EC0
+      450017BD39000FBA2C000CB82400FFFFFF002BC1390000B10A0007B6180009B7
+      1A0009BE1C0008AB170004670C000000000011841F004DF27F004FA763006A84
+      4000835911009228030092280300BC888900BB96A000653B3B009A5D6C00653B
+      3B00114A0C00005100000000000000000000B4877C00FFFFFF00FFFFFF00FFFF
+      FF00138CB20003B1E400138CB200D6CDC500E0BEAB00DCB9A500E5BFA500F5CD
+      AA00B6887C00B6887C00B6887C00A47874000000000000000000B0827A00FCEE
+      D500FCECCF00FBEAC900FAE7C400FAE4BE00FAE2B800FAE0B300F9DEAE00F9DC
+      A900F8DBA5009A6D670000000000000000000000000020B4450031C4640029BF
+      530037C35A00B2EEBF00B7F0C100DEFCE300B7EFBD0058CA620006B1160009B0
+      180009B71A0008A6170004680C000000000011841F0032873900D9B7D100E08A
+      4C009228030092280300A7350300BD979000B69DA000653B3B009D6E7A00653B
+      3B000E440700000000000000000000000000C0928000FFFFFF00A67B7600A67B
+      7600138CB20000CCFF00775D340099330000A67B7600A67B7600A67B7600FED9
+      B500FFDBAF00FFD5A300FFD69C00A47874000000000000000000B4877B00FCF1
+      DC00A67B7600FCEDD100A67B7600FBE7C500A67B7600FAE3BB00A67B7600FAE0
+      B000F9DDAC009A6D670000000000000000000000000022B548003FC8760035C3
+      670060D08300FBFFFD0044C66200C8EED0008BDC9900FCFFFE005FCC690009B1
+      180009B81A0008A6170004670C000000000000000000344E2300E1C7D800DAB8
+      9800C98E5C00B7866F00BB8C7A00C9B2B700B2969900653B3B009A798900653B
+      3B0000000000000000000000000000000000CC9C8600C2F0CA00C4F0BE00BDCE
+      FF0066A6FF00B04A0000FFA02800EC7E000099330000FFEAD500FFEAD500FFE6
+      CE00FEE1C400FEDCBA00FED9B300A47874000000000000000000BA8C7E00FDF5
+      E500FCF2DF00FCEFDA00FCEED400FCEBCE00FBE8C800FBE6C300FAE4BD00FAE2
+      B700F9E0B2009A6D670000000000000000000000000021B5480058D08A0046C9
+      7A0061D18B0090DEA9000DB73E00C6EED0006CD28100FFFFFF009DE0A6000CB2
+      1F0009B71A0008A6160004670C00000000000000000065393A00CEB19F00BDA3
+      9600B8998000CBA37000B4835600C9883700AC6A2400653B3B0090492400653B
+      3B0000000000000000000000000000000000D5A58A00BEE9C2004A79FF004A79
+      FF004A79FF00B04A0000FFC68400FFB74500E77B000099330000FFF7F700FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00A47874000000000000000000C0928100FEF7
+      EC00A67B7600A67B7600A67B7600A67B7600A67B7600FCEACA00FAE8C500FAE5
+      BF00FAE3BA009A6D670000000000000000000000000021B5480077D89F0052CC
+      81003CC773003AC66F0060CF8500D8FAE200F3FFF600FFFFFF008EDC9C0013B5
+      2D000DBA23000AA7180004680B000000000000000000653B3B00EBD49500CBA4
+      6800DCAB5700EFB44900B7762800E3931F00B8731C00653B3B00B83F0000653B
+      3B0000000000000000000000000000000000DCAB8D00DAA48200DAA48200DAA4
+      8200DAA48200DAA48200B04A0000FFC68400FFB33D00B6761D00004C6600DAA4
+      8200DAA48200DAA48200DAA48200DAA482000000000000000000C6978300FEFA
+      F200FEF8EE00FDF6E900FDF4E400FCF2DE00FDEFD900FCEED300FBEBCD00FBE8
+      C700FAE6C1009A6D670000000000000000000000000021B548008ADEAC005DD0
+      8A0048CA7A00BBF3D000FFFFFF00FFFFFF00FCFFFF00ABE6BC003AC35B0018B9
+      3A0014BB31000EA92200066F0E000000000000000000643B3B00E0D1B200CFB4
+      9300D5B58900D9B57E00B68C6300D09F6000AC7D5200653B3B00C05E1300653B
+      3B00000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000B04A0000BA9D7500409CA800B18222009933
+      0000000000000000000000000000000000000000000000000000CB9C8600FEFD
+      F800A67B7600A67B7600A67B7600A67B7600A67B7600FCF0DB00FCEED500FCEC
+      D000FBEACA009A6D670000000000000000000000000021B5480095E0B30065D2
+      8F006DD59600FFFFFF00E2FEED00EAFDF10063D18C0031C2610022BE4F001FBB
+      46001BBE3E0014AE2F000A7A14000000000000000000643A3B00D0B79F00CAAC
+      9000CAA68000CEA57600B5895F00C7915500A7724200653B3B0009479D00653B
+      3B00000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000004C6600A5A88D00FFB33500EB7F
+      0000993300000000000000000000000000000000000000000000D1A08800FFFE
+      FD00FFFDFA00FFFBF600FEFAF100FEF8ED00FEF5E800FDF4E300FDF1DD00F8E1
+      C300F3DDBA009A6D670000000000000000000000000021B548009DE3B9006FD5
+      970075D79B00FFFFFF0096E1B300CCF0DA0054CD8300C1F4D5005FD7880027BF
+      550023C04E001BB23C000D851A000000000000000000643B3B00E9D9A400CCA6
+      6F00D8AA5F00E5AF4F00B2752C00DD8B1B00BC6D130009479D000C62D0000947
+      9D00000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000B04A0000FFC68400FFB3
+      3D00E98100009933000000000000000000000000000000000000D5A58A00FFFF
+      FF00A67B7600A67B7600A67B7600A67B7600A67B7600FDF7EA00FDF5E500E5D7
+      C400C4BCAC009A6D670000000000000000000000000021B54800A9E6C20080DA
+      A3005DD08A00B5F1CC00D2FAE100D7FAE500C7F6DA00E7FFF00067D993002DC1
+      63002AC25D0020B54800108F1F000000000000000000643A3A00E1D8CF00E9E0
+      D500E5D7C600E6D3B700D1B69E00E1BC9100A995790009479D002389FF00146D
+      E00009479D0009479D000C499900000000000000000000000000000000000000
+      000000000000000000000000000000000000AE4A0100A9420000B4561C00FFC6
+      8400FFB53B00E8740000B63C0000000000000000000000000000D9A88B00FFFF
+      FF00A67B7600FFFFFF00FEFEFC00FFFDF900A67B7600FEFAF100B3817500B381
+      7500B3817500B381750000000000000000000000000021B54900AEE8C500A6E5
+      BF0086DCA70078D89D008ADDAA00FFFFFF00A1EBBD0060D18C0039C5700032C3
+      6C0030C56A0027BB5700139C26000000000000000000653B3B00653B3B00653B
+      3B00653B3B00653B3B00653B3B00653B3B00653B3B0009479D001C81FB00218A
+      FF002581DA002175C400165DAD00000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000B04A0000A83F0000B256
+      2100FFC68400E17E1200527068002686A5000000000000000000DCAB8D00FFFF
+      FF00A67B7600A67B7600A67B7600A67B7600A67B7600FFFCF700B3817500FFD1
+      7F00F5B55C00CA90780000000000000000000000000022B5480092E0B300AEE8
+      C600B1E9C800A9E6C2009BE3B80087DDAA006AD596004FCD82003BC7740036C5
+      700034C873002BBF5E0014A42800000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000852B4002F97
+      F8004BC1FF0046B6F6001357A700000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000B04A0000A332
+      0000814D30004E87910000BBFB0005A2D1000000000000000000DCAB8D00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FEFFFE00FFFEFC00B3817500F7C6
+      8300CA907800000000000000000000000000000000000000000038BB5A0051C5
+      700053C5710051C56F004CC36B0042C0640037BC5A002EB9530025B74A0023B5
+      4B0023B74A001AAF390000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000D54A5003595
+      DD004FC5FF0046B6F200155BAA00000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000B04A
+      0000A332000005A3D70005A3D700000000000000000000000000DCAB8D00DAA4
+      8200DAA48200DAA48200DAA48200DAA48200DAA48200DAA48200B3817500CA90
+      7800000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000001358A500165E
+      AC00165EAC00155CAB000F4F9F00000000000000000000000000000000000000
+      0000000000006528140067291300672913006729130067291300672913000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000033FF000033
+      FF000033FF000033FF00000000000000000000000000000000000009AC000009
+      AC000009AC000009AC0000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000006829
+      130067291300BC4B0000BC4B0000BC4B0000BC4B0000BC4B0000BC4B00006729
+      1300672913000000000000000000000000000000000000000000007400000074
+      0000007400000074000000740000007400000151A1000033FF005C7CFF006E8D
+      FF004266FF003E65FF000033FF0000000000000000000009AC000029EA000E3D
+      FD009DB3FF000020F2000009AC00146B5100188A1E00178624000F7B17000268
+      03000369040000000000000000000000000000000000AC661E00AC661E00AC66
+      1E00AC661E00AC661E00AC661E00AC661E00AC661E00AC661E00AC661E00AC66
+      1E0000000000000000000000000000000000000000000000000083350B00B547
+      0100BB4A0000BB4A0000BB4A0000BB4A0000BB4A0000BC4B0000BC4B0000BC4B
+      0000B54801006729130000000000000000000000000000740000009200000095
+      0000069D0B000FA7220000980200009E00000151A1006783FF006380FF00DBE4
+      FF00A9B9FF00234CFF003961FF00000000000009AC000027EA002957FF00F4F6
+      FF00FFFFFF006081FF00002FFF00052ADA0037B05E0037BD59002FB851002BAE
+      4900259F3B00056C0700056C070000000000AC661E00F1A63900F1A63900F1A6
+      3900F1A63900F1A63900F1A63900F1A63900F1A63900F1A63900F1A63900F1A6
+      3900AC661E000000000000000000000000000000000081340C00B4470000B848
+      0000B6460000B6460000B6460000B6460000B8480000BA490000BC4B0000BC4B
+      0000BC4B0000B5480100672913000000000000000000007400000091000017AE
+      2E002ECB64001EA925007BD67600038F0E002958D400486FFF006C8BFF00DFE6
+      FF008DA4FF000B36FF00517EFF00884524000009AC000A3BF9004A71FF006786
+      FF00B1C2FF00FFFFFF000537FF000030FD002A676A005B884E006B6F5300526C
+      4200328537001F93310016872300056C0700AC661E00F7BB6B00EDAC5900EAA9
+      5200E8A44B00E6A24700F1A63900856984000025FF001866E90028A2FF00519A
+      CF00AC661E0000000000000000000000000000000000A9420200B6470000B445
+      0000B1430000AD410000C0692800CA7D4000CC7F4100CA763200C25C1000BC4B
+      0000BC4B0000BC4B00006829130000000000000000000074000015AA2C0039D2
+      730024C655001EA92500D5FCCD0024A74E000033FF006F8AFF008BA6FE00ECF0
+      FF006181FF002753FF00406AFD00884524000009AC003868FF001E4EFF009BB1
+      FF00FFFFFF00597BFF00002EFF00002CFE004D3E9200D6B7B100905F6A009C65
+      72009A6C6E00755C50002774250005710900AC661E00F2B36200E9A75400E7A4
+      4D00E5A04700E39E4200EDA137008E6B76000025F2002060D7002A99F3005C96
+      C000AD671E00000000000000000000000000923A0700BA4C0200B74D0300B54D
+      0300B14B0300B0490100E0B28900FEFEFE00FEFEFE00FEFEFE00FEFEFE00D081
+      3D00BC4B0000BC4B0000BC4B00006528140000000000000000000074000032D8
+      6B001EA92500D4F5D100CBFCBF0027C24E00F26E49000033FF006E8FFF007090
+      FF00688BFF004D7CFF00403DB800884524000009AC005674EF007695FF00FFFF
+      FF00A1B6FF002452FF000337FF00002AF3007D4E5D00D3BEBD00905F6A009A6C
+      7700A9818800A97681002E66230000740500AC661E00F2B36200E9A75400E7A4
+      4D00E5A04700E39E4200EDA13700E9A14000C28B5C00D2995C00C4A26E00E6B2
+      7300AE682000000000000000000000000000973D0600BF560900BB570B00B857
+      0C00B7560C00B5540A00B5540B00B6560D00B4530C00B5520F00DCA47400FEFE
+      FE00BB4A0000BC4B0000BC4B0000682913000000000000000000146329000F51
+      1800325177004361B3004E8A990060A84E005A739A00FF8861000033FF000033
+      FF000033FF000033FF00E970450088452400000000000009AC00B1C7FF00CFDA
+      FF00FFFFFF00E2E9FF000941FF001D27B100B26A3A00D3C2C800905F6A009B71
+      7B00A9868D00A67B8300515B380000000000AC661E00D9974800C5813300C681
+      3200C5803000C47F2E00C37E2D00C57F2E00DD984700E19F5200F2AF6000F6BB
+      7D00B2662100000000000000000000000000963E0700C76A1F00C1651A00BF64
+      1900BF651B00BD631800E3BD9700B6550C00B14D0400AD450100B64E0900FEFE
+      FE00BB4A0000BC4B0000BC4B0000682913000000000000000000000000000509
+      24000D38A4000938A6000436A8003C4CA600F1846200A8695C009D909000759E
+      AE00729BA500AA826D00C54B27000000000000000000000000000009AC009FB7
+      FF00C1D0FF004A72FF00324AD900AF97A600CDAD9E00C4ABA900905F6A00986F
+      7800A98A9000A5828B0089505D0000000000AC661E00E6A75200D8954200D993
+      3E00D8913A00D7903800D7903900D9933E00DD984700E19F5200F7B97500FFC7
+      8D009B67200042832D0042832D0000000000973F0900D48B4900CB7A3400C672
+      2900C7742C00E6C19D00FEFEFE00BC601700B6550C00B24C0400CB804200FEFE
+      FE00BB4A0000BC4B0000BC4B0000682913000000000000000000010407001745
+      94001D5BCA001C56BC001C57BC00094FC1006567A2001E87E4000C7ED800147A
+      D0000C72CF001888AF0000000000000000000000000000000000000000006B6B
+      B500686DB9008E7B9100D1A66600C28E5000C28A4200E09C2600905F6A00AB59
+      2600A25119009B55370089505D000000000000000000AC661E00AC661E00AC66
+      1E00AC661E00AC661E00AC661E00AC661E00AC661E00AC661E00AC661E00AC66
+      1E0062A14A00637525004DFA930042832D00953D0700DEA06800DA9D6200CF80
+      3A00F0D7BD00FEFEFE00FEFEFE00F6E9DA00EFD8C100EED5BD00FEFEFE00DDA5
+      7400BB4A0000BC4B0000BC4B0000682913000000000000000000050E1C002066
+      CC00226CD9002169D3002169D3002167D100186EDC003296FD003699FC003699
+      FC003394F9002985F3001888AF00000000000000000000000000000000008950
+      5D00EDCF8F00DEB87700F8D27C00D4A55C00CF984500E7A83600905F6A00C268
+      1C00BB5C0200B34D000089505D00000000000000000000000000000000006375
+      250048C76A0046C2650042BE60003FBB5E003DB8590039B6560038B3530034AC
+      4A00109A320041E580004DFA930042832D00953B0500E09E6300EBC6A100DD9C
+      5E00F2D8BD00FEFEFE00FEFEFE00F0D9C200E5BC9600E2B78E00D0874500B748
+      0100BB4A0000BC4B0000BC4B000065281400000000000000000003070C002672
+      CC002E8DFA002B85EC002B83EB002B84EE00308CF40041A9FF0042AAFE0041A7
+      FB003DA4FB00379CFB002E8AF0001888AF000000000000000000000000008950
+      5D00DCC9AB00D0B49400E8CDA000D0B08B00CEA77B00DDB37200905F6A00B872
+      3F00BA6C2800B769270089505D00000000000000000000000000000000004283
+      2D0043DF7A003DDA760039D6720035D26D0033D16B0031CF6A0031CE690035D2
+      6E0010851F001389230036C7610042832D00000000009A471100EFCEAD00F0CE
+      AC00E3A97200EECCAB00FEFEFE00C9752D00C2681D00BF5C1000BC540700BB4B
+      0100BB4A0000BC4B00006829130000000000000000000000000000000000123D
+      64003194E6003297F200369EFB002F8BE4003386CD0041A6EF0040A4EC0049B1
+      FC0046ADFB003FA6FC00359AF9001888AF000000000000000000000000008950
+      5D00C6AB9800BD9D8900C8A98D00BE9B8200BC977F00C1987500905F6A009763
+      5A0099644F00965D490089505D00000000000000000000000000000000004983
+      2E0044C867003DDA760039D6720035D26D0033D16B0031CF6A0031CE690034DB
+      75003DDE78001B9D37002AB14A0042832D0000000000953B0500E2A46800F6E0
+      C900F3D5B800E2A97200EAC19900CB762D00C66A1E00C25F1100C1590A00BC4D
+      0300BC4B0000B548010063281500000000000000000000000000828282000000
+      0000061423000B2035000E29440006132200106A9B0007517700075177004FB9
+      FF004AB1FC0044ABFC0039A0F8001888AF000000000000000000000000008950
+      5D00E0C79500D6B17900F4CC7700D1A15700CD944000E5A32D00905F6A00BD65
+      1F00B6590700AD4A030089505D00000000000000000000000000000000004983
+      2E0043C86700439F450042A2470041A1460040A045003F9F4400409E44003DD2
+      700044D976004EE480005CFE990042832D000000000000000000963C0600E5A6
+      6C00F3D7BB00F4DEC700EBC49D00E1A67000DA955600D5894500CE762C00C056
+      0700B5480100762F0F0000000000000000000000000000000000000000008282
+      82008282820000000000010101001D4357006DADCB00065D87003291CC0053BE
+      FF0051BAFF004DB4FF001888AF00000000000000000000000000000000008950
+      5D00D2BCA200CBAD8E00DEBF9200C2986800BF8D5100D29B4600905F6A00B867
+      2900B35F1100AB5C200089505D00000000000000000000000000000000004981
+      2D0040DC78003BD16D0038CE6B0037CC690035CA670035CB670037CE6A003DD2
+      700044D976004EE4800062FFA40042832D00000000000000000000000000973D
+      06009F4C1600E6AA7200EBBC9000E9BB8E00E3AA7500D88B4800C76416009C41
+      09006F2D11000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000002583B0006DADCB00277DA8000A58
+      82000A588200005684001888AF00000000000000000000000000000000008950
+      5D00FFFFFF00FBFBFC00F8F6F700F5F1F200F2EDED00F2EDEC00905F6A00A18B
+      9000B5B4B400B0A9AC0089505D00000000000000000000000000000000000000
+      000042832D0042832D0042832D0042832D0042832D0042832D0042832D004283
+      2D0042832D0042832D0042832D00000000000000000000000000000000000000
+      000000000000993F07009C420A009E460E009D450C009C41090084360C000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000003990B9002983AC00116B
+      9600005684000000000000000000000000000000000000000000000000008950
+      5D0089505D0089505D0089505D0089505D0089505D0089505D0089505D008950
+      5D0089505D0089505D0089505D00000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000B433070000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000006A0000006A0000006A0000006A0000006A0000006A0000006A
+      0000006A0000006A0000006A0000006A0000000000000000000000669A000066
+      9A0000669A00A4787400A4787400A4787400A4787400A4787400A4787400A478
+      7400A4787400A47874008C5D5C00000000000000000000000000000000000566
+      9500056695000566950005669500056695000566950000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000005669500304B5000B4330700354141000566950005669500000000000000
+      00000000000000000000000000000000000095655F00A5696A00A5696A00A569
+      6A00A5696A00006A0000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00006A00000000000000669A003CBEE30036BA
+      E10030B6DF00B7818300FCEDDD00FAF2E400F8F1E000F7EEDD00F7EEDB00F7ED
+      DB00F7ECDA00F8EDD9008C5D5C000000000000000000000000000274A90030C9
+      E90012CAFD0020CEFE0054DEFF0074E0F8002CA7D30005669500000000000000
+      0000000000000000000000000000000000000000000000000000000000000274
+      A90030C9E90013CAFB0072462A00B4330700797666002CA7D300056695000000
+      00000000000000000000000000000000000098686000FBE5C000F4D5AD00F0CF
+      9F00EFCA9600006A0000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00006A00000000000000669A0045C4E6003FC0
+      E40038BCE200B7818300F6E4DA00E4A85C00E4A75900E3A75900E3A75900E3A6
+      5800E3A75900F0E3D0008C5D5C0000000000000000000274A90073FAFE003FE3
+      FE0012CAFD001FC6F40000008200000082000000820000008200000082000000
+      82000000820000008200000000000000000000000000000000000274A90073FA
+      FE003FE3FE0013CAFB002DAFCC00863E1B00AC400600506664000386C1000566
+      9500000000000000000000000000000000009D6B6200FCE7C900F2D5B500F0D0
+      A900EECB9E00006A0000FFFFFF0078BB7800006A00001C831C00FAFCFA006AB4
+      6A00006A00004DA34D00FFFFFF00006A00000000000000669A004DC9E90047C4
+      E70041C0E500B9848400F8E8DF00F9E4CE00F9DBBD00F9DBBD00F9DBBD00F8D9
+      B800F5DDC200F0E4D2008C5D5C0000000000000000000274A90073FAFE003FE3
+      FE0012CAFD001FC6F400000082002753FF001641FF00072FFF000020FF000016
+      F700000EE60000008200000000000000000000000000000000000274A90073FA
+      FE003FE3FE0013CAFB0020CEFE0067827A0093411800B43307003E4340000566
+      950000000000000000000000000000000000A36F6400FEEED400F4DDC000F2D7
+      B500F0D1AA00006A0000FFFFFF00FFFFFF00B4DAB400016C01000D780D00006A
+      00006AB46A00FFFFFF00FFFFFF00006A00000000000000669A0056CDED0050C9
+      EA004AC5E800BC878500F9EBE400E4A85C00E4A75800E4A75800E4A75800E4A6
+      5700E3A75900F2E6D6008C5D5C0000000000000000000274A90073FAFE003FE3
+      FE0012CAFD001FC6F400000082002C59FF001D49FF000D36FF000020FF00001A
+      FB000011ED0000008200000000000000000000000000000000000274A90073FA
+      FE003FE3FE0013CAFB0020CEFE0055D8F600874F3100B8663000A62902002D41
+      480000000000000000000000000000000000A7746600FFF4E100F6E1CA00F3DC
+      BF00F2D7B400006A0000FFFFFF00FFFFFF00FFFFFF004EA44E00006A00000A76
+      0A00FAFCFA00FFFFFF00FFFFFF00006A00000000000000669A005ED2F00058CF
+      ED0052CBEB00C08B8500FAEFE900FAEDDE00FAE5D000F9E5CF00F9E3CD00F8E1
+      CA00F5E4D000F3E8DB008C5D5C0000000000000000000274A9009FFBFE00A3F3
+      FF00B6F2FF00D8F6FC0000008200000082000000820000008200000082000000
+      82000000820000008200000000000000000000000000000000000274A9009FFB
+      FE00A3F3FF00B6F2FF00DAF8FF00E5FAFF00C5C2BA0093411800E7B47900A629
+      020000000000000000000000000000000000AD786900FFFBEE00F7E7D500F4E1
+      CA00F3DCBF00006A0000FFFFFF00FFFFFF005FAD5F00006A00004AA14A00016C
+      010023892300EEF7EE00FFFFFF00006A00000000000000669A0066D7F30060D4
+      F1005AD0EE00C4908600FCF4F000E5A95C00E5A65700E5A65700E4A65700E4A6
+      5600E4A75A00F7EEE3008C5D5C0000000000000000000274A900A7E9F3001CAA
+      D3000791C5000787BB00108BBC001F91BF001479AD0079C0DC00056695000000
+      00000000000000000000000000000000000000000000000000000274A900A7E9
+      F3001CAAD3000791C5000788BC00B0410000B0410000AC400600CE8C5900FEE0
+      A700A6290200000000000000000000000000B47E6B00FFFFFB00F8EDE100F7E6
+      D400F6E1C900006A0000FFFFFF00469F4600006A000060AD6000FFFFFF00BBDD
+      BB00016B010023892300FFFFFF00006A00000000000000669A006DDBF60067D8
+      F30062D4F200C8948800FEF7F400FEF7F000FBF0E500FBEFE300FAEDE000FAEE
+      E100F9F0E500E8E3DD008C5D5C0000000000000000000274A90031B5D3003FE3
+      FE0012CAFD0020CEFE0054DEFF0074E0F80030B0DA000268A30003689A000000
+      00000000000000000000000000000000000000000000000000000274A90031B5
+      D3003FE3FE0013CAFB0020CEFE00B0410000BF734000FCD39600EEB77A00A92D
+      0300A6290200A62902000000000000000000BA836D00FFFFFF00FCF4EE00FAED
+      E100F8E9D500006A0000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00006A00000000000000669A0074DFF8006FDC
+      F6006ADAF400CC998900FEF8F500FFFFFF00FEFFFE00FCFAF900FBFBF900B481
+      7600B4817600B4817600B481760000000000000000000274A90073FAFE003FE3
+      FE0012CAFD0020CEFE0054DEFF0074E0F80030B0DA000386C100056695000000
+      00000000000000000000000000000000000000000000000000000274A90073FA
+      FE003FE3FE0013CAFB0020CEFE0054DEFF00B0410000BC693300F3B56A00DC8F
+      4700A6290200000000000000000000000000BF877000FFFFFF00FFFBFA00FEF4
+      ED00FAEEE000006A0000FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00006A00000000000000669A007AE3FA0076E1
+      F80070DDF600D09C8900FFFAF800FFFFFF00FFFFFF00FFFFFF00FFFFFF00B481
+      7600E0A87000F7935B00FF00FE0000000000000000000274A90073FAFE003FE3
+      FE0012CAFD0020CEFE0054DEFF0074E0F80030B0DA000386C100056695000000
+      00000000000000000000000000000000000000000000000000000274A90073FA
+      FE003FE3FE0013CAFB0020CEFE0054DEFF0074E0F800B0410000B2541700D877
+      1D00C65D0C00A92D03000000000000000000C48C7200FFFFFF00FFFFFF00FFFC
+      FA00FCF4ED00006A0000006A0000006A0000006A0000006A0000006A0000006A
+      0000006A0000006A0000006A0000006A00000000000000669A007FE6FC007BE4
+      FA0077E1F900D29F8A00DCA88700DCA88700DCA88700DCA88700DCA88700B481
+      7600C7AF890000669A000000000000000000000000000274A90073FAFE003FE3
+      FE0012CAFD0020CEFE0054DEFF0074E0F80030B0DA000386C100056695000000
+      00000000000000000000000000000000000000000000000000000274A90073FA
+      FE003FE3FE0013CAFB0020CEFE0054DEFF0074E0F80030B0DA00B0410000B041
+      0000B0410000A6290200A629020000000000CA917400FFFFFF00FFFFFF00FFFF
+      FF00FFFCFA00FCF4ED00FAEDDE00F8E7D400FCEBD300E3D3BB00B7AD9C00A569
+      6A00000000000000000000000000000000000000000000669A0083E8FE0080E6
+      FC007DE5FC007DE5FC0078E2FA0072DFF8006BDAF50064D5F2005DD0EF0056CD
+      ED0052CAEB0000669A000000000000000000000000000274A90078FBFE0068F6
+      FF0055F6FE005FFEFF0078FBFE0089FBFE0048CFF200058BC700056695000000
+      00000000000000000000000000000000000000000000000000000274A90078FB
+      FE0068F6FF0055F6FE005FFEFF0078FBFE0089FBFE0048CFF200058BC7000566
+      950000000000000000000000000000000000CE957600FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FEFCFA00FCF6EB00FAEFE000A5696A00A5696A00A5696A00A569
+      6A00000000000000000000000000000000000000000000669A0084E9FE0084E9
+      FE007373730073737300737373007373730073737300737373007373730060D4
+      F0005ACFEE0000669A000000000000000000000000000274A900FBFFFF00F0FF
+      FF00C6FFFF00A0FFFF009FFBFE009FFBFE0092FFFF0055F6FE00056695000000
+      00000000000000000000000000000000000000000000000000000274A900FBFF
+      FF00F0FFFF00C6FFFF00A0FFFF009FFBFE009FFBFE0092FFFF0055F6FE000566
+      950000000000000000000000000000000000D3977800FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFC00F4EBE600A5696A00E2A35B00EF993800BB70
+      4F00000000000000000000000000000000000000000000669A0084E9FE0084E9
+      FE0073737300CFC1BC00CFC1BB00CFC1BB00CFC1BB00CEBEB7007373730068D8
+      F40062D4F10000669A00000000000000000000000000000000000479AF00EDFA
+      FC00DCFFFF00B7FFFF009FFBFE0089FBFE0083FAFB00086B9A00000000000000
+      0000000000000000000000000000000000000000000000000000000000000479
+      AF00EDFAFC00DAF8FF00B7FFFF009FFBFE0089FBFE0083FAFB00086B9A000000
+      000000000000000000000000000000000000D59A7900FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00F8F8FE00A5696A00E5A55F00C2805C000000
+      000000000000000000000000000000000000000000000000000000669A000066
+      9A0073737300E2D8D300FAF9F800F9F8F700F9F8F700D0C5BF00737373000066
+      9A0000669A000000000000000000000000000000000000000000000000000274
+      A9000274A9000274A9000274A9000274A9000274A90000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000274A9000274A9000274A9000274A9000274A9000274A900000000000000
+      000000000000000000000000000000000000D0906B00D0906B00D0906B00D090
+      6B00D0906B00D0906B00D0906B00D0906B00A5696A00BB7F6A00000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000007373730073737300737373007373730073737300000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000035A0500035A0500035A
+      0500035A05000000000000000000000000000000000000000000000000000000
+      00000000000000000000811E0000811E0000811E0000811E0000811E0000811E
+      0000811E0000811E000000000000000000000000000000000000000D6C00000D
+      6C00000C5D00000A5100000A4F00000A4F00000A4F00000A4F00000A4F00000A
+      4F00000A4F000008400000000000000000000000000000000000003A9500003A
+      95000035870000317E00002F7900002F7900002F7900002F7900002F7900002F
+      7900002F790000296A0000000000000000000000000000000000056695000566
+      95000566950005669500056695000566950000000000035A0500089511000690
+      0E00035A05000000000000000000000000000000000000000000056695000566
+      95000566950005669500811E0000FEFEFE00FEFEFE00FEFEFE00758EFC00A5B6
+      FC00FEFEFE00811E0000000000000000000000000000001397000017B9000016
+      B5000015AA000013A0000013A00000139700001397000013A000001397000013
+      97000013A000000F7A00000840000000000000000000004BC0000058E2000054
+      D7000054D700004BC000004BC000004BC000004BC000004BC000004BC000004B
+      C000004BC0000041A50000296A0000000000000000000274A90030C9E90012CB
+      FE0020CDFD0054DEFF0074E0F8002CA7D30005669500035A05000C9D19000A99
+      1500035A0500000000000000000000000000000000000274A90030C9E90012CB
+      FE0020CEFE0054DEFF00811E0000FEFEFE00FEFEFE006480FB00011FFA003D5D
+      FB00FEFEFE00811E00000000000000000000000000000017B900001CE200001A
+      D5000018CA000018C6000016B5000016B5000015AA000015AA000016B5000015
+      AA000016B5000013A000000A4F0000000000000000000056DD000268FF000062
+      F800005DEE00005DEE000058E2000054D7000054D7000054D7000054D7000056
+      DD000056DD00004BC00000317E00000000000274A90073FAFE003FE3FE0012CB
+      FE0020CDFD0051D7F600035A0500035A0500035A0500035A050011A624000DA0
+      1C00035A0500035A0500035A0500035A05000274A90073FAFE003FE3FE0012CB
+      FE0020CEFE0054DEFF00811E0000CAD4FE00284BFB00011FFA00284BFB000120
+      FA00CAD4FE00811E00000000000000000000000000000018C600001EF000001C
+      E200001AD5000018C6000018C6000016B5000016B5000015AA000013A0000015
+      AA000015AA000013A000000A4F000000000000000000005DEE000268FF000268
+      FF000062F800005DEE000664E700C1DCF8001C70DE000054D700004FCA00004F
+      CA000056DD00004BC00000317E00000000000274A90073FAFE003FE3FE0012CB
+      FE0020CDFD0051D7F600035A050025C7470025C747001BB735001BB7350013AB
+      270011A624000DA01C000A991500035A05000274A90073FAFE003FE3FE0012CB
+      FE0020CEFE0054DEFF00811E00003D5DFB00092AFA00AABAFC00EAEEFE00092A
+      FA003859FB00811E00000000000000000000000000000018CA000224FF00001E
+      F000001CE200001AD5000018CA000018C6000016B5000016B5000015AA000013
+      A0000017B90000139700000A4F000000000000000000005EF0001176FF00086E
+      FF000268FF000268FF00C1DCF800FFFFFF0076B1F2000054D7000054D700004F
+      CA000054D700004BC000002F7900000000000274A90073FAFE003FE3FE0012CB
+      FE0020CDFD0051D8F700035A05002CD3550027CB4B0025C747001CBA38001BB7
+      350017B02E0013AB270011A62400035A05000274A90073FAFE003FE3FE0012CB
+      FE0020CEFE0054DEFF00811E0000DCE3FE00CAD4FE00FEFEFE00FEFEFE008097
+      FC00011FFA00491F3F000000000000000000000000000018CA00163BFF000528
+      FF00001EF000001CE200001AD5000018CA000018CA000017B9000016B5000015
+      AA000015AA000013A000000A4F000000000000000000005EF0002585FF001579
+      FF001176FF00C2E0FF00FFFFFF00FFFFFF00D6E9FD000058E2000054D7000054
+      D7000054D700004BC000002F7900000000000274A9009FFBFE00A3F3FF00B6F2
+      FF00DAF8FF00E2F7FC00035A0500035A0500035A0500035A050027CB4B0025C7
+      4700035A0500035A0500035A0500035A05000274A9009FFBFE00A3F3FF00B6F2
+      FF00DAF8FF00E5FAFF00811E0000FEFEFE00FEFEFE00FEFEFE00FEFEFE00FEFE
+      FE003D5DFB00011FFA000000000000000000000000000018CA003559FF000F35
+      FF000224FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000017
+      B9000016B5000013A000000A4F000000000000000000005EF000459AFF001E80
+      FF00D9EDFF00FFFFFF00C2E0FF00459AFF00FFFFFF002883F400005DEE000056
+      DD000056DD00004BC00000317E00000000000274A900A7E9F3001CAAD3000791
+      C5000788BC00108ABB001F91BF001479AD0079C0DC00035A05002CD3550029CF
+      5200035A05000000000000000000000000000274A900A7E9F3001CAAD3000791
+      C5000788BC00108BBC00811E0000811E0000811E0000811E0000811E0000811E
+      0000761E0700111FB800011FFA0000000000000000000018CA004E6EFF00193F
+      FF000224FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000018
+      C6000018C60000139D00000C5D000000000000000000005EF0005CA7FF002A88
+      FF005CA7FF0092C6FF000E74FF000268FF009CCBFF0089C0FE00005DEE000058
+      E2000058E200004FCA0000358700000000000274A90031B5D3003FE3FE0012CB
+      FE0020CDFD0054DEFF0074E0F80030B0DA000268A300035A050034DE650030D9
+      5E00035A05000000000000000000000000000274A90031B5D3003FE3FE0012CB
+      FE0020CEFE0054DEFF0074E0F80030B0DA000268A30003689A00000000000000
+      00000000000000000000011FFA00011FFA00000000000018CA005A79FF002146
+      FF00092DFF000224FF00001EF000001DEE00001DEE00001CE200001AD5000018
+      CA000018CA000016B500000D6C000000000000000000005EF00069AFFF00328E
+      FF00187BFF000E74FF000268FF000268FF00187BFF00D6E9FD000268FF000062
+      F800005EF0000054D700003A9500000000000274A90073FAFE003FE3FE0012CB
+      FE0020CDFD0054DEFF0074E0F80030B0DA000385C000035A0500035A0500035A
+      0500035A05000000000000000000000000000274A90073FAFE003FE3FE0012CB
+      FE0020CEFE0054DEFF0074E0F80030B0DA000386C10005669500000000000000
+      0000000000000000000000000000011FFA00000000000018CA006682FF002D51
+      FF00163BFF000F35FF000224FF00001FFF00001EF000001EF000001DEE00001C
+      DE00001CDE000017B900000F7A000000000000000000005EF00074B5FF003D95
+      FF002585FF001E80FF001579FF000E74FF00086EFF004D9FFF005CA7FF000268
+      FF000268FF000058E2000041A500000000000274A90073FAFE003FE3FE0012CB
+      FE0020CDFD0054DEFF0074E0F80030B0DA000385C00005669500000000000000
+      0000000000000000000000000000000000000274A90073FAFE003FE3FE0012CB
+      FE0020CEFE0054DEFF0074E0F80030B0DA000386C10005669500000000000000
+      000000000000000000000000000000000000000000000018CA007690FF004163
+      FF00193FFF00163BFF00092DFF000528FF000224FF000224FF00001DEE00001D
+      EE00001CE2000018C600001187000000000000000000005EF00081BCFF0050A0
+      FF002A88FF002585FF00187BFF001579FF001176FF000E74FF006DB2FF000268
+      FF000268FF00005DEE000044AF00000000000274A90073FAFE003FE3FE0012CB
+      FE0020CDFD0054DEFF0074E0F80030B0DA000385C00005669500000000000000
+      0000000000000000000000000000000000000274A90073FAFE003FE3FE0012CB
+      FE0020CEFE0054DEFF0074E0F80030B0DA000386C10005669500000000000000
+      000000000000000000000000000000000000000000000018CA007F98FF00728C
+      FF005676FF004163FF003559FF00284CFF00163BFF000224FF00001FFF00001D
+      EE00001DEE00001CDE00001397000000000000000000005EF00089C0FE007FBB
+      FF0066ACFF0050A0FF004D9FFF00328EFF002585FF001176FF00086EFF000268
+      FF00086EFF000268FF00004BC000000000000274A90078FBFE0068F6FF0055F6
+      FE005FFEFF0078FBFE0089FBFE0048CFF200058BC70005669500000000000000
+      0000000000000000000000000000000000000274A90078FBFE0068F6FF0055F6
+      FE005FFEFF0078FBFE0089FBFE0048CFF200058BC70005669500000000000000
+      000000000000000000000000000000000000000000000018CA005877FF007F98
+      FF00839CFF007690FF006682FF004E6EFF00284CFF000F35FF000224FF00001F
+      FF00001DEE00001CE2000013A0000000000000000000005EF00066ACFF0089C0
+      FE0092C6FF0081BCFF0074B5FF005CA7FF003690FF001E80FF000E74FF000E74
+      FF00086EFF000268FF00004FCA00000000000274A900FBFFFF00F0FFFF00C6FF
+      FF00A0FFFF009FFBFE009FFBFE0092FFFF0055F6FE0005669500000000000000
+      0000000000000000000000000000000000000274A900FEFEFE00F0FFFF00C6FF
+      FF00A0FFFF009FFBFE009FFBFE0092FFFF0055F6FE0005669500000000000000
+      0000000000000000000000000000000000000000000000000000001DEE00092D
+      FF000F35FF00092DFF000528FF000224FF00001DEE00001CDE00001AD5000018
+      CA00001AD5000016B500000000000000000000000000000000000268FF00187B
+      FF00187BFF001E80FF001579FF000E74FF000268FF000268FF00005EF000005E
+      F000005EF0000058E2000000000000000000000000000479AF00EDFAFC00DAF8
+      FF00B7FFFF009FFBFE0089FBFE0083FAFB00086B9A0000000000000000000000
+      000000000000000000000000000000000000000000000479AF00F0FFFF00DAF8
+      FF00B7FFFF009FFBFE0089FBFE0083FAFB00086B9A0000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000274A9000274
+      A9000274A9000274A9000274A9000274A9000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000274A9000274
+      A9000274A9000274A9000274A9000274A9000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000051627E0053626D000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000003A9500003A
+      95000035870000317E00002F7900002F7900002F7900002F7900002F7900002F
+      7900002F790000296A0000000000000000000000000000000000056695000566
+      9500056695000566950005669500056695000000000000000000000000000000
+      0000000000005B667E000F6FD7004093D3000000000000000000000D6C00000D
+      6C00000C5D00000A5100000A4F00000A4F00000A4F00000A4F00000A4F00000A
+      4F00000A4F000008400000000000000000000000000000000000000D6C00000D
+      6C00000C5D00000A5100000A4F00000A4F00000A4F00000A4F00000A4F00000A
+      4F00000A4F0000084000000000000000000000000000004BC0000058E1000055
+      D9000052D100004BC000004BC000004BC000004BC000004BC000004BC000004B
+      C000004BC0000041A50000296A0000000000000000000274A90030C9E90012CB
+      FE0020CEFE0054DEFF0074E0F8002CA7D3000566950000000000000000000000
+      00005F697E00106CD30035A3FF003C9AF00000000000001397000017B9000016
+      B5000015AA000013A0000013A00000139700001397000013A000001397000013
+      97000013A000000F7A00000840000000000000000000001397000017B9000016
+      B5000015AA000013A0000013A00000139700001397000013A000001397000013
+      97000013A000000F7A000008400000000000000000000055D9000268FF000062
+      F800005EF000005DEE000058E1000052D1000055D9000052D1000055D9000055
+      D9000055D900004FCA00002F7900000000000274A90073FAFE003FE3FE0012CB
+      FE0020CEFE0054DEFF0074DEF70032AFD8000484BF000566950000000000706C
+      7D001165C100309FFF003C9AF00000000000000000000017B900001CE200001A
+      D5000018CA000018C6000016B5000016B5000015AA000015AA000016B5000015
+      AA000016B5000013A000000A4F0000000000000000000017B900001CE200001A
+      D1000019CC000018C6000016B5000016B5000015AA000015AA000016B5000015
+      AA000016B5000013A000000A4F000000000000000000005EF0000268FF000268
+      FF000060F600005DEE000058E1000058E1000055D9000052D1000052D1000050
+      CD000055D900004BC00000317E00000000000274A90073FAFE003FE3FE0012CB
+      FE0020CEFE005BC7E1009E7F7A00B08F8100B6998A00986D6300735050004579
+      AB0035A3FF00309FFF000000000000000000000000000018C600001EF000001C
+      E200001AD5000018C6000018C6000016B5000016B5000015AA000013A0000015
+      AA000015AA000013A000000A4F0000000000000000000018C600001EF000001C
+      E200001AD1000018C6003653D300EAEEFA008899E000061FAF000013A0000015
+      AA000015AA000013A000000A4F000000000000000000005EF0000F75FF00086E
+      FF000268FF00FFFFFF00C1E0FF000665EA000058E10088BAEF00FFFFFF000050
+      CD000055D900004BC000002F7900000000000274A90073FAFE003FE3FE0012CB
+      FE002DB6DD009E7F7A00E5D4C000FEFBCF00FFFFDC00F4EECB00C4A58A00986D
+      6300309FFF00000000000000000000000000000000000018CA000224FF00001E
+      F000001CE200001AD5000018C600FFFFFF00F4F7FF000016B5000015AA000013
+      A0000017B90000139700000A4F0000000000000000000019CC000224FF00001E
+      F0009AACF6000624D7000019CC009AAAEB00FFFFFF008899E0000015AA000015
+      AA000015AA000013A000000A4F000000000000000000005EF0002585FF001579
+      FF00086EFF00C1E0FF00FFFFFF00C1E0FF0088BAEF00FFFFFF00C1E0FF000052
+      D1000052D100004BC000002F7900000000000274A9009FFBFE00A3F3FF00B6F2
+      FF00A3898700E1D3CA00FFFFEE00FEFBCF00FEFBCF00FFFAC700FFEEAB00BB8A
+      720000000000000000000000000000000000000000000018CA00163BFF000528
+      FF00001EF000001CE200001BD900FFFFFF00FFFFFF000017B9000016B5000015
+      AA000015AA000013A000000A4F0000000000000000000019CC00163BFF000528
+      FF00FFFFFF00768FF300001AD1003654DE00FFFFFF00ADBBEE000016B5000015
+      AA000016B50000139700000A4F000000000000000000005EF000469AFF001E80
+      FF000F75FF000F75FF00C1E0FF00FFFFFF00FFFFFF00C1E0FF000665EA000055
+      D9000058E100004BC00000317E00000000000274A900A7E9F3001CAAD3000791
+      C50084787600FCFBD700FEFBCF00FEFBCF00FCFBD700FBF0BF00F6C28300E9C5
+      9600986C6B00000000000000000000000000000000000018CA003559FF000F35
+      FF000224FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000017
+      B9000016B5000013A000000A4F0000000000000000000019CC003559FF000F35
+      FF00FFFFFF00FFFFFF00768FF300EAEEFA00FFFFFF00889CEB000018C6000016
+      B5000016B5000013A000000A4F000000000000000000005EF0005CA7FF002A88
+      FF000F75FF000F75FF008EC4FF00FFFFFF00FFFFFF00C1E0FF000060F600005D
+      EE000058E1000050CD0000358700000000000274A90031B5D3003FE3FE0012CB
+      FE008F878200FFFFDC00FEFBCF00FEFBCF00FCFBD700F3CF9600EFAD6A00F2D6
+      A000986C6B00000000000000000000000000000000000018CA004E6EFF00193F
+      FF000224FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF000018
+      C6000018C6000013A000000A510000000000000000000019CC004D6DFF00193F
+      FF004D6DFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00EAEEFA001C3BD5000018
+      C6000017B9000015AA00000A51000000000000000000005EF00069AFFF00328E
+      FF001579FF0093C7FF00FFFFFF00C1E0FF00C1E0FF00FFFFFF00C1E0FF000060
+      F600005DEE000052D100003A9500000000000274A90073FAFE003FE3FE0012CB
+      FE007F7B7A00F7F3CA00FEFBCF00FFFAC700F6D89E00EEBB8100FEE3A600DCBD
+      9600986C6B00000000000000000000000000000000000018CA005A79FF002146
+      FF00092DFF000224FF00001EF000FFFFFF00FFFFFF00001CE200001BD9000018
+      CA000018CA000016B500000D6C0000000000000000000019CC005A79FF002146
+      FF00092DFF00294DFF006681F8004565F400C1CCFB00FFFFFF00EAEEFA001C3B
+      D5000019CC000016B500000D6C000000000000000000005EF00074B5FF003D95
+      FF002585FF00EEF6FF00C9E3FF001579FF000F75FF00C9E3FF00FFFFFF000062
+      F8000268FF000058E1000041A500000000000274A90073FAFE003FE3FE0012CB
+      FE004392AB00C6A98C00FFF6B500F6C28300F0B87500FFF4D700F7F3EE00986C
+      6B0000000000000000000000000000000000000000000018CA006682FF002D51
+      FF00163BFF000F35FF000224FF00FFFFFF00FFFFFF00001DEE00001CE200001C
+      E200001BD9000017B900000F7A0000000000000000000019CC006681F8002D51
+      FF00163BFF000F35FF000224FF00001FFF000528FF00EAEEFA00FFFFFF00EAEE
+      FA00001BD9000017B900000F7A000000000000000000005EF00081BCFF0050A0
+      FF002A88FF002585FF00187BFF001579FF001579FF000F75FF000062F8000268
+      FF000268FF00005DEE000044AF00000000000274A90073FAFE003FE3FE0012CB
+      FE0020CEFE00708E9800BD967D00E9C59600F2D6A000CCB4A100986C6B00986C
+      6B0000000000000000000000000000000000000000000018CA007690FF004163
+      FF00193FFF00163BFF00092DFF000528FF000224FF000224FF00001EF000001D
+      EE00001CE2000018CA000011870000000000000000000019CC007690FF004163
+      FF00193FFF00163BFF00092DFF000528FF000224FF001C41FF00EAEEFA00C1CC
+      FB00001CE2000019CC00001187000000000000000000005EF0008EC4FF007FBB
+      FF0066ACFF0050A0FF00469AFF003690FF002585FF001579FF000F75FF000268
+      FF00086EFF000062F800004BC000000000000274A90078FBFE0068F6FF0055F6
+      FE005FFEFF0078FBFE0088B5B600767F83006C6A6E006E555500000000000000
+      000000000000000000000000000000000000000000000018CA007F98FF00728C
+      FF005676FF004163FF003559FF00284CFF00163BFF000224FF00001FF900001D
+      EE00001EF000001BD9000013A00000000000000000000019CC007F98FF00728C
+      FF005676FF004163FF003559FF002449FF00193FFF000224FF000224FF00001E
+      F000001EF000001BD9000013A0000000000000000000005EF00066ACFF008EC4
+      FF008EC4FF0081BCFF0074B5FF005CA7FF003690FF001E80FF000F75FF000F75
+      FF000F75FF000062F8000052D100000000000274A900FBFFFF00F0FFFF00C6FF
+      FF00A0FFFF009FFBFE009FFBFE0092FFFF0055F6FE0005669500000000000000
+      000000000000000000000000000000000000000000000018CA005877FF007F98
+      FF00839CFF007690FF006682FF004E6EFF00284CFF000F35FF000224FF00001F
+      F900001FF900001CE2000013A00000000000000000000019CC005877FF007F98
+      FF00839CFF007690FF006681F8004D6DFF00294DFF000F35FF00001FFF00001F
+      FF00001FFF00001BD9000013A0000000000000000000000000000268FF00187B
+      FF001E80FF00187BFF001579FF000F75FF000062F8000062F8000062F800005E
+      F000005EF0000055D9000000000000000000000000000479AF00EDFAFC00DCFF
+      FF00B7FFFF009FFBFE0092FFFF0078FBFE00086B9A0000000000000000000000
+      0000000000000000000000000000000000000000000000000000001DEE00092D
+      FF000F35FF00092DFF000528FF000224FF00001DEE00001BD900001AD5000018
+      CA00001AD5000016B50000000000000000000000000000000000001DEE00092D
+      FF000F35FF00092DFF000528FF000224FF00001DEE00001BD900001AD1000019
+      CC000019CC000017B90000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000274A9000274
+      A9000274A9000274A9000274A9000274A9000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000424D3E000000000000003E000000
+      2800000040000000600000000100010000000000000300000000000000000000
+      000000000000000000000000FFFFFF00E03F800100000000800F800000000000
+      00078000000000000007800100000000000F800300000000800F800100000000
+      800F800100000000800F800100000000800F8001000000008003800300000000
+      800380030000000080078003000000008003800300000000FFE1800700000000
+      FFF3800F00000000FFFF801F00000000FFFFFFFFFFFFE01F0000C003C0038007
+      0000C003800100030000C003800100030000C003800100070000C0038001800F
+      0000C0038001800F0000C0038001800F0000C0038001800FFE0FC0038001800F
+      FF07C0038001800FFF83C00380018001FF01C00380018001FF80C0038001FFC1
+      FFC0C007C003FFC1FFE1C00FFFFFFFC1F81FFFC3C3FFFFFFE007C0018007800F
+      C003800100010007800180000000000780018000000000070000C00000000007
+      0000C0008001000700008001C001000100000003E001800000000001E001E000
+      00000000E001E00080010000E001E00080018000E001E000C003C001E001E000
+      E007E301E001F001F81FFF87E001FFFFFFFFFBFFF800C001E07FF03F00008001
+      C03FE01F000080018003C00F000080018003C00F000080018003C00F00008001
+      8003C00F00008001801FC00700008001801FC00300008001801FC00700008001
+      801FC00300008003801FC001000F8003801FC00F000F8003801FC00F000F8003
+      C03FE01F001FC007E07FF03F003FF83FFFFFFFFFFF87FC03C003C003C087C003
+      8001800180078003800180010000000380018001000000038001800100000003
+      80018001000000038001800100070001800180010007003C800180010007003E
+      80018001003F003F80018001003F003F80018001003F003F80018001003F003F
+      C003C003807F807FFFFFFFFFC0FFC0FFFFFFFFFCFFFFFFFFC003C0F8C003C003
+      8001807080018001800100218001800180010003800180018001000780018001
+      8001000F80018001800100078001800180010007800180018001000780018001
+      8001000F800180018001000F800180018001003F800180018001003F80018001
+      C003807FC003C003FFFFC0FFFFFFFFFF00000000000000000000000000000000
+      000000000000}
+  end
+  inherited dbMain: TUniQuery
+    SQL.Strings = (
+      'SELECT               '
+      '   0 AS CHECK_TF     ,'
+      '   USER_ID'#9#9#9#9#9' , '
+      '   USER_NM           ,'
+      '   USER_NICK_NM      ,'
+      '   USER_PWD          ,'
+      '   USER_GRADE        ,'
+      '   PART_CD           ,'
+      '   PART_NM           ,'
+      '   USER_BANK         ,'
+      '   USER_BANK_ACNT    ,'
+      '   USER_BANK_ACNT_NM ,'
+      '   PARTNER_ID        ,'
+      '   PARTNER_NM        ,'
+      '   PARTNER_NICK_NM   ,'
+      '   REG_DT            ,'
+      '   SERVER_IP         ,'
+      '   BIRTH_DT          ,'
+      '   UPDATE_MNG_ID     ,'
+      '   UPDATE_DT         ,'
+      '   UPDATE_TM         ,'
+      '   UPDATE_IP         ,'
+      '   USER_ADDR         ,'
+      '   USER_EMAIL        ,'
+      '   USER_TEL          ,'
+      '   USER_HP           ,'
+      '   USER_BIGO          '
+      ' FROM                 '
+      '   USER_MST')
+    FetchRows = 50
+    SpecificOptions.Strings = (
+      'SQL Server.FetchAll=False')
+    AfterInsert = dbMainAfterInsert
+    BeforeEdit = dbMainBeforeEdit
+    AfterEdit = dbMainAfterEdit
+    BeforePost = dbMainBeforePost
+    BeforeDelete = dbMainBeforeDelete
+    object dbMainCHECK_TF: TIntegerField
+      FieldName = 'CHECK_TF'
+      ReadOnly = True
+      Required = True
+    end
+    object dbMainUSER_ID: TStringField
+      FieldName = 'USER_ID'
+      Required = True
+    end
+    object dbMainUSER_NM: TStringField
+      FieldName = 'USER_NM'
+    end
+    object dbMainUSER_NICK_NM: TStringField
+      FieldName = 'USER_NICK_NM'
+    end
+    object dbMainUSER_PWD: TStringField
+      FieldName = 'USER_PWD'
+      Size = 15
+    end
+    object dbMainUSER_GRADE: TStringField
+      FieldName = 'USER_GRADE'
+      FixedChar = True
+      Size = 1
+    end
+    object dbMainPART_CD: TStringField
+      FieldName = 'PART_CD'
+      FixedChar = True
+      Size = 2
+    end
+    object dbMainPART_NM: TStringField
+      FieldName = 'PART_NM'
+    end
+    object dbMainUSER_BANK: TStringField
+      FieldName = 'USER_BANK'
+    end
+    object dbMainUSER_BANK_ACNT: TStringField
+      FieldName = 'USER_BANK_ACNT'
+    end
+    object dbMainUSER_BANK_ACNT_NM: TStringField
+      FieldName = 'USER_BANK_ACNT_NM'
+    end
+    object dbMainPARTNER_ID: TStringField
+      FieldName = 'PARTNER_ID'
+    end
+    object dbMainPARTNER_NM: TStringField
+      FieldName = 'PARTNER_NM'
+    end
+    object dbMainPARTNER_NICK_NM: TStringField
+      FieldName = 'PARTNER_NICK_NM'
+    end
+    object dbMainREG_DT: TDateTimeField
+      FieldName = 'REG_DT'
+    end
+    object dbMainSERVER_IP: TStringField
+      FieldName = 'SERVER_IP'
+      Size = 15
+    end
+    object dbMainBIRTH_DT: TStringField
+      FieldName = 'BIRTH_DT'
+      Size = 13
+    end
+    object dbMainUPDATE_MNG_ID: TStringField
+      FieldName = 'UPDATE_MNG_ID'
+    end
+    object dbMainUPDATE_DT: TStringField
+      FieldName = 'UPDATE_DT'
+      FixedChar = True
+      Size = 8
+    end
+    object dbMainUPDATE_TM: TStringField
+      FieldName = 'UPDATE_TM'
+      FixedChar = True
+      Size = 12
+    end
+    object dbMainUPDATE_IP: TStringField
+      FieldName = 'UPDATE_IP'
+      Size = 15
+    end
+    object dbMainUSER_ADDR: TStringField
+      FieldName = 'USER_ADDR'
+      Size = 100
+    end
+    object dbMainUSER_EMAIL: TStringField
+      FieldName = 'USER_EMAIL'
+      Size = 50
+    end
+    object dbMainUSER_TEL: TStringField
+      FieldName = 'USER_TEL'
+    end
+    object dbMainUSER_HP: TStringField
+      FieldName = 'USER_HP'
+    end
+    object dbMainUSER_BIGO: TStringField
+      FieldName = 'USER_BIGO'
+      Size = 100
+    end
+  end
+  inherited dbPart: TUniQuery
+    Left = 161
+  end
+  object dbAcnt: TUniQuery
+    Connection = MastDB.UniConnection
+    SQL.Strings = (
+      'SELECT '
+      'ACNT_NO          ,'
+      'ACNT_TP          ,'
+      'USER_ID          ,'
+      'USER_NM          ,'
+      'ACNT_PWD         ,'
+      'GUJA_CNT         ,'
+      'NEGO_GUJA_MAXCNT ,'
+      'API_TP           ,'
+      'BF_ACNT_AMT      ,'
+      'ACNT_AMT         ,'
+      'CLR_PL           ,'
+      'CLR_PL_F         ,'
+      'CMSN             ,'
+      'CMSN_F           ,'
+      'ACNT_STATE       ,'
+      'CONN_YN          ,'
+      'NEGO_DUP_YN      ,'
+      'FIRST_DT         ,'
+      'LOGIN_DT         ,'
+      'LOGIN_TM         ,'
+      'LOGIN_IP         ,'
+      'ACNT_BIGO        ,'
+      'LOSSCUT_YN       ,'
+      'OVERNGT_YN       ,'
+      '(ACNT_AMT + CLR_PL - CMSN) AS PLAMT '
+      'FROM ACNT_MST')
+    BeforeDelete = dbAcntBeforeDelete
+    Left = 208
+    Top = 440
+    object dbAcntACNT_NO: TStringField
+      FieldName = 'ACNT_NO'
+      Required = True
+      FixedChar = True
+      Size = 11
+    end
+    object dbAcntACNT_TP: TStringField
+      FieldName = 'ACNT_TP'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object dbAcntUSER_ID: TStringField
+      FieldName = 'USER_ID'
+      Required = True
+    end
+    object dbAcntUSER_NM: TStringField
+      FieldName = 'USER_NM'
+      Required = True
+    end
+    object dbAcntACNT_PWD: TStringField
+      FieldName = 'ACNT_PWD'
+    end
+    object dbAcntGUJA_CNT: TIntegerField
+      FieldName = 'GUJA_CNT'
+    end
+    object dbAcntNEGO_GUJA_MAXCNT: TIntegerField
+      FieldName = 'NEGO_GUJA_MAXCNT'
+    end
+    object dbAcntAPI_TP: TStringField
+      FieldName = 'API_TP'
+      FixedChar = True
+      Size = 1
+    end
+    object dbAcntBF_ACNT_AMT: TFloatField
+      FieldName = 'BF_ACNT_AMT'
+    end
+    object dbAcntACNT_AMT: TFloatField
+      FieldName = 'ACNT_AMT'
+      Required = True
+    end
+    object dbAcntCLR_PL: TFloatField
+      FieldName = 'CLR_PL'
+    end
+    object dbAcntCLR_PL_F: TFloatField
+      FieldName = 'CLR_PL_F'
+    end
+    object dbAcntCMSN: TFloatField
+      FieldName = 'CMSN'
+    end
+    object dbAcntCMSN_F: TFloatField
+      FieldName = 'CMSN_F'
+    end
+    object dbAcntACNT_STATE: TStringField
+      FieldName = 'ACNT_STATE'
+      FixedChar = True
+      Size = 1
+    end
+    object dbAcntCONN_YN: TStringField
+      FieldName = 'CONN_YN'
+      FixedChar = True
+      Size = 1
+    end
+    object dbAcntNEGO_DUP_YN: TStringField
+      FieldName = 'NEGO_DUP_YN'
+      FixedChar = True
+      Size = 1
+    end
+    object dbAcntFIRST_DT: TStringField
+      FieldName = 'FIRST_DT'
+      FixedChar = True
+      Size = 8
+    end
+    object dbAcntLOGIN_DT: TStringField
+      FieldName = 'LOGIN_DT'
+      FixedChar = True
+      Size = 8
+    end
+    object dbAcntLOGIN_TM: TStringField
+      FieldName = 'LOGIN_TM'
+      FixedChar = True
+      Size = 12
+    end
+    object dbAcntLOGIN_IP: TStringField
+      FieldName = 'LOGIN_IP'
+      Size = 15
+    end
+    object dbAcntACNT_BIGO: TStringField
+      FieldName = 'ACNT_BIGO'
+      Size = 200
+    end
+    object dbAcntLOSSCUT_YN: TStringField
+      FieldName = 'LOSSCUT_YN'
+      Size = 1
+    end
+    object dbAcntOVERNGT_YN: TStringField
+      FieldName = 'OVERNGT_YN'
+      FixedChar = True
+      Size = 1
+    end
+    object dbAcntPLAMT: TFloatField
+      FieldName = 'PLAMT'
+      ReadOnly = True
+    end
+  end
+  object dsAcnt: TDataSource
+    DataSet = dbAcnt
+    Left = 248
+    Top = 440
+  end
+  object dbMemo: TUniQuery
+    Connection = MastDB.UniConnection
+    SQL.Strings = (
+      'SELECT * FROM USER_MEMO')
+    FetchRows = 50
+    SpecificOptions.Strings = (
+      'SQL Server.FetchAll=False')
+    BeforePost = dbMemoBeforePost
+    Left = 296
+    Top = 440
+    object dbMemoUM_SEQ: TIntegerField
+      FieldName = 'UM_SEQ'
+      ReadOnly = True
+      Required = True
+    end
+    object dbMemoUSER_ID: TStringField
+      FieldName = 'USER_ID'
+      FixedChar = True
+    end
+    object dbMemoUM_DT: TDateTimeField
+      FieldName = 'UM_DT'
+    end
+    object dbMemoPART_NM: TStringField
+      FieldName = 'PART_NM'
+    end
+    object dbMemoUM_TITLE: TStringField
+      FieldName = 'UM_TITLE'
+      Size = 50
+    end
+    object dbMemoUM_BIGO: TStringField
+      FieldName = 'UM_BIGO'
+      Size = 200
+    end
+  end
+  object dsMemo: TDataSource
+    DataSet = dbMemo
+    Left = 336
+    Top = 440
+  end
+  object dbLogin: TUniQuery
+    Connection = MastDB.UniConnection
+    SQL.Strings = (
+      'SELECT '
+      '      USER_ID,'
+      '      LOGIN_DT,'
+      '      LOGIN_TM,'
+      '      LOGIN_IP,'
+      '      ACNT_TP,'
+      '      LOGIN_TP,'
+      '      LOGIN_MAC,'
+      '      APP_TP,'
+      '      COUNT(1) OVER() AS TOTCNT'
+      'FROM LOGIN_HIS')
+    FetchRows = 50
+    SpecificOptions.Strings = (
+      'SQL Server.FetchAll=False')
+    Left = 272
+    Top = 392
+    object dbLoginUSER_ID: TStringField
+      FieldName = 'USER_ID'
+      Required = True
+    end
+    object dbLoginLOGIN_DT: TStringField
+      FieldName = 'LOGIN_DT'
+      Required = True
+      FixedChar = True
+      Size = 8
+    end
+    object dbLoginLOGIN_TM: TStringField
+      FieldName = 'LOGIN_TM'
+      Required = True
+      FixedChar = True
+      Size = 12
+    end
+    object dbLoginLOGIN_IP: TStringField
+      FieldName = 'LOGIN_IP'
+      Required = True
+      Size = 15
+    end
+    object dbLoginACNT_TP: TStringField
+      FieldName = 'ACNT_TP'
+      FixedChar = True
+      Size = 1
+    end
+    object dbLoginLOGIN_TP: TStringField
+      FieldName = 'LOGIN_TP'
+      FixedChar = True
+      Size = 1
+    end
+    object dbLoginLOGIN_MAC: TStringField
+      FieldName = 'LOGIN_MAC'
+      Size = 15
+    end
+    object dbLoginAPP_TP: TStringField
+      FieldName = 'APP_TP'
+      FixedChar = True
+      Size = 1
+    end
+    object dbLoginTOTCNT: TIntegerField
+      FieldName = 'TOTCNT'
+      ReadOnly = True
+    end
+  end
+  object dsLogin: TDataSource
+    DataSet = dbLogin
+    Left = 328
+    Top = 392
+  end
+  object tmOpen: TTimer
+    Enabled = False
+    Interval = 500
+    OnTimer = tmOpenTimer
+    Left = 208
+    Top = 400
+  end
+end

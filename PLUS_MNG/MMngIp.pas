@@ -1,0 +1,105 @@
+unit MMngIp;
+
+interface
+
+uses
+  Windows, Classes, Forms, Controls, StdCtrls, ExtCtrls, SysUtils, ADODB,
+  DB, DBAccess, MemDS, DBCtrls, Mask, Dialogs, ImgList,
+//  Messages, Variants, Graphics,
+// BusinessSkinForm_1042
+  BusinessSkinForm, bsSkinCtrls, bsRibbon, bsMessages,
+// Raize, kcRaize
+  RzPanel, RzEdit, RzDBEdit, RzCmboBx, RzDBCmbo, RzSplit, RzDBNav, RzLstBox,
+  kcRaizeCtrl, VCL_Helper,
+// EhLib
+  DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, GridsEh,
+  DBAxisGridsEh, DBGridEh,
+// User Unit
+  MBasic;
+
+type
+  TfmMngIp = class(TfmBasic)
+    RzPanel4: TRzPanel;
+    gdMain: TDBGridEh;
+    bsSkinLabel2: TbsSkinLabel;
+    kcRzDBEdit1: TkcRzDBEdit;
+    bsSkinLabel5: TbsSkinLabel;
+    MoMsg: TRzDBMemo;
+    dbMainIP_SEQ: TIntegerField;
+    dbMainMIP_IP: TStringField;
+    dbMainMIP_BIGO: TStringField;
+    procedure FormCreate(Sender: TObject);
+    procedure btnExcelClick(Sender: TObject);
+    procedure dbMainBeforePost(DataSet: TDataSet);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure MainTableOpen; override;
+  end;
+
+var
+  fmMngIp: TfmMngIp;
+
+implementation
+
+uses StdUtils, MMastDB, MDelay;
+
+{$R *.dfm}
+
+{ TfmSample }
+
+procedure TfmMngIp.btnExcelClick(Sender: TObject);
+begin
+  inherited;
+  Export_Excel(gdMain);
+end;
+
+procedure TfmMngIp.dbMainBeforePost(DataSet: TDataSet);
+var
+  sMsg: String;
+begin
+  inherited;
+
+	with DataSet do
+  begin
+  	sMsg := '';
+  	// 필수입력값 체크
+    if FieldByName('MIP_IP').IsNull          then sMsg := '허용IP';
+
+    if sMsg <> '' then
+    begin
+      bsMsgError(sMsg + '은(는) 반드시 입력하셔야 합니다');
+      Abort;
+    end;
+
+  end;
+end;
+
+procedure TfmMngIp.FormCreate(Sender: TObject);
+begin
+  inherited;
+  SetADOConn(fmMngIp);
+end;
+
+procedure TfmMngIp.MainTableOpen;
+var
+  sSql : String;
+begin
+  try
+    Delay_Show();
+
+    sSql := 'SELECT IP_SEQ    '+
+            '      ,MIP_IP    '+
+            '      ,MIP_BIGO  '+
+            'FROM MNG_ACPT_IP ';
+
+    fnSqlOpen(dbMain, sSql);
+
+  finally
+    Delay_Hide;
+  end;
+
+end;
+
+end.

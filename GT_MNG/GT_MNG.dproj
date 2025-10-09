@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{d40bbb67-ce45-4e6b-93fa-fb2d4ec051fa}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <DCC_DCCCompiler>DCC32</DCC_DCCCompiler>
+    <DCC_DependencyCheckOutputName>..\GT_MNG.exe</DCC_DependencyCheckOutputName>
+    <MainSource>GT_MNG.dpr</MainSource>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_DebugInformation>False</DCC_DebugInformation>
+    <DCC_LocalDebugSymbols>False</DCC_LocalDebugSymbols>
+    <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
+    <DCC_Define>RELEASE</DCC_Define>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <Version>7.0</Version>
+    <DCC_Define>DEBUG</DCC_Define>
+    <DCC_ExeOutput>..</DCC_ExeOutput>
+    <DCC_DcuOutput>..\DCU</DCC_DcuOutput>
+    <DCC_ObjOutput>..\DCU</DCC_ObjOutput>
+    <DCC_HppOutput>..\DCU</DCC_HppOutput>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <Borland.Personality>Delphi.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+<BorlandProject><Delphi.Personality><Parameters><Parameters Name="UseLauncher">False</Parameters><Parameters Name="LoadAllSymbols">True</Parameters><Parameters Name="LoadUnspecifiedSymbols">False</Parameters></Parameters><VersionInfo><VersionInfo Name="IncludeVerInfo">True</VersionInfo><VersionInfo Name="AutoIncBuild">False</VersionInfo><VersionInfo Name="MajorVer">1</VersionInfo><VersionInfo Name="MinorVer">0</VersionInfo><VersionInfo Name="Release">0</VersionInfo><VersionInfo Name="Build">0</VersionInfo><VersionInfo Name="Debug">False</VersionInfo><VersionInfo Name="PreRelease">False</VersionInfo><VersionInfo Name="Special">False</VersionInfo><VersionInfo Name="Private">False</VersionInfo><VersionInfo Name="DLL">False</VersionInfo><VersionInfo Name="Locale">1042</VersionInfo><VersionInfo Name="CodePage">949</VersionInfo></VersionInfo><VersionInfoKeys><VersionInfoKeys Name="CompanyName"></VersionInfoKeys><VersionInfoKeys Name="FileDescription">GTS</VersionInfoKeys><VersionInfoKeys Name="FileVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="InternalName"></VersionInfoKeys><VersionInfoKeys Name="LegalCopyright"></VersionInfoKeys><VersionInfoKeys Name="LegalTrademarks"></VersionInfoKeys><VersionInfoKeys Name="OriginalFilename"></VersionInfoKeys><VersionInfoKeys Name="ProductName">C</VersionInfoKeys><VersionInfoKeys Name="ProductVersion">1.0.0.0</VersionInfoKeys><VersionInfoKeys Name="Comments"></VersionInfoKeys></VersionInfoKeys><Source><Source Name="MainSource">GT_MNG.dpr</Source></Source></Delphi.Personality></BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Import Project="$(MSBuildBinPath)\Borland.Delphi.Targets" />
+  <ItemGroup>
+    <DelphiCompile Include="GT_MNG.dpr">
+      <MainSource>MainSource</MainSource>
+    </DelphiCompile>
+    <DCCReference Include="..\..\..\GTLIB\CommonUnit\MBasic.pas">
+      <Form>fmBasic</Form>
+    </DCCReference>
+    <DCCReference Include="MAcntMake.pas">
+      <Form>fmAcntMake</Form>
+    </DCCReference>
+    <DCCReference Include="MArtc.pas">
+      <Form>fmArtc</Form>
+    </DCCReference>
+    <DCCReference Include="MBatchScl.pas">
+      <Form>fmBatchScl</Form>
+    </DCCReference>
+    <DCCReference Include="MBlockIp.pas">
+      <Form>fmBlockIp</Form>
+    </DCCReference>
+    <DCCReference Include="MCorp.pas">
+      <Form>fmCorp</Form>
+    </DCCReference>
+    <DCCReference Include="MDBTool.pas">
+      <Form>fmDbTool</Form>
+    </DCCReference>
+    <DCCReference Include="MDelay.pas">
+      <Form>fmDelay</Form>
+    </DCCReference>
+    <DCCReference Include="MExchRt.pas">
+      <Form>fmExchRt</Form>
+    </DCCReference>
+    <DCCReference Include="MHybrid.pas">
+      <Form>fmHybrid</Form>
+    </DCCReference>
+    <DCCReference Include="MInOut.pas">
+      <Form>fmInOut</Form>
+    </DCCReference>
+    <DCCReference Include="MInOutList.pas">
+      <Form>fmInOutList</Form>
+    </DCCReference>
+    <DCCReference Include="MLogin.pas">
+      <Form>fmLogin</Form>
+    </DCCReference>
+    <DCCReference Include="MLogList.pas">
+      <Form>fmLogList</Form>
+    </DCCReference>
+    <DCCReference Include="MLossCut.pas">
+      <Form>fmLossCut</Form>
+    </DCCReference>
+    <DCCReference Include="MMain.pas">
+      <Form>fmMain</Form>
+    </DCCReference>
+    <DCCReference Include="MMastDB.pas">
+      <Form>MastDB</Form>
+      <DesignClass>TDataModule</DesignClass>
+    </DCCReference>
+    <DCCReference Include="MMngIp.pas">
+      <Form>fmMngIp</Form>
+    </DCCReference>
+    <DCCReference Include="MNclr.pas">
+      <Form>fmNclr</Form>
+    </DCCReference>
+    <DCCReference Include="MNego.pas">
+      <Form>fmNego</Form>
+    </DCCReference>
+    <DCCReference Include="MNegoCmsn.pas">
+      <Form>fmNegoCmsn</Form>
+    </DCCReference>
+    <DCCReference Include="MNoCntrOrd.pas">
+      <Form>fmNoCntrOrd</Form>
+    </DCCReference>
+    <DCCReference Include="MNoti.pas">
+      <Form>fmNoti</Form>
+    </DCCReference>
+    <DCCReference Include="MOrdDetail.pas">
+      <Form>fmOrdDetail</Form>
+    </DCCReference>
+    <DCCReference Include="MOverNgt.pas">
+      <Form>fmOverNgt</Form>
+    </DCCReference>
+    <DCCReference Include="MPart.pas">
+      <Form>fmPart</Form>
+    </DCCReference>
+    <DCCReference Include="MPLClsList.pas">
+      <Form>fmPLClsList</Form>
+    </DCCReference>
+    <DCCReference Include="MPLList.pas">
+      <Form>fmPLList</Form>
+    </DCCReference>
+    <DCCReference Include="MPower.pas">
+      <Form>fmPower</Form>
+    </DCCReference>
+    <DCCReference Include="MPresent.pas">
+      <Form>fmPresent</Form>
+    </DCCReference>
+    <DCCReference Include="MRealConn.pas">
+      <Form>fmRealConn</Form>
+    </DCCReference>
+    <DCCReference Include="MRealPL.pas">
+      <Form>fmRealPL</Form>
+    </DCCReference>
+    <DCCReference Include="MScL.pas">
+      <Form>fmScL</Form>
+    </DCCReference>
+    <DCCReference Include="MStk.pas">
+      <Form>fmStk</Form>
+    </DCCReference>
+    <DCCReference Include="MSysLog.pas">
+      <Form>fmSysLog</Form>
+    </DCCReference>
+    <DCCReference Include="MUser.pas">
+      <Form>fmUser</Form>
+    </DCCReference>
+    <DCCReference Include="MUserDetail.pas">
+      <Form>fmUserDetail</Form>
+    </DCCReference>
+    <DCCReference Include="MUserFilter.pas">
+      <Form>fmUserFilter</Form>
+    </DCCReference>
+    <DCCReference Include="MUserFind.pas">
+      <Form>fmUserFind</Form>
+    </DCCReference>
+    <None Include="0His.txt" />
+  </ItemGroup>
+</Project>
+
+<!-- EurekaLog First Line
+[Exception Log]
+EurekaLog Version=7007
+Activate=0
+DeleteMapAfterCompile=1
+Encrypt Password=""
+EurekaLog Last Line -->

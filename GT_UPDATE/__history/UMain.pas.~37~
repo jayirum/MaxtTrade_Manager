@@ -1,0 +1,152 @@
+unit UMain;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, bsDialogs, bsMessages, ImgList, bsPngImageList, bsSkinData,
+  bsSkinHint, BusinessSkinForm, bsSkinCtrls, StdCtrls, jpeg, ExtCtrls, VCLUnZip,
+  ShellApi;
+
+type
+  TfmMain = class(TForm)
+    bsBusinessSkinForm: TbsBusinessSkinForm;
+    bsSkinData: TbsSkinData;
+    bsSkinHint: TbsSkinHint;
+    bsCompressedSkinList: TbsCompressedSkinList;
+    bsResourceStrData: TbsResourceStrData;
+    bsPngImageList24: TbsPngImageList;
+    bsPngImageList16: TbsPngImageList;
+    bsSkinMessage: TbsSkinMessage;
+    bsSelectSkinDialog: TbsSelectSkinDialog;
+    bsSkinPanel2: TbsSkinPanel;
+    pnCorp: TbsSkinStatusPanel;
+    pnTel: TbsSkinStatusPanel;
+    Panel1: TPanel;
+    imgLogo: TImage;
+    lbName: TLabel;
+    pgMeter: TbsSkinGauge;
+    VCLUnZip: TVCLUnZip;
+    tmZip: TTimer;
+    procedure FormCreate(Sender: TObject);
+    procedure VCLUnZipUnZipComplete(sender: TObject; FileCount: Integer);
+    procedure VCLUnZipStartUnZip(Sender: TObject; FileIndex: Integer;
+      var FName: string; var Skip: Boolean);
+    procedure VCLUnZipTotalPercentDone(Sender: TObject; Percent: Integer);
+    procedure tmZipTimer(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure GT_UpZip;
+  end;
+
+var
+  fmMain: TfmMain;
+
+implementation
+
+//uses StdUtils;
+
+{$R *.dfm}
+
+var
+	_InstallDir,
+  _ExeFile: String;
+	_InfoList: TStringList;
+
+  _sParamStr: String;
+
+procedure TfmMain.FormCreate(Sender: TObject);
+var
+	sInfoFile: String;
+begin
+  Application.ShowMainForm := False;
+
+  if ParamCount < 4 then
+  begin
+    Application.Terminate;
+    Exit;
+  end;
+
+  Application.ShowMainForm := ParamCount > 3;
+
+  _ExeFile    := ParamStr(1);
+  _InstallDir := ExtractFilePath(_ExeFile);
+  sInfoFile   := _InstallDir + 'UPDATE\VER_INFO.INF';
+
+  _sParamStr  := ParamStr(2) + ' ' + ParamStr(3) + ' ' + ParamStr(4);
+
+  if FileExists(sInfoFile) then
+  begin
+  	_InfoList.LoadFromFile(sInfoFile);
+    _ExeFile := _InstallDir + _InfoList.Values['EXE_FILENAME'];
+  end;
+
+  pnCorp.Caption := _InfoList.Values['NAME'];
+  bsSkinData.SkinIndex := StrToIntDef(_InfoList.Values['SKININDEX'], 2);
+end;
+
+procedure TfmMain.FormShow(Sender: TObject);
+begin
+  SetWindowLong(Handle, GWL_HWNDPARENT, TForm(Owner).Handle);
+	SetWindowPos(Handle, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE or SWP_NOSIZE);
+  
+	tmZip.Enabled := True;
+end;
+
+procedure TfmMain.GT_UpZip;
+begin
+  with VCLUnZip do
+  begin
+    ZipName := ExtractFilePath(ParamStr(0)) + 'UPDATE.ZIP';
+    ReadZip;
+
+    DoAll := True;
+    DestDir := _InstallDir;
+    RecreateDirs := True;
+    RetainAttributes := True;
+
+    Unzip;
+  end;
+end;
+
+procedure TfmMain.tmZipTimer(Sender: TObject);
+begin
+	tmZip.Enabled := False;
+  GT_UpZip;
+end;
+
+procedure TfmMain.VCLUnZipStartUnZip(Sender: TObject; FileIndex: Integer;
+  var FName: string; var Skip: Boolean);
+begin
+	lbName.Caption := 'Extract Files.. ' + FName;
+  if (_InfoList.Values['COPY_FILENAME'] = FName) or
+     (_InfoList.Values['VER_HISTORY'] = FName) then Skip := True;  
+end;
+
+procedure TfmMain.VCLUnZipTotalPercentDone(Sender: TObject; Percent: Integer);
+begin
+  with pgMeter do
+  begin
+    ProgressText := '¾ÐÃà Çª´ÂÁß.. - ';
+
+		MaxValue := 100;
+  	Value    := Percent;
+  end;
+end;
+
+procedure TfmMain.VCLUnZipUnZipComplete(sender: TObject; FileCount: Integer);
+begin
+  Shellexecute(Handle, 'open', PChar(_ExeFile), PChar(_sParamStr), nil, SW_SHOWNORMAL);
+  Application.Terminate;
+end;
+
+initialization
+	_InfoList := TStringList.Create;
+
+finalization
+  FreeAndNil(_InfoList);
+
+end.

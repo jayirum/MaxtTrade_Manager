@@ -1,0 +1,202 @@
+unit MNoCntrOrd;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, RzLstBox, bsSkinCtrls, VCL_Helper, MBasic, DBGridEhGrouping,
+  ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, GridsEh, DBAxisGridsEh, DBGridEh,
+  RzDBEdit, kcRaizeCtrl, StdCtrls, RzCmboBx, RzDBCmbo, RzSplit, Mask, RzEdit,
+  bsMessages, DB, MemDS, DBAccess, Uni, ImgList, BusinessSkinForm, RzDBNav,
+  bsribbon, ExtCtrls, RzPanel, UniDAC_Helper, math;
+
+type
+  TfmNoCntrOrd = class(TfmBasic)
+    gdMain: TDBGridEh;
+    dbMainUSER_NM: TStringField;
+    dbMainORD_NO: TIntegerField;
+    dbMainAPI_SEQ: TIntegerField;
+    dbMainORG_ORD_NO: TIntegerField;
+    dbMainAPI_ORD_NO: TStringField;
+    dbMainAPI_ORG_ORD_NO: TStringField;
+    dbMainACNT_TP: TStringField;
+    dbMainACNT_NO: TStringField;
+    dbMainUSER_ID: TStringField;
+    dbMainSTK_CD: TStringField;
+    dbMainARTC_CD: TStringField;
+    dbMainBS_TP: TStringField;
+    dbMainORD_TP: TStringField;
+    dbMainCOND_TP: TStringField;
+    dbMainACPT_TP: TStringField;
+    dbMainORD_PRC: TFloatField;
+    dbMainSL_TP: TStringField;
+    dbMainORD_QTY: TIntegerField;
+    dbMainRJCT_QTY: TIntegerField;
+    dbMainMDFY_QTY: TIntegerField;
+    dbMainCNCL_QTY: TIntegerField;
+    dbMainCNTR_QTY: TIntegerField;
+    dbMainREMN_QTY: TIntegerField;
+    dbMainAPI_RJCT_CD: TStringField;
+    dbMainAPI_RJCT_MSG: TStringField;
+    dbMainTRADE_DT: TStringField;
+    dbMainORD_TM: TStringField;
+    dbMainCNFM_TM: TStringField;
+    dbMainAPI_TM: TStringField;
+    dbMainSYS_DT: TStringField;
+    dbMainCLIENT_IP: TStringField;
+    dbMainAPI_TP: TStringField;
+    dbMainMNG_ID: TStringField;
+    pnNoCntrOrd: TRzPanel;
+    dbMainTOTCNT: TIntegerField;
+    dbMainDOT_CNT: TIntegerField;
+    dbMainORDPRC: TStringField;
+    chUserTp: TbsSkinCheckRadioBox;
+    procedure FormShow(Sender: TObject);
+    procedure btnExcelClick(Sender: TObject);
+    procedure gdMainDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
+    procedure dbMainCalcFields(DataSet: TDataSet);
+    procedure gdMainTitleBtnClick(Sender: TObject; ACol: Integer;
+      Column: TColumnEh);
+    procedure chUserTpClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure MainTableOpen; override;
+  end;
+
+var
+  fmNoCntrOrd: TfmNoCntrOrd;
+
+implementation
+
+uses StdUtils, MMastDB, MDelay;
+
+{$R *.dfm}
+
+{ TfmSample }
+
+procedure TfmNoCntrOrd.btnExcelClick(Sender: TObject);
+begin
+  inherited;
+  Export_Excel(gdMain);
+end;
+
+procedure TfmNoCntrOrd.chUserTpClick(Sender: TObject);
+begin
+  inherited;
+  btnFilter.ButtonClick;
+end;
+
+procedure TfmNoCntrOrd.dbMainCalcFields(DataSet: TDataSet);
+var
+  iCnt : Integer;
+begin
+  inherited;
+  with DataSet do
+  begin
+    iCnt := FieldByName('DOT_CNT').AsInteger;
+    FieldByName('ORDPRC').AsString   := FormatFloat(FormatDotCnt(iCnt), FieldByName('ORD_PRC').AsFloat);
+  end;
+end;
+
+procedure TfmNoCntrOrd.FormShow(Sender: TObject);
+begin
+  inherited;
+
+  PartTableOpen(TComponent(gdMain.Columns[6]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('BS_TP')]));
+  PartTableOpen(TComponent(gdMain.Columns[4]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('ACNT_TP')]));
+  PartTableOpen(TComponent(gdMain.Columns[7]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('ORD_TP')]));
+  PartTableOpen(TComponent(gdMain.Columns[8]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('COND_TP')]));
+  PartTableOpen(TComponent(gdMain.Columns[9]), Format('@|CODE_VALUE_NM, CODE_VALUE|CODE_MST|WHERE CODE_ID = %s', [QuotedStr('ACPT_TP')]));
+
+//  MainTableOpen;
+end;
+
+procedure TfmNoCntrOrd.gdMainDrawColumnCell(Sender: TObject; const Rect: TRect;
+  DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
+begin
+  inherited;
+    with TDBGridEh(Sender), TDBGridEh(Sender).DataSource.DataSet do
+    begin
+      if FieldByName('BS_TP').AsString = 'B' then Canvas.Font.Color := clRed
+      else Canvas.Font.Color := clBlue;
+
+      if DataCol = 6 then DefaultDrawColumnCell(Rect, DataCol, Column, TGridDrawState(State));
+    end;
+end;
+
+procedure TfmNoCntrOrd.gdMainTitleBtnClick(Sender: TObject; ACol: Integer;
+  Column: TColumnEh);
+begin
+  inherited;
+  with dbMain do
+  begin
+    if IndexFieldNames = Column.FieldName then IndexFieldNames := Column.FieldName + ' Desc'
+    else IndexFieldNames := Column.FieldName
+  end;
+end;
+
+procedure TfmNoCntrOrd.MainTableOpen;
+var
+  sSql, sUserTp : String;
+begin
+  try
+    Delay_Show();
+
+    if chUserTp.Checked then sUserTp := ' AND B.USER_GRADE = 2 '
+    else sUserTp := '';
+
+    sSql := Format( 'SELECT  B.USER_NM           AS USER_NM        , '+
+                    '        A.ORD_NO            AS ORD_NO         , '+
+                    '        A.API_SEQ           AS API_SEQ        , '+
+                    '        A.ORG_ORD_NO        AS ORG_ORD_NO     , '+
+                    '        A.API_ORD_NO        AS API_ORD_NO     , '+
+                    '        A.API_ORG_ORD_NO    AS API_ORG_ORD_NO , '+
+                    '        A.ACNT_TP           AS ACNT_TP        , '+
+                    '        A.ACNT_NO           AS ACNT_NO        , '+
+                    '        A.USER_ID           AS USER_ID        , '+
+                    '        A.STK_CD            AS STK_CD         , '+
+                    '        A.ARTC_CD           AS ARTC_CD        , '+
+                    '        A.BS_TP             AS BS_TP          , '+
+                    '        A.ORD_TP            AS ORD_TP         , '+
+                    '        A.COND_TP           AS COND_TP        , '+
+                    '        A.ACPT_TP           AS ACPT_TP        , '+
+                    '        A.ORD_PRC           AS ORD_PRC        , '+
+                    '        A.SL_TP             AS SL_TP          , '+
+                    '        A.ORD_QTY           AS ORD_QTY        , '+
+                    '        A.RJCT_QTY          AS RJCT_QTY       , '+
+                    '        A.MDFY_QTY          AS MDFY_QTY       , '+
+                    '        A.CNCL_QTY          AS CNCL_QTY       , '+
+                    '        A.CNTR_QTY          AS CNTR_QTY       , '+
+                    '        A.REMN_QTY          AS REMN_QTY       , '+
+                    '        A.API_RJCT_CD       AS API_RJCT_CD    , '+
+                    '        A.API_RJCT_MSG      AS API_RJCT_MSG   , '+
+                    '        A.TRADE_DT          AS TRADE_DT       , '+
+                    '        A.ORD_TM            AS ORD_TM         , '+
+                    '        A.CNFM_TM           AS CNFM_TM        , '+
+                    '        A.API_TM            AS API_TM         , '+
+                    '        A.SYS_DT            AS SYS_DT         , '+
+                    '        A.CLIENT_IP         AS CLIENT_IP      , '+
+                    '        A.API_TP            AS API_TP         , '+
+                    '        A.MNG_ID            AS MNG_ID         , '+
+                    '        COUNT(1) OVER()     AS TOTCNT         , '+
+                    '        (SELECT TOP(1) DOT_CNT FROM ARTC_MST WHERE ARTC_CD = A.ARTC_CD) AS DOT_CNT '+
+                    'FROM ORD A,                                     '+
+                    '     USER_MST B                                 '+
+                    'WHERE A.REMN_QTY > 0                            '+
+                    'AND A.ACPT_TP <> %s                             '+
+                    'AND A.USER_ID = B.USER_ID %s                    ',
+                    [QuotedStr('X'),sUserTp]);
+    Uni_Open(dbMain, sSql);
+
+    if dbMain.RecordCount > 0 then pnNoCntrOrd.Caption := dbMain.FieldByName('TOTCNT').AsString + ' °Ç'
+    else pnNoCntrOrd.Caption := '0 °Ç';
+
+  finally
+    Delay_Hide;
+  end;
+end;
+
+end.

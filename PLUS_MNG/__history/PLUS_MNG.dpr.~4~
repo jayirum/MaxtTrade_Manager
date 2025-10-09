@@ -1,0 +1,62 @@
+program PLUS_MNG;
+
+uses
+  Forms,
+  MMain in 'MMain.pas' {fmMain},
+  MMastDB in 'MMastDB.pas' {MastDB: TDataModule},
+  MLogin in 'MLogin.pas' {fmLogin},
+  MPart in 'MPart.pas' {fmPart},
+  MDelay in 'MDelay.pas' {fmDelay},
+  MUserFilter in 'MUserFilter.pas' {fmUserFilter},
+  MInOut in 'MInOut.pas' {fmInOut},
+  MUser in 'MUser.pas' {fmUser},
+  MAcntMake in 'MAcntMake.pas' {fmAcntMake},
+  MNegoCmsn in 'MNegoCmsn.pas' {fmNegoCmsn},
+  MNego in 'MNego.pas' {fmNego},
+  MArtc in 'MArtc.pas' {fmArtc},
+  MCorp in 'MCorp.pas' {fmCorp},
+  MScL in 'MScL.pas' {fmScL},
+  MStk in 'MStk.pas' {fmStk},
+  MNoti in 'MNoti.pas' {fmNoti},
+  MUserFind in 'MUserFind.pas' {fmUserFind},
+  MOrdDetail in 'MOrdDetail.pas' {fmOrdDetail},
+  MNclr in 'MNclr.pas' {fmNclr},
+  MNoCntrOrd in 'MNoCntrOrd.pas' {fmNoCntrOrd},
+  MExchRt in 'MExchRt.pas' {fmExchRt},
+  MInOutList in 'MInOutList.pas' {fmInOutList},
+  MPLList in 'MPLList.pas' {fmPLList},
+  MRealConn in 'MRealConn.pas' {fmRealConn},
+  MLossCut in 'MLossCut.pas' {fmLossCut},
+  MOverNgt in 'MOverNgt.pas' {fmOverNgt},
+  MHybrid in 'MHybrid.pas' {fmHybrid},
+  MBlockIp in 'MBlockIp.pas' {fmBlockIp},
+  MMngIp in 'MMngIp.pas' {fmMngIp},
+  MDBTool in 'MDBTool.pas' {fmDbTool},
+  MPLClsList in 'MPLClsList.pas' {fmPLClsList},
+  MLogList in 'MLogList.pas' {fmLogList},
+  MBatchScl in 'MBatchScl.pas' {fmBatchScl},
+  MPresent in 'MPresent.pas' {fmPresent},
+  MSysLog in 'MSysLog.pas' {fmSysLog},
+  MPower in 'MPower.pas' {fmPower},
+  MBasic in '..\..\..\GTLIB\CommonUnit\MBasic.pas' {fmBasic},
+  MRealPL in 'MRealPL.pas' {fmRealPL},
+  MUserDetail in 'MUserDetail.pas' {fmUserDetail},
+  PacketStruct in '..\..\..\GTLIB\CommonUnit\PacketStruct.pas',
+  StdUtils in '..\..\..\GTLIB\CommonUnit\StdUtils.pas',
+  FastStringFuncs in '..\..\..\GTLIB\CommonUnit\FastStringFuncs.pas',
+  FastStrings in '..\..\..\GTLIB\CommonUnit\FastStrings.pas',
+  GTNoti in '..\..\..\GTLIB\CommonUnit\GTNoti.pas' {fmGTNoti},
+  GTUpdate in '..\..\..\GTLIB\CommonUnit\GTUpdate.pas' {fmUpdate},
+  NxGrid_Helper in '..\..\..\GTLIB\CommonUnit\NxGrid_Helper.pas';
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+//  Application.MainFormOnTaskbar := True;
+  Application.Title := 'GTS Management';
+  Application.CreateForm(TfmMain, fmMain);
+  Application.CreateForm(TfmGTNoti, fmGTNoti);
+  Application.CreateForm(TfmUpdate, fmUpdate);
+  Application.Run;
+end.

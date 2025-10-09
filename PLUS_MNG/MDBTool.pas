@@ -1,0 +1,156 @@
+unit MDBTool;
+
+interface
+
+uses
+  Windows, Classes, Forms, Controls, StdCtrls, ExtCtrls, SysUtils, ADODB,
+  DB, DBAccess, MemDS, Dialogs, ImgList,
+//  Mask, Messages, Variants, Graphics,
+// BusinessSkinForm_1042
+  BusinessSkinForm, bsMessages, bsRibbon, bsSkinCtrls,
+// Raize, kcRaize
+  RzPanel, RzEdit, RzCmboBx, RzDBCmbo, RzSplit, RzDBEdit, RzLstBox,  RzDBNav,
+  kcRaizeCtrl, VCL_Helper,
+// EhLib
+  DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, GridsEh,
+  DBAxisGridsEh, DBGridEh,
+// User Unit
+  MBasic;
+
+type
+  TfmDbTool = class(TfmBasic)
+    RzPanel4: TRzPanel;
+    gdMain: TDBGridEh;
+    moQuery: TRzMemo;
+    btnSend: TbsSkinSpeedButton;
+    btnRun: TbsSkinSpeedButton;
+    procedure FormCreate(Sender: TObject);
+    procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure edFindKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure btnExcelClick(Sender: TObject);
+    procedure btnSendClick(Sender: TObject);
+  private
+    { Private declarations }
+    procedure QuerySend(sQuery : String);
+  public
+    { Public declarations }
+    procedure MainTableOpen; override;
+  end;
+
+var
+  fmDbTool: TfmDbTool;
+
+implementation
+
+uses StdUtils, MMastDB, MDelay;
+
+{$R *.dfm}
+
+{ TfmSample }
+
+procedure TfmDbTool.btnExcelClick(Sender: TObject);
+begin
+  inherited;
+  Export_Excel(gdMain);
+end;
+
+procedure TfmDbTool.btnSendClick(Sender: TObject);
+begin
+  inherited;
+  QuerySend(moQuery.Text);
+end;
+
+procedure TfmDbTool.edFindKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+	if Key = 13 then btnFilter.ButtonClick;
+end;
+
+procedure TfmDbTool.FormCreate(Sender: TObject);
+begin
+  inherited;
+  SetADOConn(fmDbTool);
+end;
+
+procedure TfmDbTool.FormKeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  inherited;
+  case Key of
+  	VK_F9: btnSend.ButtonClick;
+
+  end;
+end;
+
+procedure TfmDbTool.MainTableOpen;
+begin
+//  with dbMain do
+//  begin
+//  	try
+//      Delay_Show();
+//
+//      Close;
+//      SQL.Text := 'SELECT               ' +
+//                  '   USERID,            ' +
+//                  '   USER_NM,           ' +
+//                  '   CONN_YN,           ' +
+//                  '   FRONT_IP,          ' +
+//                  '   REG_NO,            ' +
+//                  '   CONN_PWD,          ' +
+//                  '   USER_GRADE,        ' +
+//                  '   USER_BANK,         ' +
+//                  '   USER_BANK_ACNT,    ' +
+//                  '   USER_BANK_ACNT_NM, ' +
+//                  '   MNG_ID,            ' +
+//                  '   MNG_IP,            ' +
+//                  '   PARTNER_ID,        ' +
+//                  '   PARTNER_NICK_NM,   ' +
+//                  '   NICK_NM,           ' +
+//                  '   REG_DT,            ' +
+//                  '   POST_NO,           ' +
+//                  '   ADDR_1,            ' +
+//                  '   ADDR_2,            ' +
+//                  '   EMAIL,             ' +
+//                  '   TEL_NO,            ' +
+//                  '   HP_NO,             ' +
+//                  '   EMAIL_YN,          ' +
+//                  '   SMS_YN,            ' +
+//                  '   CLIENT_IP,         ' +
+//                  '   LAST_LOGON_DT,     ' +
+//                  '   LAST_LOGON_TM,     ' +
+//                  '   LAST_LOGON_IP,     ' +
+//                  '   ACNT_STAT,         ' +
+//                  '   PART_CODE          ' +
+//                  ' FROM                 ' +
+//                  '   HT_USER_MASTER A   ';
+//
+//      if _sMainWhere <> '' then SQL.Add('WHERE ' + _sMainWhere);
+//
+//      Open;
+//    finally
+//      Delay_Hide;
+//    end;
+//  end;
+end;
+
+procedure TfmDbTool.QuerySend(sQuery: String);
+var
+  sRslt : String;
+  i : Integer;
+begin
+  if sQuery = '' then Exit;
+
+  sRslt := fnSqlOpen(dbMain, sQuery);
+
+  if sRslt <> '' then bsMsgError(sRslt);
+
+  for i := 0 to gdMain.Columns.Count - 1 do
+  begin
+    gdMain.Columns[i].Width := 100;
+    gdMain.Columns[i].Alignment := taCenter;
+  end;
+
+end;
+
+end.

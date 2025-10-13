@@ -2,32 +2,44 @@ inherited fmNoti: TfmNoti
   Tag = 2003
   Caption = #44277#51648#49324#54637
   OnShow = FormShow
-  ExplicitWidth = 953
-  ExplicitHeight = 592
   PixelsPerInch = 96
   TextHeight = 12
   inherited pnTop: TRzPanel
+    inherited btnFilter: TbsSkinSpeedButton
+      SkinData = fmMain.bsSkinData
+    end
     inherited btnInsert: TbsSkinSpeedButton
       Left = 203
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 203
     end
     inherited btnEdit: TbsSkinSpeedButton
       Left = 279
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 279
     end
     inherited btnDelete: TbsSkinSpeedButton
       Left = 355
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 355
     end
     inherited btnPost: TbsSkinSpeedButton
       Left = 431
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 431
+    end
+    inherited btnClose: TbsSkinSpeedButton
+      SkinData = fmMain.bsSkinData
+    end
+    inherited bsRibbonDivider4: TbsRibbonDivider
+      SkinData = fmMain.bsSkinData
     end
     inherited btnExcel: TbsSkinSpeedButton
       Left = 776
       Top = 4
       Height = 23
       Anchors = [akTop, akRight]
+      SkinData = fmMain.bsSkinData
       OnClick = btnExcelClick
       ExplicitLeft = 776
       ExplicitTop = 4
@@ -45,6 +57,9 @@ inherited fmNoti: TfmNoti
       Anchors = [akTop, akRight]
       ExplicitLeft = 675
     end
+  end
+  inherited pnBottom: TbsSkinPanel
+    SkinData = fmMain.bsSkinData
   end
   object pnFilter: TbsSkinPanel [2]
     Left = 0
@@ -289,7 +304,7 @@ inherited fmNoti: TfmNoti
         FieldName = 'END_DT'
         Footers = <>
         Title.Alignment = taCenter
-        Title.Caption = #44228#49884#51333#47308#51068
+        Title.Caption = #44172#49884#51333#47308#51068
         Title.Color = 16250871
         Width = 80
       end>
@@ -675,8 +690,8 @@ inherited fmNoti: TfmNoti
         Top = 56
         Width = 141
         Height = 20
-        Date = 41701.678217743060000000
-        Time = 41701.678217743060000000
+        Date = 45941.797837210650000000
+        Time = 45941.797837210650000000
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -12
@@ -777,9 +792,13 @@ inherited fmNoti: TfmNoti
       end
     end
   end
+  inherited bsBusinessSkinForm: TbsBusinessSkinForm
+    SkinData = fmMain.bsSkinData
+    MenusSkinData = fmMain.bsSkinData
+  end
   inherited imgBtn: TImageList
     Bitmap = {
-      494C01010D005C00EC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010D005C00F00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1314,13 +1333,27 @@ inherited fmNoti: TfmNoti
       C003807FC003C003FFFFC0FFFFFFFFFF00000000000000000000000000000000
       000000000000}
   end
+  inherited bsSkinMessage: TbsSkinMessage
+    SkinData = fmMain.bsSkinData
+    CtrlSkinData = fmMain.bsSkinData
+  end
   inherited dbMain: TADOQuery
+    Connection = MastDB.ADOConn
+    CursorType = ctStatic
     AfterInsert = dbMainAfterInsert
     AfterEdit = dbMainAfterEdit
     BeforePost = dbMainBeforePost
     AfterCancel = dbMainAfterCancel
     SQL.Strings = (
-      'SELECT * FROM NOTICE_MST')
+      
+        'SELECT NOTICE_SEQ          ,TOP_YN              ,USER_ID        ' +
+        '     ,NOTICE_DT           ,NOTICE_TM           ,NOTICE_TP       ' +
+        '    ,NOTICE_BIZ_TP       ,NOTICE_TITLE        ,NOTICE_BODY      ' +
+        '   ,NOTICE_YN           ,END_DT         '
+      ' FROM NOTICE_MST    '
+      
+        ' WHERE NOTICE_DT BETWEEN '#39'2020-01-01'#39' AND '#39'2025-10-11'#39'  ORDER BY' +
+        ' TOP_YN DESC, NOTICE_DT DESC ')
   end
   inherited dbPart: TADOQuery
     Left = 145

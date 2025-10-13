@@ -4,6 +4,7 @@ inherited fmOvStatus: TfmOvStatus
   ClientWidth = 951
   OnShow = FormShow
   ExplicitWidth = 967
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 12
   inherited pnTop: TRzPanel
@@ -12,6 +13,7 @@ inherited fmOvStatus: TfmOvStatus
     inherited btnFilter: TbsSkinSpeedButton
       Top = 4
       Height = 23
+      SkinData = fmMain.bsSkinData
       ExplicitTop = 4
       ExplicitHeight = 23
     end
@@ -19,6 +21,7 @@ inherited fmOvStatus: TfmOvStatus
       Left = 765
       Top = 0
       Visible = False
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 765
       ExplicitTop = 0
     end
@@ -26,6 +29,7 @@ inherited fmOvStatus: TfmOvStatus
       Left = 765
       Top = 0
       Visible = False
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 765
       ExplicitTop = 0
     end
@@ -33,6 +37,7 @@ inherited fmOvStatus: TfmOvStatus
       Left = 765
       Top = 0
       Visible = False
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 765
       ExplicitTop = 0
     end
@@ -40,17 +45,20 @@ inherited fmOvStatus: TfmOvStatus
       Left = 772
       Top = 6
       Visible = False
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 772
       ExplicitTop = 6
     end
     inherited btnClose: TbsSkinSpeedButton
       Left = 866
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 866
     end
     inherited bsRibbonDivider4: TbsRibbonDivider
       Left = 772
       Top = -2
       Visible = False
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 772
       ExplicitTop = -2
     end
@@ -59,6 +67,7 @@ inherited fmOvStatus: TfmOvStatus
       Top = 4
       Height = 23
       Anchors = [akTop, akRight]
+      SkinData = fmMain.bsSkinData
       OnClick = btnExcelClick
       ExplicitLeft = 773
       ExplicitTop = 4
@@ -144,6 +153,7 @@ inherited fmOvStatus: TfmOvStatus
   end
   inherited pnBottom: TbsSkinPanel
     Width = 951
+    SkinData = fmMain.bsSkinData
     ExplicitWidth = 951
   end
   object gdMain: TDBGridEh [2]
@@ -266,9 +276,13 @@ inherited fmOvStatus: TfmOvStatus
     object RowDetailData: TRowDetailPanelControlEh
     end
   end
+  inherited bsBusinessSkinForm: TbsBusinessSkinForm
+    SkinData = fmMain.bsSkinData
+    MenusSkinData = fmMain.bsSkinData
+  end
   inherited imgBtn: TImageList
     Bitmap = {
-      494C01010B003400B40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B003400B80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -670,6 +684,10 @@ inherited fmOvStatus: TfmOvStatus
       8001000F800180018001000F800180018001003F800180018001003F80018001
       C003807FC003C003FFFFC0FFFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  inherited bsSkinMessage: TbsSkinMessage
+    SkinData = fmMain.bsSkinData
+    CtrlSkinData = fmMain.bsSkinData
   end
   inherited dbMain: TADOQuery
     SQL.Strings = (

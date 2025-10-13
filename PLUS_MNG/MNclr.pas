@@ -180,7 +180,7 @@ begin
   inherited;
 
   sUserId := dbMain.FieldByName('USER_ID').AsString;
-  sStkId  := dbMain.FieldByName('STK_ID').AsString;
+  sStkId  := dbMain.FieldByName('STK_CD').AsString;
 
   if sUserId = '' then begin
     bsMsgError('선택한 회원이 없습니다.');
@@ -188,7 +188,7 @@ begin
   end;
 
   if rbtPriceTp.ItemIndex = 0 then begin
-    sPrice := '(SELECT A1.NOW_PRC FROM CURR_PRC A1 WHERE A1.STK_ID = A.STK_ID)';
+    sPrice := '(SELECT A1.NOW_PRC FROM CURR_PRC A1 WHERE A1.STK_CD = A.STK_CD)';
   end else begin
     sPrice := Trim(edPrice.Text);
     if sPrice = '' then begin
@@ -202,7 +202,7 @@ begin
     'UPDATE NCLR_POS A ' +
     '   SET A.PRICE = %s ' + // TODO : A.PRICE 수정할것, 청산할 필드로 
     '  FROM ACNT_MST B ' +
-    ' WHERE A.ACNT_NO = B.ACNT_NO AND A.USER_ID = %s AND A.STK_ID = %s; ',
+    ' WHERE A.ACNT_NO = B.ACNT_NO AND A.USER_ID = %s AND A.STK_CD = %s; ',
     [sPrice,
      QuotedStr(sUserId),
      QuotedStr(sStkId) ]);

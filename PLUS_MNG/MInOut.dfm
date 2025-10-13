@@ -1520,4 +1520,61 @@ inherited fmInOut: TfmInOut
   inherited dbPart: TADOQuery
     Left = 145
   end
+  object ADOSP: TADOStoredProc
+    Connection = MastDB.ADOConn
+    ProcedureName = 'PT_INOUT_PROC'
+    Parameters = <
+      item
+        Name = 'RETURN_VALUE'
+        DataType = ftInteger
+        Direction = pdReturnValue
+        Precision = 10
+        Value = Null
+      end
+      item
+        Name = 'I_USER_ID'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = 'I_TM'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 12
+        Value = Null
+      end
+      item
+        Name = 'I_RSLT_TP'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 1
+        Value = Null
+      end
+      item
+        Name = 'I_RSLT_AMT'
+        Attributes = [paNullable]
+        DataType = ftBCD
+        NumericScale = 2
+        Precision = 15
+        Value = Null
+      end
+      item
+        Name = 'I_MNG_ID'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 20
+        Value = Null
+      end
+      item
+        Name = 'I_RJCT_MSG'
+        Attributes = [paNullable]
+        DataType = ftString
+        Size = 100
+        Value = Null
+      end>
+    Left = 24
+    Top = 396
+  end
 end

@@ -69,7 +69,7 @@ end;
 procedure TfmOvStatus.FormShow(Sender: TObject);
 begin
   inherited;
-  PartTableOpen(TComponent(gdMain.Columns[3]), Format('@|STK_NM, STK_CD|STK_MST|WHERE STK_ID = %s', [QuotedStr('STK_ID')]));
+  PartTableOpen(TComponent(gdMain.Columns[3]), Format('@|STK_NM, STK_CD|STK_MST|WHERE STK_CD = %s', [QuotedStr('STK_CD')]));
   PartTableOpen(TComponent(gdMain.Columns[4]), CodeFormat('BS_TP', 'ORDER BY CODE_VALUE'));
 
   MainTableOpen;

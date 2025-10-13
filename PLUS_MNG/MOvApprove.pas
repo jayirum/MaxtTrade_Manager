@@ -72,7 +72,7 @@ end;
 procedure TfmOvApprove.FormShow(Sender: TObject);
 begin
   inherited;
-  PartTableOpen(TComponent(gdMain.Columns[4]), Format('@|STK_NM, STK_CD|STK_MST|WHERE STK_ID = %s', [QuotedStr('STK_ID')]));
+  PartTableOpen(TComponent(gdMain.Columns[4]), Format('@|STK_NM, STK_CD|STK_MST|WHERE STK_CD = %s', [QuotedStr('STK_ID')]));
 
   MainTableOpen;
 end;

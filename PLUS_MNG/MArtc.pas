@@ -130,21 +130,8 @@ begin
       '       ARTC_SORT      ,' +
       '       DOT_CNT        ,' +
       '       ACNT_TP         ' +
-//      '       TICK_SIZE_LOW  ,' +
-//      '       TICK_VALUE_LOW ,' +
-//      '       API_CLTL       ,' +
-//      '       MKT_TP         ,' +
-//      '       START_TM       ,' +
-//      '       END_TM         ,' +
-//      '       MTR_END_TM     ,' +
-//      '       NOTI_1_YN      ,' +
-//      '       NOTI_3_YN      ,' +
-//      '       NOTI_5_YN      ,' +
-//      '       NOTI_10_YN     ,' +
-//      '       MONTH_GAP      ,' +
-//      '       SAMEHOGA_AMT   ,' +
       '  FROM ARTC_MST        ' +
-      ' ORDER BY ORD_SORT, ARTC_CD ';
+      ' ORDER BY ARTC_CD ';
     fnSqlOpen(dbMain, sSql);
   finally
     Delay_Hide;

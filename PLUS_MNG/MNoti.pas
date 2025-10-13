@@ -90,13 +90,17 @@ procedure TfmNoti.btnFilterClick(Sender: TObject);
 var
   sUid : String;
 begin
-  inherited;
+//  inherited;
+  _sMainWhere := '';
   if cbFindTp.ItemIndex > 0 then begin
     if cbFindTp.ItemIndex = 1 then sUid := '전체공지'
                               else sUid := edFind.Text;
 
     _sMainWhere := Format(' AND USER_ID = %s', [QuotedStr(sUid)]);
   end;
+
+  if not dtStart.Visible then dtStart.Date := StrToDate('2020-01-01');
+  if not dtEnd.Visible   then dtEnd.Date   := Now;
 
   _sMainWhere := Format(' WHERE NOTICE_DT BETWEEN %s AND %s ' + _sMainWhere , [QuotedStr(StrReplace(dtStart.Text,'-','')), QuotedStr(StrReplace(dtEnd.Text,'-',''))]);
 
@@ -239,7 +243,7 @@ end;
 
 procedure TfmNoti.FormShow(Sender: TObject);
 begin
-  inherited;
+//  inherited;
   pcNoti.ActivePageIndex := 0;
 
   dtStart.Date := TextToDate(_Trade_DT); //NowDate(True);
@@ -250,12 +254,13 @@ begin
   PartTableOpen(cbNotiBizGb, '공지구분');
   PartTableOpen(TComponent(gdMain.Columns[3]), '공지구분');
 //  cbNotiGb.ItemIndex := 0;
-  MainTableOpen;
+//  MainTableOpen;
 end;
 
 procedure TfmNoti.gdMainDrawColumnCell(Sender: TObject; const Rect: TRect;
   DataCol: Integer; Column: TColumnEh; State: TGridDrawState);
 begin
+Exit;
   inherited;
   with TDBGridEh(Sender), TDBGridEh(Sender).DataSource.DataSet do begin
     Canvas.Font.Color := clBlack;
@@ -276,7 +281,8 @@ begin
       'SELECT NOTICE_SEQ    ' +
       '      ,TOP_YN        ' +
       '      ,USER_ID       ' +
-      '      ,NOTICE_DT     ' +
+//      '      ,NOTICE_DT     ' +
+      '      ,CAST(SUBSTRING(NOTICE_DT, 1, 4)+' + '''-''' + '+SUBSTRING(NOTICE_DT, 5, 2)+' + '''-''' + '+SUBSTRING(NOTICE_DT, 7, 2) AS DATETIME) AS NOTICE_DT ' +
       '      ,NOTICE_TM     ' +
       '      ,NOTICE_TP     ' +
       '      ,NOTICE_BIZ_TP ' +
@@ -289,7 +295,6 @@ begin
       ' ORDER BY TOP_YN DESC, NOTICE_DT DESC ';
     fnSqlOpen(dbMain, sSql);
   finally
-
     Delay_Hide;
   end;
 end;

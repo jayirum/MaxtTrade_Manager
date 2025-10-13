@@ -4,6 +4,7 @@ inherited fmNclr: TfmNclr
   ClientWidth = 1154
   OnShow = FormShow
   ExplicitWidth = 1170
+  ExplicitHeight = 240
   PixelsPerInch = 96
   TextHeight = 12
   inherited pnTop: TRzPanel
@@ -16,10 +17,14 @@ inherited fmNclr: TfmNclr
     FlatColorAdjustment = 0
     FrameController = MastDB.PanelRzFrameController
     ExplicitWidth = 1154
+    inherited btnFilter: TbsSkinSpeedButton
+      SkinData = fmMain.bsSkinData
+    end
     inherited btnInsert: TbsSkinSpeedButton
       Left = 455
       Top = 6
       Visible = False
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 455
       ExplicitTop = 6
     end
@@ -27,6 +32,7 @@ inherited fmNclr: TfmNclr
       Left = 455
       Top = 0
       Visible = False
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 455
       ExplicitTop = 0
     end
@@ -34,6 +40,7 @@ inherited fmNclr: TfmNclr
       Left = 480
       Top = 0
       Visible = False
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 480
       ExplicitTop = 0
     end
@@ -41,15 +48,18 @@ inherited fmNclr: TfmNclr
       Left = 487
       Top = 0
       Visible = False
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 487
       ExplicitTop = 0
     end
     inherited btnClose: TbsSkinSpeedButton
       Left = 1067
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 1068
     end
     inherited bsRibbonDivider4: TbsRibbonDivider
       Left = 193
+      SkinData = fmMain.bsSkinData
       ExplicitLeft = 193
     end
     inherited btnExcel: TbsSkinSpeedButton
@@ -57,6 +67,7 @@ inherited fmNclr: TfmNclr
       Top = 4
       Height = 23
       Anchors = [akTop, akRight]
+      SkinData = fmMain.bsSkinData
       OnClick = btnExcelClick
       ExplicitLeft = 1004
       ExplicitTop = 4
@@ -130,6 +141,7 @@ inherited fmNclr: TfmNclr
   end
   inherited pnBottom: TbsSkinPanel
     Width = 1154
+    SkinData = fmMain.bsSkinData
     ExplicitWidth = 1154
   end
   object gdMain: TDBGridEh [2]
@@ -631,9 +643,13 @@ inherited fmNclr: TfmNclr
       TabOrder = 11
     end
   end
+  inherited bsBusinessSkinForm: TbsBusinessSkinForm
+    SkinData = fmMain.bsSkinData
+    MenusSkinData = fmMain.bsSkinData
+  end
   inherited imgBtn: TImageList
     Bitmap = {
-      494C01010B003400A80010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010B003400AC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1035,6 +1051,10 @@ inherited fmNclr: TfmNclr
       8001000F800180018001000F800180018001003F800180018001003F80018001
       C003807FC003C003FFFFC0FFFFFFFFFF00000000000000000000000000000000
       000000000000}
+  end
+  inherited bsSkinMessage: TbsSkinMessage
+    SkinData = fmMain.bsSkinData
+    CtrlSkinData = fmMain.bsSkinData
   end
   inherited dbMain: TADOQuery
     OnCalcFields = dbMainCalcFields

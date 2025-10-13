@@ -75,7 +75,7 @@ begin
   dtStart.Date := TextToDate(_Trade_DT); //Now;
   dtEnd.Date   := TextToDate(_Trade_DT); //Now;
 
-  PartTableOpen(TComponent(gdMain.Columns[2]), Format('@|STK_NM, STK_CD|STK_MST|WHERE STK_ID = %s', [QuotedStr('STK_ID')]));
+  PartTableOpen(TComponent(gdMain.Columns[2]), Format('@|STK_NM, STK_CD|STK_MST|WHERE STK_CD = %s', [QuotedStr('STK_CD')]));
 
   MainTableOpen;
 end;

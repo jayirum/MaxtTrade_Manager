@@ -329,14 +329,24 @@ begin
       '      ,B.PART_CD     ' +
       '      ,B.SERVER_IP   ' +
       '      ,(SELECT MAX(HTS_VER) FROM LOGIN_HIS WHERE USER_ID = A.USER_ID) AS HTS_VER ' +
-      '  FROM (SELECT DISTINCT A1.*, B1.LOGIN_MAC FROM ACNT_MST A1, LOGIN_HIS B1 WHERE A1.USER_ID = B1.USER_ID) A, ' +
-      '       USER_MST B            ' +
-      ' WHERE A.USER_ID = B.USER_ID ' +
-      '   AND A.CONN_YN = %s        ' +
+      '  FROM (SELECT DISTINCT A1.*, B1.LOGIN_MAC           ' +
+      '               FROM ACNT_MST A1, LOGIN_HIS B1        ' +
+      '               WHERE B1.LOGIN_DT >= dbo.FP_TRADE_DT()' +
+      '               and B1.LOGIN_TP=%s                    ' +
+      '               AND B1.APP_TP=%s                      ' +
+      '               AND LOGIN_MAC<>%s                     ' +
+      '               AND A1.USER_ID = B1.USER_ID) A,       ' +
+      '       USER_MST B                                    ' +
+      ' WHERE A.USER_ID = B.USER_ID                         ' +
+      '   AND A.CONN_YN = %s                                ' +
       _sFind +
       '%s'+
       sGrade,
-      [QuotedStr('Y'),
+      [
+      QuotedStr('I'),
+      QuotedStr('C'),
+      QuotedStr('RECONNECT'),
+      QuotedStr('Y'),
        sWhere]);
 
     fnSqlOpen(dbMain, sSql);

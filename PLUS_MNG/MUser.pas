@@ -456,8 +456,10 @@ var
 begin
   inherited;
   sSQL := UserFilter_Run;
-  if sSQL <> '' then _sMainWhere := sSQL;
-  MainTableOpen;
+  if sSQL <> '' then begin
+    _sMainWhere := sSQL;
+    MainTableOpen;
+  end;
 end;
 
 procedure TfmUser.btnPassClick(Sender: TObject);
@@ -483,7 +485,7 @@ end;
 procedure TfmUser.btnFilterClick(Sender: TObject);
 begin
   if edFind.Text = '' then _sMainWhere := ''
-                      else _sMainWhere := StrReplace(_Find_User, '<X>', edFind.Text);
+                      else _sMainWhere := StrReplace(_Find_User_1, '<X>', edFind.Text);
 
   //ХыЧе. LoginCnt;
   LoginCntMerge;
@@ -891,7 +893,8 @@ procedure TfmUser.edFindKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   inherited;
-  if Key = 13 then btnFilter.ButtonClick;
+  if Key = VK_RETURN then
+    btnFilter.ButtonClick;
 end;
 
 procedure TfmUser.edInAmtEnter(Sender: TObject);

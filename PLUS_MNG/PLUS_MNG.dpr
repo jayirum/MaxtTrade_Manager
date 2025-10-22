@@ -66,7 +66,7 @@ uses
 begin
   Application.Initialize;
 //  Application.MainFormOnTaskbar := True;
-  Application.Title := 'MaxTrade Management';
+  Application.Title := '챔피언 관리자';
   Application.CreateForm(TfmMain, fmMain);
   Application.Run;
 end.

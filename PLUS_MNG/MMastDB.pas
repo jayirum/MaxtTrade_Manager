@@ -39,6 +39,7 @@ type
     procedure tmPollingTimer(Sender: TObject);
   private
     { Private declarations }
+    procedure Exe_Self;
   public
     { Public declarations }
     function Connect_SQLDB: Boolean;
@@ -67,6 +68,7 @@ var
 (* DB Data ===================================================================*)
 function ActiveSQL(ADOQry:TADOQuery; iFetchRows: Integer=50): integer;
 function fnSqlOpen(ADOQry: TADOQuery; sSQL:string; iFetchRows: Integer=50): String;
+function RunAsAdmin(const FileName, Params: string): TShellExecuteInfo;
 
 implementation
 
@@ -414,8 +416,10 @@ begin
   iwNotiClient.Disconnect;
 
   if fmMain.bsMsgYesNo('통보서버 상태가 불안합니다. 재접속하여 체크하시길 바랍니다.\n\n재접속하시겠습니까?') then begin
-    ShellExecute(fmMain.Handle, 'open', PChar(Application.ExeName),
-                 PChar(Format('%s %s %s', ['SELF_RUN', _Login_ID, _Login_Pwd])) , nil, SW_SHOWNORMAL);
+    Exe_Self;
+    //ShellExecute(0, 'runas', PChar(Application.ExeName), nil, nil, SW_SHOWNORMAL);
+//    ShellExecute(fmMain.Handle, 'open', PChar(Application.ExeName),
+//                 PChar(Format('%s %s %s', ['SELF_RUN', _Login_ID, _Login_Pwd])) , nil, SW_SHOWNORMAL);
   end;
 
 //  MsgError('통보서버가 끊어졌습니다. 시스템에 문의 바랍니다.');
@@ -463,6 +467,7 @@ begin
 
   _Find_User   := Get_INIFile(_Find_FileName, 'FINDSQL', 'USER');
   _Find_UserNM := Get_INIFile(_Find_FileName, 'FINDSQL', 'USER_A');
+  _Find_User_1 := Get_INIFile(_Find_FileName, 'FINDSQL', 'USER_1');
 
 //  _POLLING_TIME := StrToIntDef(Get_CFGFile('MNG_OPTION', 'POLLING_TIME', '60', False, __CFGServerIP), 60);   // Polling Time
   _POLLING_TIME := StrToIntDef(Get_CFGFile('MNG_OPTION', 'POLLING_TIME', '60', False), 60);   // Polling Time
@@ -646,6 +651,53 @@ begin
 
   MsgError('DB 네트워크 상태가 불안합니다.\n\n재접속하세요.');
   Application.Terminate;
+end;
+
+procedure TMastDB.Exe_Self;
+var
+  sei : TShellExecuteInfo;
+  ProcessID : Cardinal;
+  sPath, sProcessNm, sFileNm, sParam : string;
+begin
+  sPath := ExtractFilePath(ParamStr(0));
+  sProcessNm := ExtractFileName(Application.ExeName);
+  sFileNm := sPath + sProcessNm;
+
+  ProcessID := GetProcessID(sProcessNm);
+//MsgInfo('ProcessID   ' + IntToStr(ProcessID));
+//  if ProcessID = 0 then begin
+    sParam := Format('%s %s', ['0', 'UPDATE_Y']);
+//    ShellExecute(Handle, 'open', PChar(sFileNm), PChar(sParam), nil, SW_SHOWNORMAL);
+//MsgInfo('before run');
+    sei := RunAsAdmin(sFileNm, sParam);
+    SetForegroundWindow(sei.hProcess);
+//    BringProcessToFront(ChangeFileExt(ExtractFileName(Application.ExeName), ''));
+//MsgInfo('after run');
+//  end else begin
+//    BringProcessToFront(ChangeFileExt(ExtractFileName(Application.ExeName), ''));
+//  end;
+end;
+
+function RunAsAdmin(const FileName, Params: string):TShellExecuteInfo;
+var
+  pid : DWORD;
+  hnd : HWND;
+  sei: TShellExecuteInfo;
+begin
+  ZeroMemory(@sei, SizeOf(sei));
+  sei.cbSize := SizeOf(TShellExecuteInfo);
+  sei.fMask := SEE_MASK_FLAG_DDEWAIT or SEE_MASK_FLAG_NO_UI;
+  sei.Wnd := 0;
+  sei.lpVerb := 'runas'; // 관리자 권한으로 실행
+  sei.lpFile := PChar(FileName);
+  sei.lpParameters := PChar(Params);
+  sei.lpDirectory := nil;
+  sei.nShow := SW_SHOWNORMAL;
+
+  if not ShellExecuteEx(@sei) then
+    MsgError('실행 실패: ' + SysErrorMessage(GetLastError));
+
+  Result := sei;
 end;
 
 end.

@@ -64,7 +64,7 @@ object MastDB: TMastDB
     Connection = ADOConn
     CursorType = ctStatic
     Parameters = <>
-    Left = 224
+    Left = 228
     Top = 88
   end
   object ADOSP: TADOStoredProc

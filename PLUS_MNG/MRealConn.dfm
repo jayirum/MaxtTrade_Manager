@@ -6,246 +6,7 @@ inherited fmRealConn: TfmRealConn
   ExplicitWidth = 1189
   PixelsPerInch = 96
   TextHeight = 12
-  inherited pnTop: TRzPanel
-    Width = 1173
-    ExplicitWidth = 1173
-    inherited btnInsert: TbsSkinSpeedButton
-      Left = 203
-      Top = 4
-      Visible = False
-      ExplicitLeft = 203
-      ExplicitTop = 4
-    end
-    inherited btnEdit: TbsSkinSpeedButton
-      Visible = False
-    end
-    inherited btnDelete: TbsSkinSpeedButton
-      Visible = False
-    end
-    inherited btnPost: TbsSkinSpeedButton
-      Visible = False
-    end
-    inherited btnClose: TbsSkinSpeedButton
-      Left = 1088
-      ExplicitLeft = 1088
-    end
-    inherited btnExcel: TbsSkinSpeedButton
-      Left = 1012
-      Top = 4
-      Height = 23
-      Anchors = [akTop, akRight]
-      OnClick = btnExcelClick
-      ExplicitLeft = 776
-      ExplicitTop = 4
-      ExplicitHeight = 23
-    end
-    inherited pnTitle: TRzPanel
-      BorderHighlight = clWhite
-      BorderShadow = 13290186
-      FlatColor = clGray
-      FlatColorAdjustment = 0
-      FrameController = MastDB.RzFrameController
-    end
-    inherited nvMain: TRzDBNavigator
-      Left = 911
-      Hints.Strings = ()
-      Anchors = [akTop, akRight]
-      ExplicitLeft = 911
-    end
-  end
-  inherited pnBottom: TbsSkinPanel
-    Width = 1173
-    ExplicitWidth = 1173
-  end
-  object pnFilter: TbsSkinPanel [2]
-    Left = 0
-    Top = 31
-    Width = 1173
-    Height = 29
-    HintImageIndex = 0
-    TabOrder = 2
-    SkinDataName = 'panel'
-    DefaultFont.Charset = DEFAULT_CHARSET
-    DefaultFont.Color = clWindowText
-    DefaultFont.Height = 13
-    DefaultFont.Name = 'Tahoma'
-    DefaultFont.Style = []
-    DefaultWidth = 0
-    DefaultHeight = 0
-    UseSkinFont = True
-    EmptyDrawing = False
-    RibbonStyle = False
-    ImagePosition = bsipDefault
-    TransparentMode = False
-    CaptionImageIndex = -1
-    RealHeight = -1
-    AutoEnabledControls = True
-    CheckedMode = False
-    Checked = False
-    DefaultAlignment = taLeftJustify
-    DefaultCaptionHeight = 22
-    BorderStyle = bvFrame
-    CaptionMode = False
-    RollUpMode = False
-    RollUpState = False
-    NumGlyphs = 1
-    Spacing = 2
-    Align = alTop
-    object bsSkinLabel1: TbsSkinLabel
-      Left = 122
-      Top = 4
-      Width = 75
-      Height = 20
-      HintImageIndex = 0
-      TabOrder = 0
-      SkinData = fmMain.bsSkinData
-      SkinDataName = 'label'
-      DefaultFont.Charset = DEFAULT_CHARSET
-      DefaultFont.Color = clWindowText
-      DefaultFont.Height = 13
-      DefaultFont.Name = 'Tahoma'
-      DefaultFont.Style = []
-      DefaultWidth = 0
-      DefaultHeight = 0
-      UseSkinFont = True
-      Transparent = False
-      ShadowEffect = False
-      ShadowColor = clBlack
-      ShadowOffset = 0
-      ShadowSize = 3
-      ReflectionEffect = False
-      ReflectionOffset = -5
-      EllipsType = bsetNoneEllips
-      UseSkinSize = False
-      UseSkinFontColor = True
-      BorderStyle = bvFrame
-      Alignment = taCenter
-      Caption = #44160#49353
-      AutoSize = False
-    end
-    object edFind: TRzEdit
-      Tag = 500
-      Left = 203
-      Top = 4
-      Width = 227
-      Height = 20
-      FrameController = MastDB.RzFrameController
-      ImeName = 'Microsoft IME 2010'
-      TabOrder = 1
-      OnKeyDown = edFindKeyDown
-    end
-  end
-  object pnLeft: TRzSizePanel [3]
-    Left = 0
-    Top = 60
-    Width = 132
-    Height = 471
-    Color = 15987699
-    HotSpotVisible = True
-    SizeBarWidth = 7
-    TabOrder = 3
-    object RzPanel5: TRzPanel
-      Left = 0
-      Top = 166
-      Width = 124
-      Height = 28
-      Align = alTop
-      BorderOuter = fsFlat
-      BorderHighlight = clWhite
-      BorderShadow = 12303291
-      Color = 15790320
-      FlatColor = clGray
-      FlatColorAdjustment = 0
-      TabOrder = 0
-      object RzPanel1: TRzPanel
-        Left = 5
-        Top = 4
-        Width = 113
-        Height = 21
-        BorderOuter = fsFlat
-        Caption = #51217#49549#49436#48260
-        Color = clWhite
-        FlatColor = clGray
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clWindowText
-        Font.Height = -12
-        Font.Name = #44404#47548#52404
-        Font.Style = []
-        ParentFont = False
-        TabOrder = 0
-      end
-    end
-    object RzPanel6: TRzPanel
-      Left = 0
-      Top = 0
-      Width = 124
-      Height = 166
-      Align = alTop
-      BorderOuter = fsFlat
-      BorderHighlight = clWhite
-      BorderShadow = 12303291
-      Color = 15790320
-      FlatColor = clGray
-      FlatColorAdjustment = 0
-      TabOrder = 1
-      object rgType: TbsSkinRadioGroup
-        Left = 5
-        Top = 6
-        Width = 113
-        Height = 155
-        Cursor = crHandPoint
-        HintImageIndex = 0
-        TabOrder = 0
-        SkinDataName = 'groupbox'
-        DefaultFont.Charset = DEFAULT_CHARSET
-        DefaultFont.Color = clWindowText
-        DefaultFont.Height = 13
-        DefaultFont.Name = 'Tahoma'
-        DefaultFont.Style = []
-        DefaultWidth = 0
-        DefaultHeight = 0
-        UseSkinFont = True
-        EmptyDrawing = False
-        RibbonStyle = False
-        ImagePosition = bsipDefault
-        TransparentMode = False
-        CaptionImageIndex = -1
-        RealHeight = -1
-        AutoEnabledControls = True
-        CheckedMode = False
-        Checked = False
-        DefaultAlignment = taCenter
-        DefaultCaptionHeight = 22
-        BorderStyle = bvFrame
-        CaptionMode = True
-        RollUpMode = False
-        RollUpState = False
-        NumGlyphs = 1
-        Spacing = 2
-        Caption = #54924#50896#46321#44553
-        OnClick = rgTypeClick
-        UseSkinSize = True
-        ButtonSkinDataName = 'radiobox'
-        ButtonDefaultFont.Charset = DEFAULT_CHARSET
-        ButtonDefaultFont.Color = clWindowText
-        ButtonDefaultFont.Height = 13
-        ButtonDefaultFont.Name = 'Tahoma'
-        ButtonDefaultFont.Style = []
-      end
-    end
-    object lbxPart: TRzListBox
-      Left = 0
-      Top = 194
-      Width = 124
-      Height = 277
-      Align = alClient
-      ImeName = 'Microsoft IME 2010'
-      ItemHeight = 12
-      TabOrder = 2
-      OnClick = lbxPartClick
-    end
-  end
-  object RzPanel4: TRzPanel [4]
+  object RzPanel4: TRzPanel [0]
     Left = 678
     Top = 60
     Width = 495
@@ -387,6 +148,7 @@ inherited fmRealConn: TfmRealConn
       Alignment = taCenter
       Caption = #47700#49884#51648#51077#47141
       AutoSize = False
+      OnClick = bsSkinLabel4Click
     end
     object RzPanel2: TRzPanel
       Left = 1
@@ -403,7 +165,7 @@ inherited fmRealConn: TfmRealConn
       TabOrder = 2
       object cbCheckAll: TbsSkinCheckRadioBox
         Left = 408
-        Top = 3
+        Top = 4
         Width = 81
         Height = 19
         HintImageIndex = 0
@@ -488,6 +250,7 @@ inherited fmRealConn: TfmRealConn
       Alignment = taCenter
       Caption = #51228#47785
       AutoSize = False
+      OnClick = bsSkinLabel3Click
     end
     object edtitle: TRzEdit
       Left = 92
@@ -498,6 +261,249 @@ inherited fmRealConn: TfmRealConn
       ImeName = 'Microsoft IME 2010'
       TabOrder = 5
       OnKeyDown = edFindKeyDown
+    end
+  end
+  inherited pnTop: TRzPanel
+    Width = 1173
+    ExplicitWidth = 1173
+    inherited btnFilter: TbsSkinSpeedButton
+      Top = 4
+      ExplicitTop = 4
+    end
+    inherited btnInsert: TbsSkinSpeedButton
+      Left = 203
+      Top = 4
+      Visible = False
+      ExplicitLeft = 203
+      ExplicitTop = 4
+    end
+    inherited btnEdit: TbsSkinSpeedButton
+      Visible = False
+    end
+    inherited btnDelete: TbsSkinSpeedButton
+      Visible = False
+    end
+    inherited btnPost: TbsSkinSpeedButton
+      Visible = False
+    end
+    inherited btnClose: TbsSkinSpeedButton
+      Left = 1088
+      ExplicitLeft = 1088
+    end
+    inherited btnExcel: TbsSkinSpeedButton
+      Left = 1012
+      Top = 4
+      Height = 23
+      Anchors = [akTop, akRight]
+      OnClick = btnExcelClick
+      ExplicitLeft = 776
+      ExplicitTop = 4
+      ExplicitHeight = 23
+    end
+    inherited pnTitle: TRzPanel
+      BorderHighlight = clWhite
+      BorderShadow = 13290186
+      FlatColor = clGray
+      FlatColorAdjustment = 0
+      FrameController = MastDB.RzFrameController
+    end
+    inherited nvMain: TRzDBNavigator
+      Left = 911
+      Hints.Strings = ()
+      Anchors = [akTop, akRight]
+      ExplicitLeft = 911
+    end
+  end
+  inherited pnBottom: TbsSkinPanel
+    Width = 1173
+    ExplicitWidth = 1173
+  end
+  object pnFilter: TbsSkinPanel [3]
+    Left = 0
+    Top = 31
+    Width = 1173
+    Height = 29
+    HintImageIndex = 0
+    TabOrder = 2
+    SkinDataName = 'panel'
+    DefaultFont.Charset = DEFAULT_CHARSET
+    DefaultFont.Color = clWindowText
+    DefaultFont.Height = 13
+    DefaultFont.Name = 'Tahoma'
+    DefaultFont.Style = []
+    DefaultWidth = 0
+    DefaultHeight = 0
+    UseSkinFont = True
+    EmptyDrawing = False
+    RibbonStyle = False
+    ImagePosition = bsipDefault
+    TransparentMode = False
+    CaptionImageIndex = -1
+    RealHeight = -1
+    AutoEnabledControls = True
+    CheckedMode = False
+    Checked = False
+    DefaultAlignment = taLeftJustify
+    DefaultCaptionHeight = 22
+    BorderStyle = bvFrame
+    CaptionMode = False
+    RollUpMode = False
+    RollUpState = False
+    NumGlyphs = 1
+    Spacing = 2
+    Align = alTop
+    object bsSkinLabel1: TbsSkinLabel
+      Left = 122
+      Top = 4
+      Width = 75
+      Height = 20
+      HintImageIndex = 0
+      TabOrder = 0
+      SkinData = fmMain.bsSkinData
+      SkinDataName = 'label'
+      DefaultFont.Charset = DEFAULT_CHARSET
+      DefaultFont.Color = clWindowText
+      DefaultFont.Height = 13
+      DefaultFont.Name = 'Tahoma'
+      DefaultFont.Style = []
+      DefaultWidth = 0
+      DefaultHeight = 0
+      UseSkinFont = True
+      Transparent = False
+      ShadowEffect = False
+      ShadowColor = clBlack
+      ShadowOffset = 0
+      ShadowSize = 3
+      ReflectionEffect = False
+      ReflectionOffset = -5
+      EllipsType = bsetNoneEllips
+      UseSkinSize = False
+      UseSkinFontColor = True
+      BorderStyle = bvFrame
+      Alignment = taCenter
+      Caption = #44160#49353
+      AutoSize = False
+    end
+    object edFind: TRzEdit
+      Tag = 500
+      Left = 203
+      Top = 3
+      Width = 227
+      Height = 20
+      FrameController = MastDB.RzFrameController
+      ImeName = 'Microsoft IME 2010'
+      TabOrder = 1
+      OnKeyDown = edFindKeyDown
+    end
+  end
+  object pnLeft: TRzSizePanel [4]
+    Left = 0
+    Top = 60
+    Width = 132
+    Height = 471
+    Color = 15987699
+    HotSpotVisible = True
+    SizeBarWidth = 7
+    TabOrder = 3
+    object RzPanel5: TRzPanel
+      Left = 0
+      Top = 166
+      Width = 124
+      Height = 28
+      Align = alTop
+      BorderOuter = fsFlat
+      BorderHighlight = clWhite
+      BorderShadow = 12303291
+      Color = 15790320
+      FlatColor = clGray
+      FlatColorAdjustment = 0
+      TabOrder = 0
+      object RzPanel1: TRzPanel
+        Left = 5
+        Top = 4
+        Width = 113
+        Height = 21
+        BorderOuter = fsFlat
+        Caption = #51217#49549#49436#48260
+        Color = clWhite
+        FlatColor = clGray
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -12
+        Font.Name = #44404#47548#52404
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 0
+      end
+    end
+    object RzPanel6: TRzPanel
+      Left = 0
+      Top = 0
+      Width = 124
+      Height = 166
+      Align = alTop
+      BorderOuter = fsFlat
+      BorderHighlight = clWhite
+      BorderShadow = 12303291
+      Color = 15790320
+      FlatColor = clGray
+      FlatColorAdjustment = 0
+      TabOrder = 1
+      object rgType: TbsSkinRadioGroup
+        Left = 5
+        Top = 6
+        Width = 113
+        Height = 155
+        Cursor = crHandPoint
+        HintImageIndex = 0
+        TabOrder = 0
+        SkinDataName = 'groupbox'
+        DefaultFont.Charset = DEFAULT_CHARSET
+        DefaultFont.Color = clWindowText
+        DefaultFont.Height = 13
+        DefaultFont.Name = 'Tahoma'
+        DefaultFont.Style = []
+        DefaultWidth = 0
+        DefaultHeight = 0
+        UseSkinFont = True
+        EmptyDrawing = False
+        RibbonStyle = False
+        ImagePosition = bsipDefault
+        TransparentMode = False
+        CaptionImageIndex = -1
+        RealHeight = -1
+        AutoEnabledControls = True
+        CheckedMode = False
+        Checked = False
+        DefaultAlignment = taCenter
+        DefaultCaptionHeight = 22
+        BorderStyle = bvFrame
+        CaptionMode = True
+        RollUpMode = False
+        RollUpState = False
+        NumGlyphs = 1
+        Spacing = 2
+        Caption = #54924#50896#46321#44553
+        OnClick = rgTypeClick
+        UseSkinSize = True
+        ButtonSkinDataName = 'radiobox'
+        ButtonDefaultFont.Charset = DEFAULT_CHARSET
+        ButtonDefaultFont.Color = clWindowText
+        ButtonDefaultFont.Height = 13
+        ButtonDefaultFont.Name = 'Tahoma'
+        ButtonDefaultFont.Style = []
+      end
+    end
+    object lbxPart: TRzListBox
+      Left = 0
+      Top = 194
+      Width = 124
+      Height = 277
+      Align = alClient
+      ImeName = 'Microsoft IME 2010'
+      ItemHeight = 12
+      TabOrder = 2
+      OnClick = lbxPartClick
     end
   end
   object gdMain: TDBGridEh [5]
@@ -516,8 +522,8 @@ inherited fmRealConn: TfmRealConn
     Flat = True
     ImeName = 'Microsoft IME 2010'
     IndicatorOptions = [gioShowRecNoEh]
-    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
-    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghAutoSortMarking, dghMultiSortMarking, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
+    Options = [dgTitles, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgMultiSelect]
+    OptionsEh = [dghFixed3D, dghHighlightFocus, dghClearSelection, dghDialogFind, dghShowRecNo, dghColumnResize, dghColumnMove, dghExtendVertLines]
     ParentCtl3D = False
     RowDetailPanel.Color = clBtnFace
     RowHeight = 21
@@ -669,7 +675,7 @@ inherited fmRealConn: TfmRealConn
   end
   inherited imgBtn: TImageList
     Bitmap = {
-      494C01010D008C00CC0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010D008C00F00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -1205,27 +1211,109 @@ inherited fmRealConn: TfmRealConn
       000000000000}
   end
   inherited dbMain: TADOQuery
+    Active = True
+    Connection = MastDB.ADOConn
+    CursorType = ctStatic
+    Prepared = True
     SQL.Strings = (
-      'SELECT   0 AS CHECK_TF '
-      '        ,A.ACNT_NO'
-      '        ,A.ACNT_TP'
-      '        ,A.USER_ID'
-      '        ,A.USER_NM'
-      '        ,A.ACNT_STATE'
-      '        ,A.NEGO_DUP_YN'
-      '        ,A.LOGIN_DT'
-      '        ,A.LOGIN_TM'
-      '        ,A.LOGIN_IP'
-      '        ,B.USER_GRADE'
-      '        ,B.PART_CD'
-      '        ,B.SERVER_IP'
-      '        ,B.HTS_VER'
-      'FROM ACNT_MST A,'
-      '     USER_MST B'
-      'WHERE A.USER_ID = B.USER_ID'
-      'AND A.CONN_YN = '#39'Y'#39)
+      'SELECT 0 AS CHECK_TF'
+      '      ,A.ACNT_NO'
+      '      ,A.ACNT_TP'
+      '      ,A.USER_ID'
+      '      ,A.USER_NM'
+      '      ,A.ACNT_STATE'
+      '      ,A.NEGO_DUP_YN'
+      '      ,A.LOGIN_DT'
+      '      ,A.LOGIN_TM'
+      '      ,A.LOGIN_IP'
+      '      ,A.LOGIN_MAC'
+      '      ,B.USER_GRADE'
+      '      ,B.PART_CD'
+      '      ,B.SERVER_IP'
+      
+        '      ,(SELECT MAX(HTS_VER) FROM LOGIN_HIS WHERE USER_ID = A.USE' +
+        'R_ID) AS HTS_VER'
+      '  FROM (SELECT DISTINCT A1.*, B1.LOGIN_MAC'
+      '          FROM ACNT_MST A1, LOGIN_HIS B1'
+      '         WHERE B1.LOGIN_DT >= dbo.FP_TRADE_DT()'
+      '           and B1.LOGIN_TP = '#39'I'#39
+      '           AND B1.APP_TP = '#39'C'#39
+      '           AND LOGIN_MAC <> '#39'RECONNECT'#39
+      '           AND A1.USER_ID = B1.USER_ID) A,'
+      '       USER_MST B'
+      ' WHERE A.USER_ID = B.USER_ID'
+      '   AND A.CONN_YN = '#39'Y'#39)
+    object dbMainCHECK_TF: TIntegerField
+      FieldName = 'CHECK_TF'
+    end
+    object dbMainACNT_NO: TStringField
+      FieldName = 'ACNT_NO'
+      FixedChar = True
+      Size = 11
+    end
+    object dbMainACNT_TP: TStringField
+      FieldName = 'ACNT_TP'
+      FixedChar = True
+      Size = 1
+    end
+    object dbMainUSER_ID: TStringField
+      FieldName = 'USER_ID'
+    end
+    object dbMainUSER_NM: TStringField
+      FieldName = 'USER_NM'
+    end
+    object dbMainACNT_STATE: TStringField
+      FieldName = 'ACNT_STATE'
+      FixedChar = True
+      Size = 1
+    end
+    object dbMainNEGO_DUP_YN: TStringField
+      FieldName = 'NEGO_DUP_YN'
+      FixedChar = True
+      Size = 1
+    end
+    object dbMainLOGIN_DT: TStringField
+      FieldName = 'LOGIN_DT'
+      FixedChar = True
+      Size = 8
+    end
+    object dbMainLOGIN_TM: TStringField
+      FieldName = 'LOGIN_TM'
+      FixedChar = True
+      Size = 12
+    end
+    object dbMainLOGIN_IP: TStringField
+      FieldName = 'LOGIN_IP'
+      Size = 15
+    end
+    object dbMainLOGIN_MAC: TStringField
+      FieldName = 'LOGIN_MAC'
+      Size = 15
+    end
+    object dbMainUSER_GRADE: TStringField
+      FieldName = 'USER_GRADE'
+      FixedChar = True
+      Size = 1
+    end
+    object dbMainPART_CD: TStringField
+      FieldName = 'PART_CD'
+      FixedChar = True
+      Size = 2
+    end
+    object dbMainSERVER_IP: TStringField
+      FieldName = 'SERVER_IP'
+      Size = 15
+    end
+    object dbMainHTS_VER: TStringField
+      FieldName = 'HTS_VER'
+      Size = 10
+    end
   end
   inherited dbPart: TADOQuery
+    Connection = MastDB.ADOConn
     Left = 145
+  end
+  inherited dbPower: TADOQuery
+    Connection = MastDB.ADOConn
   end
 end

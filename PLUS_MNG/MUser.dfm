@@ -291,7 +291,7 @@ inherited fmUser: TfmUser
       AutoSize = False
     end
     object edFind: TRzEdit
-      Left = 205
+      Left = 203
       Top = 4
       Width = 227
       Height = 20
@@ -3279,7 +3279,7 @@ inherited fmUser: TfmUser
           end
           object btnLevSave: TbsSkinSpeedButton
             Tag = 500
-            Left = 103
+            Left = 100
             Top = 142
             Width = 67
             Height = 24
@@ -3319,7 +3319,7 @@ inherited fmUser: TfmUser
           end
           object btnLevCancel: TbsSkinSpeedButton
             Tag = 500
-            Left = 103
+            Left = 100
             Top = 170
             Width = 67
             Height = 24
@@ -4616,7 +4616,7 @@ inherited fmUser: TfmUser
           496
           20)
         object lbLogin: TbsSkinLabel
-          Left = 313
+          Left = 310
           Top = 1
           Width = 126
           Height = 19
@@ -4647,7 +4647,7 @@ inherited fmUser: TfmUser
           Alignment = taCenter
           Caption = '0'#44148
           AutoSize = False
-          ExplicitLeft = 315
+          ExplicitLeft = 311
         end
       end
       object edIP: TEdit
@@ -4663,7 +4663,7 @@ inherited fmUser: TfmUser
   end
   inherited imgBtn: TImageList
     Bitmap = {
-      494C01011600D001A40210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01011600D001B00210001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000006000000001002000000000000060
       000000000000000000000000000000000000000000000000000000000000087B
       1000107B1800107B1800107B1000087B100000730800006B0000000000000000

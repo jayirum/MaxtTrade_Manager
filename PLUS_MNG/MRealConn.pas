@@ -15,7 +15,7 @@ uses
   DBGridEhGrouping, ToolCtrlsEh, DBGridEhToolCtrls, DynVarsEh, GridsEh,
   DBAxisGridsEh, DBGridEh,
 // User Unit
-  MBasic;
+  MBasic, Grids, DBGrids;
 
 type
   TfmRealConn = class(TfmBasic)
@@ -40,6 +40,21 @@ type
     bsSkinLabel3: TbsSkinLabel;
     edtitle: TRzEdit;
     btnRefresh: TbsSkinSpeedButton;
+    dbMainACNT_NO: TStringField;
+    dbMainACNT_TP: TStringField;
+    dbMainUSER_ID: TStringField;
+    dbMainUSER_NM: TStringField;
+    dbMainACNT_STATE: TStringField;
+    dbMainNEGO_DUP_YN: TStringField;
+    dbMainLOGIN_DT: TStringField;
+    dbMainLOGIN_TM: TStringField;
+    dbMainLOGIN_IP: TStringField;
+    dbMainLOGIN_MAC: TStringField;
+    dbMainUSER_GRADE: TStringField;
+    dbMainPART_CD: TStringField;
+    dbMainSERVER_IP: TStringField;
+    dbMainHTS_VER: TStringField;
+    dbMainCHECK_TF: TIntegerField;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure lbxPartClick(Sender: TObject);
@@ -54,15 +69,17 @@ type
     procedure gdMainTitleBtnClick(Sender: TObject; ACol: Integer;
       Column: TColumnEh);
     procedure btnRefreshClick(Sender: TObject);
+    procedure bsSkinLabel3Click(Sender: TObject);
+    procedure bsSkinLabel4Click(Sender: TObject);
   private
     { Private declarations }
-    procedure CheckAll(iData : Integer);
     procedure LogOutProc(sTitle : String; sMsg : String);
     procedure HtsRefresh;
     function fnCheckSelectedUser: Boolean;
   public
     { Public declarations }
     procedure MainTableOpen; override;
+    procedure CheckAll(iData : Integer);
   end;
 
 var
@@ -78,6 +95,33 @@ uses StdUtils, MMastDB, MDelay, PacketStruct;
 var
   _bAllCheck: Boolean=False;
   _sFind : String='';
+  _CHECK_TF : integer = 0;
+
+procedure TfmRealConn.bsSkinLabel3Click(Sender: TObject);
+var
+  iCheck : integer;
+begin
+//  if dbMain.IsEmpty then Exit;
+//  if dbMain.RecordCount = 0 then Exit;
+  with dbMain do begin
+    DisableControls;
+    First;
+    Edit;
+    if _CHECK_TF = 0 then
+      FieldByName('CHECK_TF').AsInteger := 0;
+    if iCheck = 0 then
+      FieldByName('CHECK_TF').AsInteger := 1;
+    EnableControls;
+    Post;
+    Exit;
+  end;
+end;
+
+procedure TfmRealConn.bsSkinLabel4Click(Sender: TObject);
+begin
+  ShowMessage(BoolToStr( dbMain.IsEmpty ) ); // empty (-1)
+  //ShowMessage(IntToStr(gdMain.RowCount) + '  ' + IntToStr(dbMain.RecordCount));
+end;
 
 procedure TfmRealConn.btnExcelClick(Sender: TObject);
 begin
@@ -91,20 +135,24 @@ begin
                       else _sMainWhere := StrReplace(_Find_UserNm, '<X>', edFind.Text);
 
   rgType.ItemIndex := 0;
+  edFind.Clear;
 
   MainTableOpen;
-
-  edFind.Clear;
 end;
 
 function TfmRealConn.fnCheckSelectedUser: Boolean;
 begin
-  Result := True;
+  Result := False;
+
+//  if dbMain.IsEmpty then Exit;
+
   if (dbMain.FieldByName('USER_ID').AsString = '') or
      (dbMain.FieldByName('CHECK_TF').AsInteger = 0) then begin
-    Result := False;
     bsMsgError('선택한 회원이 없습니다.');
+    Exit;
   end;
+
+  Result := True;
 end;
 
 procedure TfmRealConn.btnLogOutClick(Sender: TObject);
@@ -151,33 +199,39 @@ begin
       DisableControls;
       First;
 
-        while Not Eof do begin
-          Edit;
+      while Not Eof do begin
+        Edit;
 
-          if FieldByName('CHECK_TF').AsInteger = 1 then begin
-            HtsRefresh; // 갱신 프로세스
-            Inc(iTCnt);
-            Post;
-          end;
-
-          Next;
+        if FieldByName('CHECK_TF').AsInteger = 1 then begin
+          HtsRefresh; // 갱신 프로세스
+          Inc(iTCnt);
+          Post;
         end;
-        EnableControls;
-        bsMsgInfo(' ' + intTostr(iTCnt) + ' 명 갱신 되었습니다.');
-        MainTableOpen;
+
+        Next;
+      end;
+      EnableControls;
+      bsMsgInfo(' ' + intTostr(iTCnt) + ' 명 갱신 되었습니다.');
+      MainTableOpen;
     end;
   end;
 end;
 
 procedure TfmRealConn.cbCheckAllClick(Sender: TObject);
 var
-  iValue : Integer;
+  iCnt, iValue : Integer;
+  bBool : Boolean;
 begin
-  inherited;
-  if cbCheckAll.Checked then iValue := 1
-                        else iValue := 0;
+//  inherited;
 
-  CheckAll(iValue);
+  if cbCheckAll.Checked then _CHECK_TF := 1
+                        else _CHECK_TF := 0;
+  MainTableOpen;
+
+//  if dbMain.IsEmpty then Exit;
+//  if cbCheckAll.Checked then iValue := 1
+//                        else iValue := 0;
+//  CheckAll(iValue);
 end;
 
 procedure TfmRealConn.CheckAll(iData: Integer);
@@ -191,10 +245,10 @@ begin
     while Not Eof do begin
       Edit;
       FieldByName('CHECK_TF').AsInteger := iData;
-      Post;
-
+//      Post;
       Next;
     end;
+    Post;
 
     Locate('LOGIN_TM', iKey, []);
     EnableControls;
@@ -220,11 +274,12 @@ procedure TfmRealConn.FormCreate(Sender: TObject);
 begin
   inherited;
   SetADOConn(fmRealConn);
+//  DBGrid1.sele
 end;
 
 procedure TfmRealConn.FormShow(Sender: TObject);
 begin
-  inherited;
+//  inherited;
   if _Supervisor then PartTableOpen(rgType, CodeFormat('USER_GRADE', 'AND CODE_VALUE < 9 ORDER BY CODE_VALUE'), '[전체]', '0')
                  else PartTableOpen(rgType, CodeFormat('USER_GRADE', 'AND CODE_VALUE < 7 ORDER BY CODE_VALUE'), '[전체]', '0');
 
@@ -240,20 +295,21 @@ end;
 procedure TfmRealConn.gdMainTitleBtnClick(Sender: TObject; ACol: Integer;
   Column: TColumnEh);
 begin
+Exit;
   inherited;
   SortData(gdMain, dbMain, ACol);
 end;
 
 procedure TfmRealConn.gdMainTitleClick(Column: TColumnEh);
 var
+  bBool : boolean;
   iValue: Integer;
 begin
+Exit;
   inherited;
-  if Column = gdMain.Columns[0] then
-  begin
+  if Column = gdMain.Columns[0] then begin
     if _bAllCheck then iValue := 0
                   else iValue := 1;
-
     CheckAll(iValue);
 
     _bAllCheck := Not _bAllCheck;
@@ -303,58 +359,66 @@ end;
 
 procedure TfmRealConn.MainTableOpen;
 var
-  sSql, sWhere, sGrade : String;
+  sSQL, sWhere, sGrade : String;
 begin
   if Not _Supervisor then sGrade := ' AND B.USER_GRADE <> 7 ';
 
   if _sMainWhere <> '' then sWhere := ' AND ' + _sMainWhere
                        else sWhere := '';
 
-  try
-    Delay_Show();
+  with dbMain do begin
+    try
+      Delay_Show();
 
-    sSql := Format(
-      'SELECT 0 AS CHECK_TF ' +
-      '      ,A.ACNT_NO     ' +
-      '      ,A.ACNT_TP     ' +
-      '      ,A.USER_ID     ' +
-      '      ,A.USER_NM     ' +
-      '      ,A.ACNT_STATE  ' +
-      '      ,A.NEGO_DUP_YN ' +
-      '      ,A.LOGIN_DT    ' +
-      '      ,A.LOGIN_TM    ' +
-      '      ,A.LOGIN_IP    ' +
-      '      ,A.LOGIN_MAC   ' +
-      '      ,B.USER_GRADE  ' +
-      '      ,B.PART_CD     ' +
-      '      ,B.SERVER_IP   ' +
-      '      ,(SELECT MAX(HTS_VER) FROM LOGIN_HIS WHERE USER_ID = A.USER_ID) AS HTS_VER ' +
-      '  FROM (SELECT DISTINCT A1.*, B1.LOGIN_MAC           ' +
-      '               FROM ACNT_MST A1, LOGIN_HIS B1        ' +
-      '               WHERE B1.LOGIN_DT >= dbo.FP_TRADE_DT()' +
-      '               and B1.LOGIN_TP=%s                    ' +
-      '               AND B1.APP_TP=%s                      ' +
-      '               AND LOGIN_MAC<>%s                     ' +
-      '               AND A1.USER_ID = B1.USER_ID) A,       ' +
-      '       USER_MST B                                    ' +
-      ' WHERE A.USER_ID = B.USER_ID                         ' +
-      '   AND A.CONN_YN = %s                                ' +
-      _sFind +
-      '%s'+
-      sGrade,
-      [
-      QuotedStr('I'),
-      QuotedStr('C'),
-      QuotedStr('RECONNECT'),
-      QuotedStr('Y'),
-       sWhere]);
+      Close;
+      sSQL := Format(
+        'SELECT %s AS CHECK_TF ' +
+        '      ,A.ACNT_NO     ' +
+        '      ,A.ACNT_TP     ' +
+        '      ,A.USER_ID     ' +
+        '      ,A.USER_NM     ' +
+        '      ,A.ACNT_STATE  ' +
+        '      ,A.NEGO_DUP_YN ' +
+        '      ,A.LOGIN_DT    ' +
+        '      ,A.LOGIN_TM    ' +
+        '      ,A.LOGIN_IP    ' +
+        '      ,A.LOGIN_MAC   ' +
+        '      ,B.USER_GRADE  ' +
+        '      ,B.PART_CD     ' +
+        '      ,B.SERVER_IP   ' +
+        '      ,(SELECT MAX(HTS_VER) FROM LOGIN_HIS WHERE USER_ID = A.USER_ID) AS HTS_VER ' +
+        '  FROM (SELECT DISTINCT A1.*, B1.LOGIN_MAC           ' +
+        '               FROM ACNT_MST A1, LOGIN_HIS B1        ' +
+        '               WHERE B1.LOGIN_DT >= dbo.FP_TRADE_DT()' +
+        '               and B1.LOGIN_TP = %s                  ' +
+        '               AND B1.APP_TP = %s                    ' +
+        '               AND LOGIN_MAC <> %s                   ' +
+        '               AND A1.USER_ID = B1.USER_ID) A,       ' +
+        '       USER_MST B                                    ' +
+        ' WHERE A.USER_ID = B.USER_ID                         ' +
+        '   AND A.CONN_YN = %s                                ' +
+        _sFind +
+        '%s'+
+        sGrade,
+        [IntToStr(_CHECK_TF),
+        QuotedStr('I'),
+        QuotedStr('C'),
+        QuotedStr('RECONNECT'),
+        QuotedStr('Y'),
+         sWhere]);
 
-    fnSqlOpen(dbMain, sSql);
-
-    gdMain.Columns[0].Checkboxes := dbMain.RecordCount <> 0;
-    cbCheckAll.Checked := False;
-  finally
-    Delay_Hide;
+      SQL.Text := sSQL;
+      Open;
+//      fnSqlOpen(dbMain, sSql);
+//      gdMain.Columns[0].Checkboxes := RecordCount <> 0;
+//      if not dbMain.IsEmpty then
+//        gdMain.Columns[0].Checkboxes;
+//      cbCheckAll.Checked := False;
+//      if cbCheckAll.Checked then
+//        cbCheckAll.Checked := False;
+    finally
+      Delay_Hide;
+    end;
   end;
 end;
 
@@ -378,9 +442,11 @@ begin
 end;
 
 procedure TfmRealConn.rgTypeClick(Sender: TObject);
+var
+  iCnt : integer;
 begin
-  inherited;
-
+//  inherited;
+//  if dbMain.IsEmpty then Exit;
   if rgType.ItemIndex = 0 then _sFind := ''
                           else _sFind := ' AND B.USER_GRADE = ' + QuotedStr(rgType.Values[rgType.ItemIndex]);
 

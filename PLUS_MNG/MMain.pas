@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Classes, Forms, Controls, StdCtrls, ExtCtrls, SysUtils,
-  Dialogs, Messages, ImgList, Menus, TypInfo, ShellAPI,
+  Dialogs, Messages, ImgList, Menus, TypInfo, 
 //  DB, DBAccess, MemDS, Variants, Graphics,
 // BusinessSkinForm_1042
   BusinessSkinForm, bsDialogs, bsMessages, bsPngImageList, bsSkinMenus, bsRibbon,
@@ -177,8 +177,6 @@ type
 
 var
   fmMain: TfmMain;
-
-  procedure RunAsAdmin(const FileName, Params: string);
 
 implementation
 
@@ -794,24 +792,6 @@ begin
   end else begin
     BringProcessToFront('GT_UPDATE');
   end;
-end;
-
-procedure RunAsAdmin(const FileName, Params: string);
-var
-  sei: TShellExecuteInfo;
-begin
-  ZeroMemory(@sei, SizeOf(sei));
-  sei.cbSize := SizeOf(TShellExecuteInfo);
-  sei.fMask := SEE_MASK_FLAG_DDEWAIT or SEE_MASK_FLAG_NO_UI;
-  sei.Wnd := 0;
-  sei.lpVerb := 'runas'; // 관리자 권한으로 실행
-  sei.lpFile := PChar(FileName);
-  sei.lpParameters := PChar(Params);
-  sei.lpDirectory := nil;
-  sei.nShow := SW_SHOWNORMAL;
-
-  if not ShellExecuteEx(@sei) then
-    ShowMessage('실행 실패: ' + SysErrorMessage(GetLastError));
 end;
 
 end.

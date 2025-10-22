@@ -64,7 +64,6 @@ type
     procedure btnCntrExcelClick(Sender: TObject);
     procedure btnOrdExcelClick(Sender: TObject);
     procedure rgCntrAcntTpClick(Sender: TObject);
-    procedure rgOrdAcntTpClick(Sender: TObject);
     procedure dbOrdCalcFields(DataSet: TDataSet);
     procedure dbOrdAfterOpen(DataSet: TDataSet);
     procedure tmOpenTimer(Sender: TObject);
@@ -82,6 +81,8 @@ type
     procedure gdUserTitleBtnClick(Sender: TObject; ACol: Integer;
       Column: TColumnEh);
     procedure btnFilterClick(Sender: TObject);
+    procedure bsSkinSpeedButton1Click(Sender: TObject);
+    procedure btnOvCancelClick(Sender: TObject);
   private
     { Private declarations }
     procedure OrdTableOpen;
@@ -184,7 +185,19 @@ end;
 
 procedure TfmOrdDetail.btnFindClick(Sender: TObject);
 begin
-  UserTableOpen
+  UserTableOpen;
+end;
+
+procedure TfmOrdDetail.btnOvCancelClick(Sender: TObject);
+begin
+  inherited;
+  MainTableOpen;
+end;
+
+procedure TfmOrdDetail.bsSkinSpeedButton1Click(Sender: TObject);
+begin
+  inherited;
+  OrdTableOpen;
 end;
 
 //procedure TfmOrdDetail.UserTableOpen(sWhere: String ='');
@@ -204,13 +217,18 @@ begin
 //    sWhere := Format(' WHERE USER_NM LIKE %s', [QuotedStr('%' + edFind.Text + '%')]);
 //  sWhere := ' WHERE ' + StrReplace(__Find_User, '<X>', edFind.Text);
   sWhere := Format(' WHERE %s (%s)', [sUserTp, StrReplace(_Find_User, '<X>', edFind.Text)]);
-
   sSql :=
     'SELECT USER_NM  ' +
     '      ,USER_ID  ' +
     '  FROM USER_MST ' +
     sWhere;
-  fnSqlOpen(dbUser, sSql);
+
+  try
+    Delay_Show;
+    fnSqlOpen(dbUser, sSql);
+  finally
+    Delay_Hide;
+  end;
 end;
 
 procedure TfmOrdDetail.MainTableOpen;
@@ -457,6 +475,7 @@ procedure TfmOrdDetail.gdUserDblClick(Sender: TObject);
 begin
   inherited;
   MainTableOpen;
+  dbOrd.Active := False;
   if cbxSearchBS.Checked then OrdTableOpen;
 end;
 
@@ -465,12 +484,6 @@ begin
   inherited;
   MainTableOpen;
   if cbxSearchBS.Checked then OrdTableOpen;
-end;
-
-procedure TfmOrdDetail.rgOrdAcntTpClick(Sender: TObject);
-begin
-  inherited;
-  OrdTableOpen;
 end;
 
 procedure TfmOrdDetail.tmOpenTimer(Sender: TObject);
